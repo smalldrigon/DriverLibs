@@ -1,0 +1,137 @@
+//Android version 申明 第三方依赖版本级管理
+ext {
+
+
+    android = [
+
+            androidBuildToolsVersion: "29.0.1",
+            androidCompileSdkVersion: 28,
+            compileSdkVersion       : 28,
+            androidMinSdkVersion    : 17,
+            androidTargetSdkVersion : 28
+    ]
+    dependVersion = [
+            androidxAppcompat       : '1.0.2',
+            androidSupportSdkVersion: '28.0.0',
+            retrofitSdkVersion      : '2.5.0',
+            glideSdkVersion         : '4.7.1',
+            rxJava                  : '2.1.5',
+            rxAndroid               : '2.0.1',
+            rxLifecycle             : '2.2.2',
+            rxview                  : '2.2.0',
+            arouter_api             : '1.4.1',
+            arouter_compiler        : '1.2.2',
+            upgradeSdkVersion       : '2.1.9',
+            refreshlayout           : '1.0.3',
+            refreshhead             : '1.0.3',
+            multipleStatusView      : '1.6',
+//            mapNaviSdkVersion       : '6.7.0',
+//            map3dSdkVersion         : '6.8.0',
+//            map2dSdkVersion         : '5.2.0',
+//            mapLocationSdkVersion   : '4.5.1',
+            mapNaviSdkVersion       : 'latest.integration',
+            map3dSdkVersion         : 'latest.integration',
+            map2dSdkVersion         : 'latest.integration',
+            mapLocationSdkVersion   : 'latest.integration',
+            zbarLibsVersion         : '1.3.6',
+            sofiaVersion            : '1.0.5',
+            floatbtnVesion          : '2.0.0',
+            flowlayoutVersion       : '1.1.2',
+            multidexVersion         : '1.0.3',
+            easypermissionVersion   : '2.0.1',
+            bannerVersion           : '1.4.10',
+            ratingbarVersion        : '1.3.1',
+            autosizeVersion         : '1.1.2',
+            leakcanaryVersion       : "1.6.2",
+            loggerVersion           : "2.2.0",
+
+
+    ]
+    supportDeps = [
+//            androidx_Appcompat:"androidx.appcompat:appcompat:$dependVersion.androidxAppcompat",
+supportv4  : "com.android.support:support-v4:$dependVersion.androidSupportSdkVersion",
+appcompatv7: "com.android.support:appcompat-v7:$dependVersion.androidSupportSdkVersion",
+cardview   : "com.android.support:cardview-v7:$dependVersion.androidSupportSdkVersion",
+recycleview: "com.android.support:recyclerview-v7:$dependVersion.androidSupportSdkVersion",
+design     : "com.android.support:design:$dependVersion.androidSupportSdkVersion",
+annotations: "com.android.support:support-annotations:$dependVersion.androidSupportSdkVersion"
+    ]
+    retrofit = [
+            //------ retrofit和RxJava ---------
+            retrofit                : "com.squareup.retrofit2:retrofit:$dependVersion.retrofitSdkVersion",
+            retrofitConverterGson   : "com.squareup.retrofit2:converter-gson:$dependVersion.retrofitSdkVersion",
+            retrofitConverterScalars: "com.squareup.retrofit2:converter-scalars:$dependVersion.retrofitSdkVersion",
+            retrofitAdapterRxjava2  : "com.squareup.retrofit2:adapter-rxjava2:$dependVersion.retrofitSdkVersion",
+            okhttp3LoggerInterceptor: 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    ]
+    rxJava = [
+            rxJava      : "io.reactivex.rxjava2:rxjava:$dependVersion.rxJava",
+            rxAndroid   : "io.reactivex.rxjava2:rxandroid:$dependVersion.rxAndroid",
+//            rxlifecycle: "com.trello.rxlifecycle3:rxlifecycle-android-lifecycle-kotlin:$dependVersion.rxLifecycle",
+            rxconponents: "com.trello.rxlifecycle2:rxlifecycle-components:$dependVersion.rxLifecycle",//rxjava 生命周期管理，避免内存泄漏
+            rxview      : "com.jakewharton.rxbinding2:rxbinding:$dependVersion.rxview"//rxview   设置控件的监听等功能呢
+    ]
+//arouter 阿里路由依赖
+    arouter = [
+            arouter_api: "com.alibaba:arouter-api:$dependVersion.arouter_api"
+    ]
+    arouter_compiler = "com.alibaba:arouter-compiler:$dependVersion.arouter_compiler"//arouter插件依赖
+    glideCompiler = "com.github.bumptech.glide:compiler:$dependVersion.glideSdkVersion"  //glide插件依赖
+    glideOkhttp = "com.github.bumptech.glide:okhttp3-integration:$dependVersion.glideSdkVersion"//glide 网络依赖
+    upgrade = "com.allenliu.versionchecklib:library:$dependVersion.upgradeSdkVersion"//Android升级框架
+    multistatusview = "com.classic.common:multiple-status-view:$dependVersion.multipleStatusView"
+    //Android多状态view 可显示加载中，错误，内容视图等
+
+    ratingbar = "me.zhanghai.android.materialratingbar:library:$dependVersion.ratingbarVersion"//星级评分条
+    smartrefresh = [
+            refreshlayout: "com.scwang.smartrefresh:SmartRefreshLayout:$dependVersion.refreshlayout",
+            refreshhead  : "com.scwang.smartrefresh:SmartRefreshHeader:$dependVersion.refreshhead"
+    ]
+
+    other = [
+            autosize      : "me.jessyan:autosize:$dependVersion.autosizeVersion",//屏幕适配 框架
+            glide         : "com.github.bumptech.glide:glide:$dependVersion.glideSdkVersion",//android glide图片加载框架
+//            flowlayout    : "com.hyman:flowlayout-lib:$dependVersion.flowlayoutVersion",  //android 流式布局
+            multidex      : "com.android.support:multidex:$dependVersion.multidexVersion",//Android分包依赖 多dex 解决64k问题
+            easypermission: "pub.devrel:easypermissions:$dependVersion.easypermissionVersion",//权限获取依赖
+            logger        : "com.orhanobut:logger:$dependVersion.loggerVersion",//日志依赖
+//            banner        : "com.youth.banner:banner:$dependVersion.bannerVersion",//轮播 https://github.com/youth5201314/banner
+//            zbar          : "cn.bingoogolapple:bga-qrcode-zbar:$dependVersion.zbarLibsVersion"//扫码依赖，主要用于识别二维码，比zxing小效率高
+
+
+    ]
+
+    leakcanary = [
+            //内存泄漏依赖
+            //leakcanary
+            debugleakcanary    : "com.squareup.leakcanary:leakcanary-android:$dependVersion.leakcanaryVersion",
+//            releaseleakcanary: "com.squareup.leakcanary:leakcanary-android-no-op:$dependVersion.leakcanaryVersion",
+            // Optional, if you use support library fragments:
+            debugImplementation: "com.squareup.leakcanary:leakcanary-support-fragment:$dependVersion.leakcanaryVersion"
+    ]
+
+
+    sofiaBar = "com.yanzhenjie:sofia:$dependVersion.sofiaVersion"   //统一状态栏颜色
+    floatbutton = "com.github.wangjiegulu:rfab:$dependVersion.floatbtnVesion"               //悬浮按钮
+
+
+    leakcanaryLibs = leakcanary.values()
+    sofiabarLibs = [sofiaBar]
+    supportLibs = supportDeps.values()
+    networkLibs = retrofit.values()
+    rxjavaLibs = rxJava.values()
+    arouterLibs = arouter.values()
+    upgradeLibs = [upgrade]
+    ratingbarLibs = [ratingbar]
+    floatbuttonLibs = [floatbutton]
+    multistatusviewLib = [multistatusview]
+
+
+    otherLibs = other.values()
+    refreshLibs = smartrefresh.values()
+//    gaodemapLibs = map.values()
+    // APT
+    glideCompiler = [glideCompiler]
+    arouterCompiler = [arouter_compiler]
+
+}

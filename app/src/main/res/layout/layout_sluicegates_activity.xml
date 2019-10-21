@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical"
+              android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="0dp">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:text="TJZN摆闸"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            <Button
+                    android:text="初始化"
+                    android:id="@+id/tvn_init1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            <Button
+                    android:text="开门"
+                    android:id="@+id/tvn_open1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            <Button
+                    android:text="关门"
+                    android:id="@+id/tvn_close1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            <Button
+                    android:text="通过人数"
+                    android:id="@+id/tvn_passed1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+        </LinearLayout>
+        <TextView
+                android:id="@+id/tv_result1"
+                android:text="123"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+            android:visibility="gone"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:text="M8100"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            <Button
+                    android:text="初始化"
+                    android:id="@+id/tvn_init2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            <Button
+                    android:text="开门"
+                    android:id="@+id/tvn_open2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            <Button
+                    android:text="关门"
+                    android:id="@+id/tvn_close2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            <Button
+                    android:text="通过人数"
+                    android:id="@+id/tvn_passed2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            <Button
+                    android:text="模式"
+                    android:id="@+id/tvn_mode2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+        </LinearLayout>
+        <TextView
+                android:id="@+id/tv_result2"
+                android:text="123"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</LinearLayout>
