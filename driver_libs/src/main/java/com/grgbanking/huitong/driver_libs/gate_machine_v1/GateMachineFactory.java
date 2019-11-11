@@ -1,7 +1,9 @@
 package com.grgbanking.huitong.driver_libs.gate_machine_v1;
 
+import android.util.Log;
 import com.grgbanking.huitong.driver_libs.DriverManagers;
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_GateMachine;
+import com.grgbanking.huitong.driver_libs.util.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,13 +16,14 @@ import java.util.List;
  */
 public class GateMachineFactory {
     private static IDriver_GateMachine machine = null;
+
     public static IDriver_GateMachine creatInstance(String gateMachineType) {
         String path = "cd data/ca10";
-        List commandList =  new ArrayList<String>();
+        List commandList = new ArrayList<String>();
 //        commandList.add(InstallSilent.COMMAND_SU);
 
-        String commd1  = "export LD_LIBRARY_PATH=./";
-        String commd2  = "./GrgCommManager";
+        String commd1 = "export LD_LIBRARY_PATH=./";
+        String commd2 = "./GrgCommManager";
         commandList.add(path);
         commandList.add(commd1);
         commandList.add(commd2);
@@ -34,11 +37,13 @@ public class GateMachineFactory {
                     .GATEMACHINE_TYPE_TJZN:
 
                 machine = new Driver_GateTJZNImpl();
+                Log.i("gong", "创建Driver_GateTJZNImpl");
+                break;
             case DriverManagers
                     .GATEMACHINE_TYPE_M820:
 
                 machine = new Driver_GateM820Impl();
-            break;
+                break;
             default:
                 break;
         }

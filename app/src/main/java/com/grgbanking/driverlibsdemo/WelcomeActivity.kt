@@ -3,13 +3,16 @@ package com.grgbanking.driverlibsdemo
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.example.hardwaredemo.Contants
+import com.grgbanking.baselibrary.util.LogUtil
 
 import com.grgbanking.huitong.driver_libs.util.FileAssetsUtil
 import com.grgbanking.huitong.driver_libs.util.InstallSilent
-import io.reactivex.Observable
+ import io.reactivex.Observable
  import io.reactivex.disposables.Disposable
 import io.reactivex.functions.BiFunction
 import java.io.FileNotFoundException
+import java.lang.NullPointerException
 
 
 /**
@@ -36,10 +39,11 @@ class WelcomeActivity : AppCompatActivity() {
         disposedCopyfIle = Observable.zip(copyData(), copyToSdCard(),
             BiFunction<Int, Int, Int> { t1, t2 -> t1 + t2 }).subscribe {
             println("启动")
+             LogUtil.i(Contants.LOGTAG,"启动驱动服务")
             runLinuxServer()
 
         }
-    }
+     }
 
     private fun copyData(): Observable<Int> {
         return Observable.create {
@@ -52,6 +56,7 @@ class WelcomeActivity : AppCompatActivity() {
 
                 override fun onFailed(error: String?) {
                     println("复制失败$error")
+                    LogUtil.i(Contants.LOGTAG,"复制初始化文件失败$error")
                     throw FileNotFoundException("复制初始化文件失败")
                 }
             })
@@ -70,6 +75,7 @@ class WelcomeActivity : AppCompatActivity() {
 
                     override fun onFailed(error: String?) {
                         println("复制失败$error")//.logI()
+                        LogUtil.i(Contants.LOGTAG,"复制配置文件失败$error")
                     }
 
                 })

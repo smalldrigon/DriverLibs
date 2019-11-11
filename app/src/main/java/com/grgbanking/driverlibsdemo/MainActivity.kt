@@ -124,6 +124,9 @@ class MainActivity : AppCompatActivity() {
         btn_gatebaizha.setOnClickListener {
             startActivity(Intent(this@MainActivity, SluiceGatesActivity::class.java))
         }
+        btn_gatebaizha_aoyi.setOnClickListener {
+            startActivity(Intent(this@MainActivity, SluiceGatesAoYiActivity::class.java))
+        }
         btn_getframe.setOnClickListener {
 //            startActivity(Intent(this@MainActivityRecord, MainMenuActivity::class.java))
 //            startActivity(Intent(this@MainActivityRecord, GetFrameActivity::class.java))

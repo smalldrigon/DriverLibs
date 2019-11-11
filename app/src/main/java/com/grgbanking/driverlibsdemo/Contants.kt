@@ -4,7 +4,8 @@ import android.os.Environment
 
 object Contants{
 
-
+    val LOGTAG="++++++";
+    val LOGTAGERR="------";
 
     val BASE_URL: String= "http://120.77.93.85:1509"
     val SIMILARITY: Float= 0.8f

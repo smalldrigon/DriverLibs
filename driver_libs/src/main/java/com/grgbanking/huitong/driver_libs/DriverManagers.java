@@ -131,6 +131,7 @@ public class DriverManagers {
                     break;
                 case GATEMACHINE_TYPE_TJZN:
                     mDriver_GateMachine = GateMachineFactory.creatInstance(GATEMACHINE_TYPE_TJZN);
+                    break;
                 case GATEMACHINE_TYPE_M820:
                     mDriver_GateMachine = GateMachineFactory.creatInstance(GATEMACHINE_TYPE_M820);
                     break;

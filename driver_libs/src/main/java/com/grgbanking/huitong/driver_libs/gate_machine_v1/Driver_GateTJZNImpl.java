@@ -35,6 +35,8 @@ return IGateDev_TJZN.mInstance.hOpenLogicDevice(p_pcLogicDevName);
 
     @Override
     public int openLogicDevice(String p_pcLogicDevName, String configFilePath, String logFilePath) {
+        System.out.println("TJZN初始化 openLogicDevice()");
+
         DevReturn devReturnsetPara = new DevReturn();
         DevReturn devReturnInit = new DevReturn();
         setConfigFileLoadDir(configFilePath
@@ -45,10 +47,16 @@ return IGateDev_TJZN.mInstance.hOpenLogicDevice(p_pcLogicDevName);
         setCommPara(mHandle, devReturnsetPara);
         init(mHandle, devReturnInit);
         if (devReturnsetPara.getiPhyCode() != 0 || devReturnsetPara.getiLogicCode() != 0) {
-            System.err.println("初始化 setCommPara 失败" + "mHandle:" + mHandle + "devReturn" + devReturnsetPara.toString());
+            System.err.println("TJZN初始化 setCommPara 失败" + "mHandle:" + mHandle + "devReturn" + devReturnsetPara.toString());
+        }else{
+            System.out.println("TJZN初始化 setCommPara()"+devReturnsetPara.toString());
+
         }
         if (devReturnInit.getiPhyCode() != 0 || devReturnInit.getiLogicCode() != 0) {
-            System.err.println("初始化 init 失败" + "mHandle:" + mHandle + "devReturn" + devReturnInit.toString());
+            System.err.println("TJZN初始化 init 失败" + "mHandle:" + mHandle + "devReturn" + devReturnInit.toString());
+        }else{
+            System.out.println("TJZN初始化 init()"+devReturnInit.toString());
+
         }
         return mHandle;
 

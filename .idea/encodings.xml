@@ -3,5 +3,8 @@
   <component name="Encoding" addBOMForNewFiles="with NO BOM">
     <file url="file://$PROJECT_DIR$/app/src/main/assets/GRGConfig1/EXTGateCfg.ini" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/assets/GRGConfig1/FingerVenaDevCfg.ini" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/assets/ca10/EXTGateCfg.ini" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/assets/ca10/GRGDTATM_CommCfg.ini" charset="GBK" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

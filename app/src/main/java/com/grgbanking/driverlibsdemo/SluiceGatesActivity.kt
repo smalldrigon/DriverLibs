@@ -3,7 +3,6 @@ package com.grgbanking.driverlibsdemo
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.example.hardwaredemo.Contants
-import com.grgbanking.driverlibsdemo.R
 
 import com.grgbanking.huitong.driver_libs.DriverManagers
 import com.grgbanking.huitong.driver_libs.gate_machine_v1.DevReturn
@@ -13,6 +12,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.layout_sluicegates_activity.*
+
 
 class SluiceGatesActivity : AppCompatActivity() {
     var disposedCopyfIle: Disposable? = null
@@ -36,17 +36,59 @@ class SluiceGatesActivity : AppCompatActivity() {
             .setGateMachine(DriverManagers.GATEMACHINE_TYPE_TJZN)
 //            .setmDriver_GateMachineTest(DriverManagers.GATEMACHINE_TYPE_TJZN)
             .build()
-        tvn_open1.setOnClickListener {
+        tvn_open2.setOnClickListener {
             //打开1
             var devreturn = DevReturn()
             testAction {
-                DriverManagers.instance.driver_GateMachine.openGateLeftOnce(  devreturn)
+                println( "执行线程名称${Thread.currentThread().name}")
+                DriverManagers.instance.driver_GateMachine.openGateLeftOnce(devreturn)
                 devreturn
             }.subscribe {
+                println( "结果线程名称${Thread.currentThread().name}")
                 setText1("打开门$devreturn  mHandle$mHhandle")
             }
         }
-        tvn_close1.setOnClickListener {
+        tvn_open2_aways.setOnClickListener {
+            //打开1
+            var devreturn = DevReturn()
+            testAction {
+                println( "执行线程名称${Thread.currentThread().name}")
+                DriverManagers.instance.driver_GateMachine.openGateLeftAways(devreturn)
+                devreturn
+            }.subscribe {
+                println( "结果线程名称${Thread.currentThread().name}")
+                setText1("打开门$devreturn  mHandle$mHhandle")
+            }
+        }
+        tvn_open2_right.setOnClickListener {
+            //打开1
+            var devreturn = DevReturn()
+            testAction {
+                println( "执行线程名称${Thread.currentThread().name}")
+                DriverManagers.instance.driver_GateMachine.openGateRightOnce(devreturn)
+                devreturn
+            }.subscribe {
+                println( "结果线程名称${Thread.currentThread().name}")
+                setText1("打开门$devreturn  mHandle$mHhandle")
+            }
+        }
+
+        tvn_open2_right_aways.setOnClickListener {
+            //打开1
+            var devreturn = DevReturn()
+            testAction {
+                println( "执行线程名称${Thread.currentThread().name}")
+                DriverManagers.instance.driver_GateMachine.openGateRightAways(devreturn)
+                devreturn
+            }.subscribe {
+                println( "结果线程名称${Thread.currentThread().name}")
+                setText1("打开门$devreturn  mHandle$mHhandle")
+            }
+        }
+
+
+
+        tvn_close2.setOnClickListener {
             //关闭1
 
 
@@ -56,7 +98,7 @@ class SluiceGatesActivity : AppCompatActivity() {
 //            setText1("关闭门$devreturn")
 
             testAction {
-                DriverManagers.instance.driver_GateMachine.closeGate(devreturn)
+                DriverManagers.instance.driver_GateMachine.closeGate( devreturn)
                 devreturn
             }.subscribe {
                 setText1("关闭门$devreturn")
@@ -64,12 +106,13 @@ class SluiceGatesActivity : AppCompatActivity() {
 
 
         }
-        tvn_passed1.setOnClickListener {
+        tvn_passed2.setOnClickListener {
 
             var passageNum = TJZNGateDev_Passage_Num()
             var devreturn = DevReturn()
 
-
+            DriverManagers.instance.driver_GateMachine.getPassageNum( passageNum, devreturn)
+            setText1("通过人数$passageNum \n操作返回$devreturn")
 
             testActionAny{
                 DriverManagers.instance.driver_GateMachine.getPassageNum( passageNum, devreturn)
@@ -81,7 +124,7 @@ class SluiceGatesActivity : AppCompatActivity() {
 
 
         }
-        tvn_init1.setOnClickListener {
+        tvn_init2.setOnClickListener {
 
             var devreturn = DevReturn()
 //            DriverManagers.instance.driver_GateMachine.setConfigFileLoadDir(
@@ -91,15 +134,20 @@ class SluiceGatesActivity : AppCompatActivity() {
 //                Contants.CONFIG_FILE_PATH
 //            )
 //
-//            mHhandle = DriverManagers.instance.driver_GateMachine.openLogicDevice(DriverManagers.GATEMACHINE_TYPE_TJZN)
-//             DriverManagers.instance.driver_GateMachine.setCommPara(mHhandle, devreturn)
+//
+//             mHhandle = DriverManagers.instance.driver_GateMachine.openLogicDevice(DriverManagers.GATEMACHINE_TYPE_M810)
+//            DriverManagers.instance.driver_GateMachine.setCommPara(mHhandle, devreturn)
 //            DriverManagers.instance.driver_GateMachine.init(mHhandle, devreturn)
 
-DriverManagers.instance.driver_GateMachine.
-    openLogicDevice(DriverManagers.GATEMACHINE_TYPE_TJZN,Contants.CONFIG_FILE_PATH,Contants.CONFIG_FILE_PATH)
+            testActionAny{
+                mHhandle = DriverManagers.instance.driver_GateMachine.openLogicDevice(DriverManagers.GATEMACHINE_TYPE_TJZN,Contants.CONFIG_FILE_PATH,Contants.CONFIG_FILE_PATH)
+                 devreturn
+            }.subscribe {
+                setText1("初始化$devreturn")
+            }
 
 
-            setText1("初始化$devreturn")
+
         }
 
     }
