@@ -2,8 +2,11 @@ package com.grgbanking.driverlibsdemo
 
 import android.content.Intent
 import android.graphics.Bitmap
+import android.os.Build
 import android.os.Bundle
+import android.support.annotation.RequiresApi
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.KeyEvent
 import android.widget.Toast
 
@@ -15,6 +18,7 @@ import com.grgbanking.huitong.driver_libs.interfaces.IDriver_ScanGun
 import com.grgbanking.huitong.driver_libs.scan_qr_code.Driver_ScanQrCodeImpl
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_main1.*
+import java.lang.StringBuilder
 
 class MainActivity : AppCompatActivity() {
     var disposedCopyfIle: Disposable? = null
@@ -76,17 +80,28 @@ class MainActivity : AppCompatActivity() {
 
         initView()
     }
+var inputStr:StringBuilder = StringBuilder()
 
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun dispatchKeyEvent(event: KeyEvent?): Boolean {
         println("${event}")
+        Log.i("gong", "设备name${event!!.device.name}")
+        Log.i("gong", "设备  productId${event!!.device.productId}")
+        Log.i("gong", "设备 vendorId ${event!!.device.vendorId}")
+//        inputStr.append(event!!.device.name)
+//        setText("输入事件$inputStr.toString()")
           mIDriver_ScanGun?.startScan(event
           ) { usbInputType, barcode ->
               when(usbInputType){
                   Driver_ScanQrCodeImpl.INPUT_RQCODE ->{
+                      Log.i("gong", "扫码：$barcode")
                       if (barcode != null) setText("扫码：$barcode")
                   }
                   Driver_ScanQrCodeImpl.INPUT_ICCARD->{
                       if (barcode != null) setText("读ic卡：$barcode")
+                  }
+                  Driver_ScanQrCodeImpl.UNDEFINE_INPUT_TYPE->{
+                        setText("未定义输入类型：$barcode")
                   }
               }
           }
