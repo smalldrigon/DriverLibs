@@ -1,4 +1,4 @@
-package com.grgbanking.huitong.driver_libs.gate_machine_v1;
+package com.grgbanking.huitong.driver_libs.gate_machine;
 
 import com.sun.jna.Structure;
 
@@ -7,15 +7,15 @@ import java.util.List;
 
 /**
  * Author: gongxiaobiao
- * Date: on 2019/9/10 15:05
+ * Date: on 2019/9/10 16:58
  * Email: 904430803@qq.com
  * Description:
  */
-public class ExtGateNum extends Structure {
-    public static class ByReference extends ExtGateNum implements Structure.ByReference {
+public class tEXTGATE_NUM extends Structure {
+    public static class ByReference extends tEXTGATE_NUM implements Structure.ByReference {
     }
 
-    public static class ByValue extends ExtGateNum implements Structure.ByValue {
+    public static class ByValue extends tEXTGATE_NUM implements Structure.ByValue {
     }
 
     int uiAuthPassNum;	// 给了放行但未通过的累计次数
@@ -26,4 +26,8 @@ public class ExtGateNum extends Structure {
     {
         return Arrays.asList(new String[]{"uiAuthPassNum","uiPassNum","uiTimeoutNum","auiRsv"});
     }
+
+
+
+
 }

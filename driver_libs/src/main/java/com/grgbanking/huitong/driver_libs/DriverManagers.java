@@ -3,7 +3,7 @@ package com.grgbanking.huitong.driver_libs;
 import android.content.Context;
 import com.grgbanking.huitong.driver_libs.card_reader.Driver_DeCardReaderImpl;
 import com.grgbanking.huitong.driver_libs.fingerprints.Driver_FingerRecongnitionImpl;
-import com.grgbanking.huitong.driver_libs.gate_machine_v1.GateMachineFactory;
+import com.grgbanking.huitong.driver_libs.gate_machine.GateMachineFactory;
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_CardReader;
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_FingerPrints;
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_GateMachine;

@@ -1,4 +1,4 @@
-package com.grgbanking.huitong.driver_libs.gate_machine_v1;
+package com.grgbanking.huitong.driver_libs.gate_machine;
 
 import android.content.Context;
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_GateMachine;

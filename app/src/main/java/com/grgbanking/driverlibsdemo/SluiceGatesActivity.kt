@@ -5,8 +5,8 @@ import android.support.v7.app.AppCompatActivity
 import com.example.hardwaredemo.Contants
 
 import com.grgbanking.huitong.driver_libs.DriverManagers
-import com.grgbanking.huitong.driver_libs.gate_machine_v1.DevReturn
-import com.grgbanking.huitong.driver_libs.gate_machine_v1.TJZNGateDev_Passage_Num
+import com.grgbanking.huitong.driver_libs.gate_machine.DevReturn
+import com.grgbanking.huitong.driver_libs.gate_machine.TJZNGateDev_Passage_Num
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable

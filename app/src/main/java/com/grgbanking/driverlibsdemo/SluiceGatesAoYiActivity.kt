@@ -5,8 +5,8 @@ import android.support.v7.app.AppCompatActivity
 import com.example.hardwaredemo.Contants
 
 import com.grgbanking.huitong.driver_libs.DriverManagers
-import com.grgbanking.huitong.driver_libs.gate_machine_v1.DevReturn
-import com.grgbanking.huitong.driver_libs.gate_machine_v1.TJZNGateDev_Passage_Num
+import com.grgbanking.huitong.driver_libs.gate_machine.DevReturn
+import com.grgbanking.huitong.driver_libs.gate_machine.TJZNGateDev_Passage_Num
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -29,9 +29,9 @@ class SluiceGatesAoYiActivity : AppCompatActivity() {
     }
     private fun initView() {
         DriverManagers.Builder().setContext(this)
-            .setFingerPrints(DriverManagers.FINGERPRINTS_TYPE_FPC1011)
+//            .setFingerPrints(DriverManagers.FINGERPRINTS_TYPE_FPC1011)
             .setScanGun(DriverManagers.SACNGUN_TYPE_ZD7100)
-            .setCardReader(DriverManagers.CARD_READER_TYPE_T10)
+//            .setCardReader(DriverManagers.CARD_READER_TYPE_T10)
             .setGateMachine(DriverManagers.GATEMACHINE_TYPE_M820)
 //            .setmDriver_GateMachineTest(DriverManagers.GATEMACHINE_TYPE_TJZN)
             .build()
@@ -142,7 +142,8 @@ class SluiceGatesAoYiActivity : AppCompatActivity() {
 //            setText1("初始化$devreturn")
 
             testActionAny{
-                mHhandle = DriverManagers.instance.driver_GateMachine.openLogicDevice(DriverManagers.GATEMACHINE_TYPE_M820,Contants.CONFIG_FILE_PATH,Contants.CONFIG_FILE_PATH)
+                mHhandle = DriverManagers.instance.driver_GateMachine.openLogicDevice(
+                    DriverManagers.GATEMACHINE_TYPE_M820,Contants.CONFIG_FILE_PATH,Contants.CONFIG_FILE_PATH)
                 devreturn
             }.subscribe {
                 setText1("初始化$devreturn")

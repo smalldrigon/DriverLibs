@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+        android:background="@android:color/holo_red_light"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -40,9 +41,18 @@
                 android:text="usb读卡器"
                 android:layout_height="wrap_content"/>
 
+        <Button android:layout_width="wrap_content"
+                android:id="@+id/btn_createImg"
+                android:text="生产成图片"
+                android:layout_height="wrap_content"/>
+
     </LinearLayout>
      <TextView android:layout_width="wrap_content"
               android:id="@+id/tv_resulr"
               android:layout_height="wrap_content"/>
+
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:id="@+id/iv_result"
+    />
 
 </LinearLayout>

@@ -1,7 +1,7 @@
 package com.grgbanking.huitong.driver_libs.interfaces;
 
-import com.grgbanking.huitong.driver_libs.gate_machine_v1.DevReturn;
-import com.grgbanking.huitong.driver_libs.gate_machine_v1.TJZNGateDev_Passage_Num;
+import com.grgbanking.huitong.driver_libs.gate_machine.DevReturn;
+import com.grgbanking.huitong.driver_libs.gate_machine.TJZNGateDev_Passage_Num;
 
 /**
  * Author: gongxiaobiao

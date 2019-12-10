@@ -1,4 +1,4 @@
-package com.grgbanking.huitong.driver_libs.gate_machine_v1;
+package com.grgbanking.huitong.driver_libs.gate_machine;
 
 import com.sun.jna.Library;
 import com.sun.jna.Native;
@@ -73,6 +73,7 @@ public interface IGateDev_M820 extends Library {
      * @return
      */
     int  iOpenGate(int p_hDevHandle, int dir, int mode, MyDevReturn[] devReturn);
+    int  iOpenGate(int p_hDevHandle, int dir,  MyDevReturn[] devReturn);
     /**
      * @method
      * @description 关闭闸门

@@ -1,9 +1,8 @@
-package com.grgbanking.huitong.driver_libs.gate_machine_v1;
+package com.grgbanking.huitong.driver_libs.gate_machine;
 
 import android.util.Log;
 import com.grgbanking.huitong.driver_libs.DriverManagers;
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_GateMachine;
-import com.grgbanking.huitong.driver_libs.util.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;

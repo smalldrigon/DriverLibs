@@ -9,8 +9,9 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.KeyEvent
 import android.widget.Toast
+import com.grgbanking.driverlibsdemo.util.BitmapUtil
 
- import com.grgbanking.huitong.driver_libs.card_reader.Driver_DeCardReaderImpl
+import com.grgbanking.huitong.driver_libs.card_reader.Driver_DeCardReaderImpl
 import com.grgbanking.huitong.driver_libs.fingerprints.Driver_FingerRecongnitionImpl
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_CardReader
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_FingerPrints
@@ -67,11 +68,11 @@ class MainActivity : AppCompatActivity() {
 //        }catch (e:Exception){
 //            Toast.makeText(this,"读卡器打开失败",Toast.LENGTH_LONG).show()
 //        }
-        try {
-            mIDriver_FingerPrints?.open(this)
-        }catch (e:Exception){
-            Toast.makeText(this,"指纹仪打开失败",Toast.LENGTH_LONG).show()
-        }
+//        try {
+//            mIDriver_FingerPrints?.open(this)
+//        }catch (e:Exception){
+//            Toast.makeText(this,"指纹仪打开失败",Toast.LENGTH_LONG).show()
+//        }
 //        try {
 //            mIDriver_ScanGun?.open(this)
 //        }catch (e:Exception){
@@ -148,8 +149,14 @@ var inputStr:StringBuilder = StringBuilder()
 //            startActivity(Intent(this@MainActivity, MainActivity2::class.java))
 //            startActivity(Intent(this@MainActivity2, DemoMainActivity::class.java))
         }
-    }
 
+        btn_createImg.setOnClickListener {
+            list.add("21")
+            iv_result.setImageBitmap(BitmapUtil.createBitmap( list))
+//            iv_result.setImageBitmap(BitmapUtil.createEmptyBitmap(400,400))
+        }
+    }
+    var list = arrayListOf<String>("1233")
     override fun onDestroy() {
         super.onDestroy()
 

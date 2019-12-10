@@ -1,43 +1,41 @@
-package com.grgbanking.huitong.driver_libs.gate_machine_v1;
+package com.grgbanking.huitong.driver_libs.gate_machine;
 
 import android.content.Context;
-import com.grgbanking.huitong.driver_libs.interfaces.IDriver_GateMachine;
+import com.grgbanking.huitong.driver_libs.interfaces.IDriver_GateMachine_TJZN;
 
 /**
  * Author: gongxiaobiao
  * Date: on 2019/9/10 15:52
  * Email: 904430803@qq.com
- * Description:
+ * Description:  铁军机芯控制接口实现类
  */
-public class Driver_GateM820Impl implements IDriver_GateMachine {
+public class Driver_GateTJZNImpl implements IDriver_GateMachine_TJZN {
     private int mHandle = -1;
-    public Driver_GateM820Impl() {
+    @Override
+    public int setMode(int p_hDevHandle, int mode, DevReturn devReturn) {
 
+        return 0;
     }
 
     @Override
     public int setDriverLogDir(String logPath) {
-        return IGateDev_M820.mInstance.setDriverLogDir(logPath);
+
+          return IGateDev_TJZN.mInstance.setDriverLogDir(logPath);
     }
 
     @Override
     public int setConfigFileLoadDir(String configFilePath) {
-        return IGateDev_M820.mInstance.SetConfigFileLoadDir(configFilePath);
+          return IGateDev_TJZN.mInstance.SetConfigFileLoadDir(configFilePath);
     }
 
-    @Deprecated
     @Override
     public int openLogicDevice(String p_pcLogicDevName) {
-
-        mHandle = IGateDev_M820.mInstance.hOpenLogicDevice(p_pcLogicDevName);
-         return mHandle;
-
+return IGateDev_TJZN.mInstance.hOpenLogicDevice(p_pcLogicDevName);
     }
 
     @Override
     public int openLogicDevice(String p_pcLogicDevName, String configFilePath, String logFilePath) {
-
-        System.out.println("M820初始化 openLogicDevice()");
+        System.out.println("TJZN初始化 openLogicDevice()");
 
         DevReturn devReturnsetPara = new DevReturn();
         DevReturn devReturnInit = new DevReturn();
@@ -45,53 +43,52 @@ public class Driver_GateM820Impl implements IDriver_GateMachine {
         );//设置配置文件路径
         setDriverLogDir(logFilePath
         );//设置闸机日志文件路径
-        mHandle = IGateDev_M820.mInstance.hOpenLogicDevice(p_pcLogicDevName);
+        mHandle = IGateDev_TJZN.mInstance.hOpenLogicDevice(p_pcLogicDevName);
         setCommPara(mHandle, devReturnsetPara);
         init(mHandle, devReturnInit);
         if (devReturnsetPara.getiPhyCode() != 0 || devReturnsetPara.getiLogicCode() != 0) {
-            System.err.println("M820初始化 setCommPara 失败" + "mHandle:" + mHandle + "devReturn" + devReturnsetPara.toString());
+            System.err.println("TJZN初始化 setCommPara 失败" + "mHandle:" + mHandle + "devReturn" + devReturnsetPara.toString());
         }else{
-            System.out.println("M820初始化 setCommPara()"+devReturnsetPara.toString());
+            System.out.println("TJZN初始化 setCommPara()"+devReturnsetPara.toString());
 
         }
         if (devReturnInit.getiPhyCode() != 0 || devReturnInit.getiLogicCode() != 0) {
-            System.err.println("M820初始化 init 失败" + "mHandle:" + mHandle + "devReturn" + devReturnInit.toString());
+            System.err.println("TJZN初始化 init 失败" + "mHandle:" + mHandle + "devReturn" + devReturnInit.toString());
         }else{
-            System.out.println("M820初始化 init()"+devReturnInit.toString());
+            System.out.println("TJZN初始化 init()"+devReturnInit.toString());
 
         }
         return mHandle;
-    }
+
+     }
 
     @Override
     public void closeLogicDevice(int p_pcLogicDevName) {
-        IGateDev_M820.mInstance.vCloseLogicDevice(p_pcLogicDevName);
+        IGateDev_TJZN.mInstance.vCloseLogicDevice(p_pcLogicDevName);
     }
 
     @Override
-    public int setCommPara(int devHandler, DevReturn p_psStatus) {
-
-        MyDevReturn[] mydevReturn1 = creatMyDevReturnArray();
-        return IGateDev_M820.mInstance.iSetCommPara(devHandler, mydevReturn1);
+    public int setCommPara(int devHandler, DevReturn  devReturn) {
+        MyDevReturn[] mydevReturn1 =creatMyDevReturnArray();
+        return IGateDev_TJZN.mInstance.iSetCommPara(devHandler,mydevReturn1);
     }
-
 
     @Override
     public int init(int p_hDevHandle, DevReturn devReturn) {
-        MyDevReturn[] mydevReturn = creatMyDevReturnArray();
-        int ret = IGateDev_M820.mInstance.iInit(p_hDevHandle, mydevReturn);
+        MyDevReturn[] mydevReturn =creatMyDevReturnArray();
+        int ret =IGateDev_TJZN.mInstance.iInit(p_hDevHandle,mydevReturn);
 
-        devReturn.iLogicCode = mydevReturn[0].iLogicCode;
+        devReturn.iLogicCode=mydevReturn[0].iLogicCode;
 
-        devReturn.iPhyCode = mydevReturn[0].iPhyCode;
-        return ret;
+        devReturn.iPhyCode=mydevReturn[0].iPhyCode;
+        return 0;
     }
 
     @Override
     public int openGateLeftOnce( DevReturn devReturn) {
         MyDevReturn[] mydevReturn1 = creatMyDevReturnArray();
-//        int ret = IGateDev_M820.mInstance.iOpenGate(mHandle, 1, 0, mydevReturn1);
-        int ret = openGate(mHandle,1,0,devReturn);
+//        int ret = IGateDev_M810.mInstance.iOpenGate(mHandle, 1, 0, mydevReturn1);
+        int ret = openGate(mHandle,1,devReturn);
         devReturn.iLogicCode = mydevReturn1[0].iLogicCode;
         devReturn.iPhyCode = mydevReturn1[1].iPhyCode;
 
@@ -103,8 +100,8 @@ public class Driver_GateM820Impl implements IDriver_GateMachine {
     @Override
     public int openGateLeftAways(DevReturn devReturn) {
         MyDevReturn[] mydevReturn1 = creatMyDevReturnArray();
-//        int ret = IGateDev_M820.mInstance.iOpenGate(mHandle, 1, 0, mydevReturn1);
-        int ret = openGate(mHandle,1,1,devReturn);
+//        int ret = IGateDev_M810.mInstance.iOpenGate(mHandle, 1, 0, mydevReturn1);
+        int ret = openGate(mHandle,1,devReturn);
         devReturn.iLogicCode = mydevReturn1[0].iLogicCode;
         devReturn.iPhyCode = mydevReturn1[1].iPhyCode;
 
@@ -114,7 +111,7 @@ public class Driver_GateM820Impl implements IDriver_GateMachine {
     @Override
     public int openGateRightAways(DevReturn devReturn) {
         MyDevReturn[] mydevReturn1 = creatMyDevReturnArray();
-        int ret = openGate(mHandle,2,1,devReturn);
+        int ret = openGate(mHandle,2,devReturn);
         devReturn.iLogicCode = mydevReturn1[0].iLogicCode;
         devReturn.iPhyCode = mydevReturn1[1].iPhyCode;
         return ret;
@@ -123,25 +120,26 @@ public class Driver_GateM820Impl implements IDriver_GateMachine {
     @Override
     public int openGateRightOnce(  DevReturn devReturn) {
         MyDevReturn[] mydevReturn1 = creatMyDevReturnArray();
-        int ret = openGate(mHandle,2,0,devReturn);
+        int ret = openGate(mHandle,2,devReturn);
         devReturn.iLogicCode = mydevReturn1[0].iLogicCode;
         devReturn.iPhyCode = mydevReturn1[1].iPhyCode;
         return ret;
     }
 
-    private int openGate(int p_hDevHandle, int dir, int mode, DevReturn devReturn) {
+    private int openGate(int p_hDevHandle, int dir, DevReturn devReturn) {
         MyDevReturn[] mydevReturn1 = creatMyDevReturnArray();
-        int ret = IGateDev_M820.mInstance.iOpenGate(p_hDevHandle, dir, mode, mydevReturn1);
+        int ret = IGateDev_TJZN.mInstance.iOpenGate(p_hDevHandle, dir, mydevReturn1);
         devReturn.iLogicCode = mydevReturn1[0].iLogicCode;
         devReturn.iPhyCode = mydevReturn1[1].iPhyCode;
         return ret;
     }
+
 
 
     @Override
     public int closeGate(DevReturn devReturn) {
-        MyDevReturn[] mydevReturn1 = creatMyDevReturnArray();
-        int ret = IGateDev_M820.mInstance.iCloseGate(mHandle, mydevReturn1);
+        MyDevReturn[] mydevReturn1 =creatMyDevReturnArray();
+        int ret = IGateDev_TJZN.mInstance.iCloseGate(mHandle,mydevReturn1);
         devReturn.iLogicCode = mydevReturn1[0].iLogicCode;
         devReturn.iPhyCode = mydevReturn1[1].iPhyCode;
         return ret;
@@ -152,9 +150,9 @@ public class Driver_GateM820Impl implements IDriver_GateMachine {
     public int getPassageNum(TJZNGateDev_Passage_Num num, DevReturn devReturn) {
 
         int ret;
-        MyDevReturn[] mydevReturn = creatMyDevReturnArray();
+        MyDevReturn[] mydevReturn =creatMyDevReturnArray();
         TJZNGateDev_Passage_Num.ByReference passageNum = new TJZNGateDev_Passage_Num.ByReference();
-        ret = IGateDev_M820.mInstance.iGetPassageNum(mHandle, passageNum, mydevReturn);
+        ret = IGateDev_TJZN.mInstance.iGetPassageNum(mHandle,passageNum,mydevReturn);
 
         //        num.passeNumL = passageNum.passeNumL[0].uiAuthPassNum;
 //        num.unPassNumL = passageNum.sEXTNum[0].uiPassNum;
@@ -171,30 +169,29 @@ public class Driver_GateM820Impl implements IDriver_GateMachine {
         num.unPassNumR = passageNum.unPassNumR;
         num.timeoutNumR = passageNum.timeoutNumR;
 
-        devReturn.iLogicCode = mydevReturn[0].iLogicCode;
+        devReturn.iLogicCode=mydevReturn[0].iLogicCode;
 
-        devReturn.iPhyCode = mydevReturn[0].iPhyCode;
+        devReturn.iPhyCode=mydevReturn[0].iPhyCode;
 
 
-        return ret;
+        return  ret;
 
 
     }
 
 
-    @Deprecated
+
     @Override
     public int open(Context context) {
         return 0;
     }
 
-    @Deprecated
     @Override
     public int close() {
         return 0;
-    }
 
-    private MyDevReturn[] creatMyDevReturnArray() {
+    }
+    private MyDevReturn[] creatMyDevReturnArray(){
         return (MyDevReturn[]) new MyDevReturn().toArray(8);
     }
 }

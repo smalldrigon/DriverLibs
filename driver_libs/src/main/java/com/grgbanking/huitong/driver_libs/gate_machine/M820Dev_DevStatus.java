@@ -1,4 +1,4 @@
-package com.grgbanking.huitong.driver_libs.gate_machine_v1;
+package com.grgbanking.huitong.driver_libs.gate_machine;
 import com.sun.jna.Structure;
 
  import java.util.Arrays;
