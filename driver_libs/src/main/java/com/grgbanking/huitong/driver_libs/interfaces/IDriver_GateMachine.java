@@ -137,6 +137,7 @@ public interface IDriver_GateMachine extends IDriverBaseInterface {
    * @return
    */
   int  closeGate(DevReturn devReturn);
+  int  closeGate(int dir,DevReturn devReturn);
 
 
   /**

@@ -9,7 +9,7 @@ import com.grgbanking.huitong.driver_libs.interfaces.IDriver_GateMachine_TJZN;
  * Email: 904430803@qq.com
  * Description:  铁军机芯控制接口实现类
  */
-public class Driver_GateTJZNImpl implements IDriver_GateMachine_TJZN {
+public class Driver_GateTJZN01Impl implements IDriver_GateMachine_TJZN {
     private int mHandle = -1;
     @Override
     public int setMode(int p_hDevHandle, int mode, DevReturn devReturn) {
@@ -17,20 +17,22 @@ public class Driver_GateTJZNImpl implements IDriver_GateMachine_TJZN {
         return 0;
     }
 
+
+
     @Override
     public int setDriverLogDir(String logPath) {
 
-          return IGateDev_TJZN.mInstance.setDriverLogDir(logPath);
+          return IGateDev_TJZN01.mInstance.setDriverLogDir(logPath);
     }
 
     @Override
     public int setConfigFileLoadDir(String configFilePath) {
-          return IGateDev_TJZN.mInstance.SetConfigFileLoadDir(configFilePath);
+          return IGateDev_TJZN01.mInstance.SetConfigFileLoadDir(configFilePath);
     }
 
     @Override
     public int openLogicDevice(String p_pcLogicDevName) {
-return IGateDev_TJZN.mInstance.hOpenLogicDevice(p_pcLogicDevName);
+return IGateDev_TJZN01.mInstance.hOpenLogicDevice(p_pcLogicDevName);
     }
 
     @Override
@@ -43,7 +45,7 @@ return IGateDev_TJZN.mInstance.hOpenLogicDevice(p_pcLogicDevName);
         );//设置配置文件路径
         setDriverLogDir(logFilePath
         );//设置闸机日志文件路径
-        mHandle = IGateDev_TJZN.mInstance.hOpenLogicDevice(p_pcLogicDevName);
+        mHandle = IGateDev_TJZN01.mInstance.hOpenLogicDevice(p_pcLogicDevName);
         setCommPara(mHandle, devReturnsetPara);
         init(mHandle, devReturnInit);
         if (devReturnsetPara.getiPhyCode() != 0 || devReturnsetPara.getiLogicCode() != 0) {
@@ -64,19 +66,19 @@ return IGateDev_TJZN.mInstance.hOpenLogicDevice(p_pcLogicDevName);
 
     @Override
     public void closeLogicDevice(int p_pcLogicDevName) {
-        IGateDev_TJZN.mInstance.vCloseLogicDevice(p_pcLogicDevName);
+        IGateDev_TJZN01.mInstance.vCloseLogicDevice(p_pcLogicDevName);
     }
 
     @Override
     public int setCommPara(int devHandler, DevReturn  devReturn) {
         MyDevReturn[] mydevReturn1 =creatMyDevReturnArray();
-        return IGateDev_TJZN.mInstance.iSetCommPara(devHandler,mydevReturn1);
+        return IGateDev_TJZN01.mInstance.iSetCommPara(devHandler,mydevReturn1);
     }
 
     @Override
     public int init(int p_hDevHandle, DevReturn devReturn) {
         MyDevReturn[] mydevReturn =creatMyDevReturnArray();
-        int ret =IGateDev_TJZN.mInstance.iInit(p_hDevHandle,mydevReturn);
+        int ret =IGateDev_TJZN01.mInstance.iInit(p_hDevHandle,mydevReturn);
 
         devReturn.iLogicCode=mydevReturn[0].iLogicCode;
 
@@ -128,7 +130,7 @@ return IGateDev_TJZN.mInstance.hOpenLogicDevice(p_pcLogicDevName);
 
     private int openGate(int p_hDevHandle, int dir, DevReturn devReturn) {
         MyDevReturn[] mydevReturn1 = creatMyDevReturnArray();
-        int ret = IGateDev_TJZN.mInstance.iOpenGate(p_hDevHandle, dir, mydevReturn1);
+        int ret = IGateDev_TJZN01.mInstance.iOpenGate(p_hDevHandle, dir, mydevReturn1);
         devReturn.iLogicCode = mydevReturn1[0].iLogicCode;
         devReturn.iPhyCode = mydevReturn1[1].iPhyCode;
         return ret;
@@ -139,7 +141,7 @@ return IGateDev_TJZN.mInstance.hOpenLogicDevice(p_pcLogicDevName);
     @Override
     public int closeGate(DevReturn devReturn) {
         MyDevReturn[] mydevReturn1 =creatMyDevReturnArray();
-        int ret = IGateDev_TJZN.mInstance.iCloseGate(mHandle,mydevReturn1);
+        int ret = IGateDev_TJZN01.mInstance.iCloseGate(mHandle,mydevReturn1);
         devReturn.iLogicCode = mydevReturn1[0].iLogicCode;
         devReturn.iPhyCode = mydevReturn1[1].iPhyCode;
         return ret;
@@ -147,7 +149,11 @@ return IGateDev_TJZN.mInstance.hOpenLogicDevice(p_pcLogicDevName);
 
     @Override
     public int closeGate(int dir, DevReturn devReturn) {
-        return 0;
+        MyDevReturn[] mydevReturn1 =creatMyDevReturnArray();
+        int ret = IGateDev_TJZN01.mInstance.iCloseGate(mHandle,dir,mydevReturn1);
+        devReturn.iLogicCode = mydevReturn1[0].iLogicCode;
+        devReturn.iPhyCode = mydevReturn1[1].iPhyCode;
+        return ret;
     }
 
 
@@ -157,7 +163,7 @@ return IGateDev_TJZN.mInstance.hOpenLogicDevice(p_pcLogicDevName);
         int ret;
         MyDevReturn[] mydevReturn =creatMyDevReturnArray();
         TJZNGateDev_Passage_Num.ByReference passageNum = new TJZNGateDev_Passage_Num.ByReference();
-        ret = IGateDev_TJZN.mInstance.iGetPassageNum(mHandle,passageNum,mydevReturn);
+        ret = IGateDev_TJZN01.mInstance.iGetPassageNum(mHandle,passageNum,mydevReturn);
 
         //        num.passeNumL = passageNum.passeNumL[0].uiAuthPassNum;
 //        num.unPassNumL = passageNum.sEXTNum[0].uiPassNum;

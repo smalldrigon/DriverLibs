@@ -53,6 +53,10 @@ dependencies {
 
     releaseApi rootProject.ext.leakcanaryLibs
     debugApi rootProject.ext.leakcanaryLibs
+    implementation 'com.google.code.gson:gson:2.8.0'
+    implementation 'com.tonystark.android:socket:latest.release'
+    //If you want to use server functionality, you need to compile the following libraries
+    implementation 'com.tonystark.android:socket-server:latest.release'
 
 
 }

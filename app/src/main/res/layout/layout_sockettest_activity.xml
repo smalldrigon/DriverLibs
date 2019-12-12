@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+             android:orientation="horizontal"
+            android:layout_width="match_parent" android:layout_height="wrap_content">
+        <EditText
+                android:id="@+id/et_host_ip"
+                android:hint="服务器ip"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+
+        />
+        <EditText
+                android:hint="端口号"
+                android:id="@+id/et_host_port"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+
+        />
+
+    </LinearLayout>
+    <TextView android:layout_width="wrap_content"
+                android:id="@+id/tv_received_client"
+              android:text="收到客户端数据"
+              android:layout_height="wrap_content"
+    />
+
+    <Button android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:id="@+id/btn_openserver"
+            android:text="打开服务端"
+    />
+    <EditText
+            android:layout_marginTop="50dp"
+            android:text="要发送到服务端的数据"
+            android:id="@+id/et_senddata"
+            android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+
+    />
+    <TextView android:layout_width="wrap_content"
+              android:id="@+id/tv_received_server"
+              android:text="收到服务端数据"
+              android:layout_height="wrap_content"
+    />
+    <LinearLayout
+            android:layout_marginTop="50dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent" android:layout_height="wrap_content">
+        <EditText
+                android:id="@+id/et_connect_ip"
+                android:hint="要连接的服务器ip"
+                android:layout_width="0dp"
+                android:text="10.1.142.115"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+
+        />
+        <EditText
+                android:hint="端口号"
+                android:text="8080"
+                android:id="@+id/et_connect_port"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+
+        />
+
+    </LinearLayout>
+    <Button android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:id="@+id/btn_connect"
+            android:text="连接服务器"
+    />
+    <Button android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:id="@+id/btn_senddata"
+            android:text="发送数据"
+    />
+</LinearLayout>

@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical"
               android:layout_width="match_parent" android:layout_height="match_parent">
+
     <LinearLayout
+            android:visibility="visible"
             android:layout_weight="1"
-            android:layout_width="match_parent"
             android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="0dp">
         <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="wrap_content"
+                android:orientation="vertical"
                 android:layout_height="wrap_content">
             <TextView
-                    android:text="ayM820"
+                    android:text="三辊闸tjzn01"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"/>
             <Button
                     android:text="初始化"
                     android:id="@+id/tvn_init2"
@@ -25,10 +27,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             <Button
-                    android:text="右开门一次"
-                    android:id="@+id/tvn_open2_right"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+            android:text="右开门一次"
+            android:id="@+id/tvn_open2_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
             <Button
                     android:text="左常开门 "
                     android:id="@+id/tvn_open2_aways"
@@ -40,8 +42,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             <Button
-                    android:text="关门"
+                    android:text="关闭左通道"
                     android:id="@+id/tvn_close2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            <Button
+                    android:text="关闭右通道"
+                    android:id="@+id/tvn_close3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             <Button
@@ -56,16 +63,10 @@
                     android:layout_height="wrap_content" />
         </LinearLayout>
         <TextView
-                android:id="@+id/tv_result1"
-                android:text="123"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-    </LinearLayout>
-
-        <TextView
                 android:id="@+id/tv_result2"
-                android:text="123"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
+    </LinearLayout>
 </LinearLayout>

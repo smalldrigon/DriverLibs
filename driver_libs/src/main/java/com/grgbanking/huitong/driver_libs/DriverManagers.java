@@ -23,6 +23,7 @@ public class DriverManagers {
     public static final String GATEMACHINE_TYPE_M810 = "M810";//闸机机芯类型，型号，厂家  M810
     public static final String GATEMACHINE_TYPE_M820 = "M820";//闸机机芯类型，型号，厂家  奥义M820
     public static final String GATEMACHINE_TYPE_TJZN = "TJZN";//闸机机芯类型，型号，厂家  铁军
+    public static final String GATEMACHINE_TYPE_TJZN01 = "TJZN01";//闸机机芯类型，型号，厂家  铁军电动双向三辊闸
 
     private IDriver_CardReader Driver_CardReader = null;
     private IDriver_FingerPrints Driver_FingerPrints = null;
@@ -134,6 +135,9 @@ public class DriverManagers {
                     break;
                 case GATEMACHINE_TYPE_M820:
                     mDriver_GateMachine = GateMachineFactory.creatInstance(GATEMACHINE_TYPE_M820);
+                    break;
+                case GATEMACHINE_TYPE_TJZN01:
+                    mDriver_GateMachine = GateMachineFactory.creatInstance(GATEMACHINE_TYPE_TJZN01);
                     break;
             }
             return this;

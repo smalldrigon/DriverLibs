@@ -43,6 +43,11 @@ public class GateMachineFactory {
 
                 machine = new Driver_GateM820Impl();
                 break;
+            case DriverManagers
+                    .GATEMACHINE_TYPE_TJZN01:
+
+                machine = new Driver_GateTJZN01Impl();
+                break;
             default:
                 break;
         }

@@ -8,7 +8,6 @@ import android.support.annotation.RequiresApi
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.KeyEvent
-import android.widget.Toast
 import com.grgbanking.driverlibsdemo.util.BitmapUtil
 
 import com.grgbanking.huitong.driver_libs.card_reader.Driver_DeCardReaderImpl
@@ -135,7 +134,7 @@ var inputStr:StringBuilder = StringBuilder()
         }
 
         btn_gatethree.setOnClickListener {
-            startActivity(Intent(this@MainActivity, ThreeRollerGatesActivity::class.java))
+            startActivity(Intent(this@MainActivity, ThreeRollerAutoGatesActivity::class.java))
         }
         btn_gatebaizha.setOnClickListener {
             startActivity(Intent(this@MainActivity, SluiceGatesActivity::class.java))
@@ -153,6 +152,16 @@ var inputStr:StringBuilder = StringBuilder()
         btn_createImg.setOnClickListener {
             list.add("21")
             iv_result.setImageBitmap(BitmapUtil.createBitmap( list))
+//            iv_result.setImageBitmap(BitmapUtil.createEmptyBitmap(400,400))
+        }
+        btn_sockettest.setOnClickListener {
+
+            startActivity(Intent(this@MainActivity,SocketTestActivity::class.java))
+//            iv_result.setImageBitmap(BitmapUtil.createEmptyBitmap(400,400))
+        }
+        btn_gate_tj_auto.setOnClickListener {
+
+            startActivity(Intent(this@MainActivity,ThreeRollerAutoGatesActivity::class.java))
 //            iv_result.setImageBitmap(BitmapUtil.createEmptyBitmap(400,400))
         }
     }

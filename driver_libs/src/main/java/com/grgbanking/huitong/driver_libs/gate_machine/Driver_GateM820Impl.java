@@ -147,6 +147,11 @@ public class Driver_GateM820Impl implements IDriver_GateMachine {
         return ret;
     }
 
+    @Override
+    public int closeGate(int dir, DevReturn devReturn) {
+        return 0;
+    }
+
 
     @Override
     public int getPassageNum(TJZNGateDev_Passage_Num num, DevReturn devReturn) {
