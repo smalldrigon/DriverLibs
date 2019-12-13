@@ -30,6 +30,16 @@ public class DriverManagers {
     private IDriver_GateMachine Driver_GateMachine = null;
     public static DriverManagers instance = null;
 
+    public String getmMachineType() {
+        return mMachineType;
+    }
+
+    public void setmMachineType(String mMachineType) {
+        this.mMachineType = mMachineType;
+    }
+
+    public   String mMachineType = null;
+
     public IDriver_GateMachine getDriver_GateMachine() {
         return Driver_GateMachine;
     }
@@ -61,7 +71,7 @@ public class DriverManagers {
         private IDriver_ScanGun mIDriver_ScanGun = null;
         private Context mContext = null;
         private IDriver_GateMachine mDriver_GateMachine = null;
-
+        private    String mMachineType = null;
         public Builder() {
 
         }
@@ -140,6 +150,8 @@ public class DriverManagers {
                     mDriver_GateMachine = GateMachineFactory.creatInstance(GATEMACHINE_TYPE_TJZN01);
                     break;
             }
+
+            mMachineType = machineType;
             return this;
         }
 
@@ -150,6 +162,7 @@ public class DriverManagers {
             managers.Driver_FingerPrints = mIDriver_FingerPrints;
             managers.Driver_ScanGun = mIDriver_ScanGun;
             managers.Driver_GateMachine = mDriver_GateMachine;
+            managers.setmMachineType(mMachineType);
             instance = managers;
             return managers;
         }
