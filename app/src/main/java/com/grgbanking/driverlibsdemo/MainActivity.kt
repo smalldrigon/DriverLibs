@@ -159,6 +159,16 @@ var inputStr:StringBuilder = StringBuilder()
             startActivity(Intent(this@MainActivity,SocketTestActivity::class.java))
 //            iv_result.setImageBitmap(BitmapUtil.createEmptyBitmap(400,400))
         }
+        btn_sockettestconplex.setOnClickListener {
+
+            startActivity(Intent(this@MainActivity,ComplexDemoActivity::class.java))
+//            iv_result.setImageBitmap(BitmapUtil.createEmptyBitmap(400,400))
+        }
+        btn_mqtt.setOnClickListener {
+
+            startActivity(Intent(this@MainActivity,MQTTTestActivity::class.java))
+//            iv_result.setImageBitmap(BitmapUtil.createEmptyBitmap(400,400))
+        }
         btn_gate_tj_auto.setOnClickListener {
 
             startActivity(Intent(this@MainActivity,ThreeRollerAutoGatesActivity::class.java))

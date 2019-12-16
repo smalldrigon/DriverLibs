@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
     <!--<permission android:name="android.permission.ACCESSS_SUPERUSER"/>-->
@@ -35,6 +36,11 @@
          <activity android:name=".SluiceGatesAoYiActivity"/>
         <activity android:name=".SluiceGatesActivity"/>
         <activity android:name=".SocketTestActivity"/>
+        <activity android:name=".ComplexDemoActivity"/>
+        <activity android:name=".MQTTTestActivity"/>
+        <!-- Mqtt服务 -->
+        <service android:name="org.eclipse.paho.android.service.MqttService" />
+        <service android:name=".MQTTService" />
      </application>
 
 </manifest>

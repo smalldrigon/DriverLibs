@@ -59,6 +59,14 @@
                 android:id="@+id/btn_sockettest"
                 android:text="socket测试"
                 android:layout_height="wrap_content"/>
+        <Button android:layout_width="wrap_content"
+                android:id="@+id/btn_sockettestconplex"
+                android:text="复杂socket测试"
+                android:layout_height="wrap_content"/>
+        <Button android:layout_width="wrap_content"
+                android:id="@+id/btn_mqtt"
+                android:text="MQTTtest"
+                android:layout_height="wrap_content"/>
 
     </LinearLayout>
     <TextView android:layout_width="wrap_content"

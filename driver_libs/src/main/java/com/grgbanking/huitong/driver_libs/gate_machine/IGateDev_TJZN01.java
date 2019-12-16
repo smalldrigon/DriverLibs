@@ -10,7 +10,8 @@ import com.sun.jna.Native;
  * Description:
  */
 public interface IGateDev_TJZN01 extends Library {
-    public IGateDev_TJZN01 mInstance = Native.loadLibrary("TJZNGateDev01", IGateDev_TJZN01.class);
+     public  IGateDev_TJZN01 mInstancetest = Native.loadLibrary("TJZNGateDev01", IGateDev_TJZN01.class);
+     public  IGateDev_TJZN01 mInstance = (IGateDev_TJZN01) Native.synchronizedLibrary(mInstancetest);
 
     /**
      * @method
