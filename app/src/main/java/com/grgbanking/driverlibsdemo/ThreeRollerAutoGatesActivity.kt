@@ -6,7 +6,10 @@ import com.example.hardwaredemo.Contants
 
 import com.grgbanking.huitong.driver_libs.DriverManagers
 import com.grgbanking.huitong.driver_libs.gate_machine.DevReturn
+import com.grgbanking.huitong.driver_libs.gate_machine.Driver_GateTJZN01Impl
 import com.grgbanking.huitong.driver_libs.gate_machine.TJZNGateDev_Passage_Num
+import com.grgbanking.huitong.driver_libs.interfaces.IDriver_GateMachine_TJZN
+import com.grgbanking.huitong.driver_libs.interfaces.IGateMachineActionCallBack
 import io.reactivex.Observable
  import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -23,7 +26,41 @@ import kotlinx.android.synthetic.main.layout_threerollergates_activity.tvn_open2
 import kotlinx.android.synthetic.main.layout_threerollergates_activity.tvn_passed2
 
 
-class ThreeRollerAutoGatesActivity : AppCompatActivity() {
+class ThreeRollerAutoGatesActivity : AppCompatActivity(),IGateMachineActionCallBack {
+    override fun openLeft(res: Boolean) {
+
+        setText1("左开门$res")
+
+    }
+
+    override fun openRight(res: Boolean) {
+        setText1("右开门$res")
+    }
+
+    override fun closeLeft(res: Boolean) {
+        setText1("左关门$res")
+    }
+
+    override fun closeRight(res: Boolean) {
+        setText1("又关门$res")
+    }
+
+    override fun passLeftTimeout() {
+        setText1("左通过超时")
+    }
+
+    override fun passRightTimeout() {
+        setText1("右通过超时")
+    }
+
+    override fun passLeftSuccess() {
+        setText1("左过闸成功")
+    }
+
+    override fun passRightSuccess() {
+        setText1("右过闸成功")
+    }
+
     var disposedCopyfIle: Disposable? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +85,8 @@ fun setText1(str:String){
             .build()
 
 
+        DriverManagers.instance.driver_GateMachine.iGateMachineActionCallBack = this
+        (DriverManagers.instance.driver_GateMachine as IDriver_GateMachine_TJZN).timeout = 5
         tvn_open2.setOnClickListener {
             //打开1
              var devreturn = DevReturn()
@@ -57,7 +96,7 @@ fun setText1(str:String){
                devreturn
            }.subscribe {
               println( "结果线程名称${Thread.currentThread().name}")
-               setText1("打开门$devreturn  mHandle$mHhandle")
+//               setText1("打开门$devreturn  mHandle$mHhandle")
            }
         }
         tvn_open2_aways.setOnClickListener {
@@ -69,7 +108,7 @@ fun setText1(str:String){
                 devreturn
             }.subscribe {
                 println( "结果线程名称${Thread.currentThread().name}")
-                setText1("打开门$devreturn  mHandle$mHhandle")
+//                setText1("打开门$devreturn  mHandle$mHhandle")
             }
         }
         tvn_open2_right.setOnClickListener {
@@ -81,7 +120,7 @@ fun setText1(str:String){
                 devreturn
             }.subscribe {
                 println( "结果线程名称${Thread.currentThread().name}")
-                setText1("打开门$devreturn  mHandle$mHhandle")
+//                setText1("打开门$devreturn  mHandle$mHhandle")
             }
         }
 
@@ -94,7 +133,7 @@ fun setText1(str:String){
                 devreturn
             }.subscribe {
                 println( "结果线程名称${Thread.currentThread().name}")
-                setText1("打开门$devreturn  mHandle$mHhandle")
+//                setText1("打开门$devreturn  mHandle$mHhandle")
             }
         }
 
@@ -113,7 +152,7 @@ fun setText1(str:String){
                 DriverManagers.instance.driver_GateMachine.closeGate( 1,devreturn)
                 devreturn
             }.subscribe {
-                setText1("关闭门$devreturn")
+//                setText1("关闭门$devreturn")
             }
 
 
@@ -132,7 +171,7 @@ fun setText1(str:String){
                 DriverManagers.instance.driver_GateMachine.closeGate( 0,devreturn)
                 devreturn
             }.subscribe {
-                setText1("关闭门$devreturn")
+//                setText1("关闭门$devreturn")
             }
 
 

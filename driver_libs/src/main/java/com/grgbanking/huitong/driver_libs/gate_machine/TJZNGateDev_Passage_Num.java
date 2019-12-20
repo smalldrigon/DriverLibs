@@ -32,6 +32,7 @@ public class TJZNGateDev_Passage_Num extends Structure{
     public      int  unPassNumR;
     public    int timeoutNumR;
     public static class ByReference extends TJZNGateDev_Passage_Num implements Structure.ByReference {
+
     }
 
     public static class ByValue extends TJZNGateDev_Passage_Num implements Structure.ByValue {

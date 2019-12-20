@@ -2,6 +2,7 @@ package com.grgbanking.huitong.driver_libs.gate_machine;
 
 import android.content.Context;
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_GateMachine;
+import com.grgbanking.huitong.driver_libs.interfaces.IGateMachineActionCallBack;
 
 /**
  * Author: gongxiaobiao
@@ -9,7 +10,7 @@ import com.grgbanking.huitong.driver_libs.interfaces.IDriver_GateMachine;
  * Email: 904430803@qq.com
  * Description:
  */
-public class Driver_GateM810Impl implements IDriver_GateMachine {
+public class Driver_GateM810Impl extends IDriver_GateMachine {
     private int mHandle = -1;
     public Driver_GateM810Impl() {
 
@@ -182,6 +183,11 @@ public class Driver_GateM810Impl implements IDriver_GateMachine {
 
         return ret;
 
+
+    }
+
+    @Override
+    public void setIGateMachineActionCallBack(IGateMachineActionCallBack callBack) {
 
     }
 

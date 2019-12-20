@@ -1,6 +1,7 @@
 package com.grgbanking.huitong.driver_libs.interfaces;
 
 import com.grgbanking.huitong.driver_libs.gate_machine.DevReturn;
+import com.sun.jna.platform.win32.WinNT;
 
 /**
  * Author: gongxiaobiao
@@ -8,7 +9,7 @@ import com.grgbanking.huitong.driver_libs.gate_machine.DevReturn;
  * Email: 904430803@qq.com
  * Description: 闸机接口
  */
-public interface IDriver_GateMachine_M820 extends IDriver_GateMachine {
+public abstract class IDriver_GateMachine_M820 extends IDriver_GateMachine {
   /**
    * @method
    * @description 设置通行模式
@@ -17,9 +18,11 @@ public interface IDriver_GateMachine_M820 extends IDriver_GateMachine {
    * @param
    * @return
    */
-  int setMode(int p_hDevHandle, int mode, DevReturn devReturn);
+  public abstract int setMode(int p_hDevHandle, int mode, DevReturn devReturn);
 
-  int GetStatus(int p_hDevHandle,  DevReturn devReturn);
+ public abstract
+
+  int GetStatus(int p_hDevHandle, DevReturn devReturn);
 
 
 }

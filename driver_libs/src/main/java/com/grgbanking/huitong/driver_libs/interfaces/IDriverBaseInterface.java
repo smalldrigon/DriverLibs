@@ -1,6 +1,7 @@
 package com.grgbanking.huitong.driver_libs.interfaces;
 
 import android.content.Context;
+import android.content.pm.LauncherApps;
 
 /**
  * Author: gongxiaobiao
@@ -11,5 +12,6 @@ import android.content.Context;
 public interface IDriverBaseInterface {
     public int open(Context context);
     public int close();
+
 
 }

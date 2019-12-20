@@ -9,7 +9,7 @@ import com.grgbanking.huitong.driver_libs.gate_machine.TJZNGateDev_Passage_Num;
  * Email: 904430803@qq.com
  * Description: 闸机接口
  */
-public interface IDriver_GateMachine extends IDriverBaseInterface {
+public abstract class IDriver_GateMachine implements IDriverBaseInterface {
   /**
    * @method
    * @description 设置日志路径
@@ -18,7 +18,7 @@ public interface IDriver_GateMachine extends IDriverBaseInterface {
    * @param
    * @return
    */
-  public int setDriverLogDir(String logPath);
+  public abstract int setDriverLogDir(String logPath);
 
   /**
    * @method
@@ -28,7 +28,7 @@ public interface IDriver_GateMachine extends IDriverBaseInterface {
    * @param
    * @return
    */
-  public int setConfigFileLoadDir(String configFilePath);
+   public  abstract  int setConfigFileLoadDir(String configFilePath);
 
   /**
    * @method
@@ -38,7 +38,7 @@ public interface IDriver_GateMachine extends IDriverBaseInterface {
    * @param p_pcLogicDevName 设备名称
    * @return  返回操作句柄
    */
-  public int openLogicDevice(String p_pcLogicDevName);
+    public abstract int openLogicDevice(String p_pcLogicDevName);
   /**
    * @method
    * @description 打开逻辑设备
@@ -49,7 +49,7 @@ public interface IDriver_GateMachine extends IDriverBaseInterface {
    *                        logFilePath  日志存放路径
    * @return  返回操作句柄
    */
-  public int openLogicDevice(String p_pcLogicDevName,String configFilePath,String logFilePath);
+   public abstract int openLogicDevice(String p_pcLogicDevName,String configFilePath,String logFilePath);
   /**
    * @method
    * @description 关闭逻辑设备
@@ -58,7 +58,7 @@ public interface IDriver_GateMachine extends IDriverBaseInterface {
    * @param  p_pcLogicDevName 设备名称
    * @return
    */
-  public void closeLogicDevice(int p_pcLogicDevName);
+    public abstract void closeLogicDevice(int p_pcLogicDevName);
 
   /**
    * @method
@@ -68,7 +68,7 @@ public interface IDriver_GateMachine extends IDriverBaseInterface {
    * @param devReturn 端口名称
    * @return
    */
-  public int setCommPara(int devHandler, DevReturn devReturn);
+   public abstract int setCommPara(int devHandler, DevReturn devReturn);
 
 /**
  * @method
@@ -79,7 +79,7 @@ public interface IDriver_GateMachine extends IDriverBaseInterface {
  * @return
  */
 
-  int  init(int p_hDevHandle,DevReturn  devReturn);
+public  abstract int  init(int p_hDevHandle,DevReturn  devReturn);
   /**
    * @method
    * @description 左开闸门单次
@@ -88,7 +88,7 @@ public interface IDriver_GateMachine extends IDriverBaseInterface {
    * @param
    * @return
    */
-  int  openGateLeftOnce(DevReturn devReturn);
+public   abstract  int  openGateLeftOnce(DevReturn devReturn);
   /**
    * @method
    * @description 左开闸门常开
@@ -97,7 +97,7 @@ public interface IDriver_GateMachine extends IDriverBaseInterface {
    * @param
    * @return
    */
-  int  openGateLeftAways(DevReturn devReturn);
+ public abstract int  openGateLeftAways(DevReturn devReturn);
   /**
    * @method
    * @description 右开闸门单次
@@ -106,7 +106,7 @@ public interface IDriver_GateMachine extends IDriverBaseInterface {
    * @param
    * @return
    */
-  int  openGateRightAways(DevReturn devReturn);
+  public abstract  int  openGateRightAways(DevReturn devReturn);
   /**
    * @method
    * @description 右开闸门单次
@@ -115,7 +115,7 @@ public interface IDriver_GateMachine extends IDriverBaseInterface {
    * @param
    * @return
    */
-  int  openGateRightOnce(DevReturn devReturn);
+  public abstract  int  openGateRightOnce(DevReturn devReturn);
 
 //  /**
 //   * @method
@@ -136,8 +136,8 @@ public interface IDriver_GateMachine extends IDriverBaseInterface {
    * @param
    * @return
    */
-  int  closeGate(DevReturn devReturn);
-  int  closeGate(int dir,DevReturn devReturn);
+ public abstract int  closeGate(DevReturn devReturn);
+ public abstract int  closeGate(int dir,DevReturn devReturn);
 
 
   /**
@@ -148,6 +148,33 @@ public interface IDriver_GateMachine extends IDriverBaseInterface {
    * @param
    * @return
    */
-  int  getPassageNum( TJZNGateDev_Passage_Num p_psPassageNum, DevReturn devReturn);
+public   abstract int  getPassageNum( TJZNGateDev_Passage_Num p_psPassageNum, DevReturn devReturn);
 
- }
+    public IGateMachineActionCallBack getIGateMachineActionCallBack() {
+        return mIGateMachineActionCallBack;
+    }
+
+    public void setIGateMachineActionCallBack(IGateMachineActionCallBack mIGateMachineActionCallBack) {
+        this.mIGateMachineActionCallBack = mIGateMachineActionCallBack;
+    }
+
+    private IGateMachineActionCallBack mIGateMachineActionCallBack = null;
+
+
+    /**
+     * 设置超时时间
+     *
+     * @param seconds 单位秒
+     * @return
+     */
+    public void setTimeout(int seconds) {
+        this.timoutSecond = seconds;
+    }
+
+    public int getTimeout() {
+        return this.timoutSecond;
+    }
+
+    private int timoutSecond = 6;
+
+}

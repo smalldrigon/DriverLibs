@@ -2,6 +2,7 @@ package com.grgbanking.huitong.driver_libs.gate_machine;
 
 import android.content.Context;
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_GateMachine_TJZN;
+import com.grgbanking.huitong.driver_libs.interfaces.IGateMachineActionCallBack;
 
 /**
  * Author: gongxiaobiao
@@ -9,7 +10,7 @@ import com.grgbanking.huitong.driver_libs.interfaces.IDriver_GateMachine_TJZN;
  * Email: 904430803@qq.com
  * Description:  铁军机芯控制接口实现类
  */
-public class Driver_GateTJZNImpl implements IDriver_GateMachine_TJZN {
+public class Driver_GateTJZNImpl extends IDriver_GateMachine_TJZN {
     private int mHandle = -1;
     @Override
     public int setMode(int p_hDevHandle, int mode, DevReturn devReturn) {
@@ -119,6 +120,7 @@ return IGateDev_TJZN.mInstance.hOpenLogicDevice(p_pcLogicDevName);
 
     @Override
     public int openGateRightOnce(  DevReturn devReturn) {
+
         MyDevReturn[] mydevReturn1 = creatMyDevReturnArray();
         int ret = openGate(mHandle,2,devReturn);
         devReturn.iLogicCode = mydevReturn1[0].iLogicCode;
@@ -147,6 +149,7 @@ return IGateDev_TJZN.mInstance.hOpenLogicDevice(p_pcLogicDevName);
 
     @Override
     public int closeGate(int dir, DevReturn devReturn) {
+        
         return 0;
     }
 
@@ -184,6 +187,10 @@ return IGateDev_TJZN.mInstance.hOpenLogicDevice(p_pcLogicDevName);
 
     }
 
+    @Override
+    public void setIGateMachineActionCallBack(IGateMachineActionCallBack callBack) {
+        setIGateMachineActionCallBack(  callBack);
+    }
 
 
     @Override

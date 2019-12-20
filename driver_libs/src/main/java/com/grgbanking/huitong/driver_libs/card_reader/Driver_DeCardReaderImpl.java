@@ -7,6 +7,7 @@ import com.decard.NDKMethod.EGovernment;
 import com.decard.entitys.IDCard;
 import com.decard.entitys.SSCard;
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_CardReader;
+import com.grgbanking.huitong.driver_libs.interfaces.IGateMachineActionCallBack;
 import com.grgbanking.huitong.driver_libs.util.Driver_Contants;
 
 /**
@@ -403,6 +404,8 @@ public class Driver_DeCardReaderImpl implements IDriver_CardReader {
     public int close() {
         return BasicOper.dc_exit();
     }
+
+
 
     class IdCardThread extends Thread {
         IDCardCallBack cardCallBack;
