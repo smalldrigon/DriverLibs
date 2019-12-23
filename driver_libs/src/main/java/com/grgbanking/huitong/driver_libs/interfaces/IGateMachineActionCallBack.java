@@ -1,5 +1,7 @@
 package com.grgbanking.huitong.driver_libs.interfaces;
 
+import com.grgbanking.huitong.driver_libs.gate_machine.TJZNGateDev_Passage_Num;
+
 /**
  * Author: gongxiaobiao
  * Date: on 2019/12/18 15:03
@@ -28,5 +30,7 @@ public interface IGateMachineActionCallBack {
 
     //
     public void passRightSuccess();
+   // 获取通过人数对象
+//    public TJZNGateDev_Passage_Num getPassgerNum();
 
 }

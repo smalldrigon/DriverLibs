@@ -90,51 +90,51 @@ fun setText1(str:String){
         tvn_open2.setOnClickListener {
             //打开1
              var devreturn = DevReturn()
-           testAction {
-               println( "执行线程名称${Thread.currentThread().name}")
+//           testAction {
+//               println( "执行线程名称${Thread.currentThread().name}")
                DriverManagers.instance.driver_GateMachine.openGateLeftOnce(devreturn)
-               devreturn
-           }.subscribe {
-              println( "结果线程名称${Thread.currentThread().name}")
-//               setText1("打开门$devreturn  mHandle$mHhandle")
-           }
+//               devreturn
+//           }.subscribe {
+//              println( "结果线程名称${Thread.currentThread().name}")
+               setText1("打开门$devreturn  mHandle$mHhandle")
+//           }
         }
         tvn_open2_aways.setOnClickListener {
             //打开1
             var devreturn = DevReturn()
-            testAction {
-                println( "执行线程名称${Thread.currentThread().name}")
+//            testAction {
+//                println( "执行线程名称${Thread.currentThread().name}")
                 DriverManagers.instance.driver_GateMachine.openGateLeftAways(devreturn)
-                devreturn
-            }.subscribe {
-                println( "结果线程名称${Thread.currentThread().name}")
-//                setText1("打开门$devreturn  mHandle$mHhandle")
-            }
+//                devreturn
+//            }.subscribe {
+//                println( "结果线程名称${Thread.currentThread().name}")
+                setText1("打开门$devreturn  mHandle$mHhandle")
+//            }
         }
         tvn_open2_right.setOnClickListener {
             //打开1
             var devreturn = DevReturn()
-            testAction {
-                println( "执行线程名称${Thread.currentThread().name}")
+//            testAction {
+//                println( "执行线程名称${Thread.currentThread().name}")
                 DriverManagers.instance.driver_GateMachine.openGateRightOnce(devreturn)
-                devreturn
-            }.subscribe {
-                println( "结果线程名称${Thread.currentThread().name}")
-//                setText1("打开门$devreturn  mHandle$mHhandle")
-            }
+//                devreturn
+//            }.subscribe {
+//                println( "结果线程名称${Thread.currentThread().name}")
+                setText1("打开门$devreturn  mHandle$mHhandle")
+//            }
         }
 
         tvn_open2_right_aways.setOnClickListener {
             //打开1
             var devreturn = DevReturn()
-            testAction {
-                println( "执行线程名称${Thread.currentThread().name}")
+//            testAction {
+//                println( "执行线程名称${Thread.currentThread().name}")
                 DriverManagers.instance.driver_GateMachine.openGateRightAways(devreturn)
-                devreturn
-            }.subscribe {
-                println( "结果线程名称${Thread.currentThread().name}")
-//                setText1("打开门$devreturn  mHandle$mHhandle")
-            }
+//                devreturn
+//            }.subscribe {
+//                println( "结果线程名称${Thread.currentThread().name}")
+                setText1("打开门$devreturn  mHandle$mHhandle")
+//            }
         }
 
 
@@ -148,12 +148,12 @@ fun setText1(str:String){
 //            DriverManagers.instance.driver_GateMachine.closeGate(mHhandle, devreturn)
 //            setText1("关闭门$devreturn")
 
-            testAction {
+//            testAction {
                 DriverManagers.instance.driver_GateMachine.closeGate( 1,devreturn)
-                devreturn
-            }.subscribe {
+//                devreturn
+//            }.subscribe {
 //                setText1("关闭门$devreturn")
-            }
+//            }
 
 
         }
@@ -167,12 +167,12 @@ fun setText1(str:String){
 //            DriverManagers.instance.driver_GateMachine.closeGate(mHhandle, devreturn)
 //            setText1("关闭门$devreturn")
 
-            testAction {
+//            testAction {
                 DriverManagers.instance.driver_GateMachine.closeGate( 0,devreturn)
-                devreturn
-            }.subscribe {
+//                devreturn
+//            }.subscribe {
 //                setText1("关闭门$devreturn")
-            }
+//            }
 
 
         }

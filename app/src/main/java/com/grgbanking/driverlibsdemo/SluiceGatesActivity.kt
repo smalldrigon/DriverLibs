@@ -7,6 +7,7 @@ import com.example.hardwaredemo.Contants
 import com.grgbanking.huitong.driver_libs.DriverManagers
 import com.grgbanking.huitong.driver_libs.gate_machine.DevReturn
 import com.grgbanking.huitong.driver_libs.gate_machine.TJZNGateDev_Passage_Num
+import com.grgbanking.huitong.driver_libs.interfaces.IGateMachineActionCallBack
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -14,7 +15,40 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.layout_sluicegates_activity.*
 
 
-class SluiceGatesActivity : AppCompatActivity() {
+class SluiceGatesActivity : AppCompatActivity() , IGateMachineActionCallBack {
+    override fun openLeft(res: Boolean) {
+
+        setText1("左开门$res")
+
+    }
+
+    override fun openRight(res: Boolean) {
+        setText1("右开门$res")
+    }
+
+    override fun closeLeft(res: Boolean) {
+        setText1("左关门$res")
+    }
+
+    override fun closeRight(res: Boolean) {
+        setText1("又关门$res")
+    }
+
+    override fun passLeftTimeout() {
+        setText1("左通过超时")
+    }
+
+    override fun passRightTimeout() {
+        setText1("右通过超时")
+    }
+
+    override fun passLeftSuccess() {
+        setText1("左过闸成功")
+    }
+
+    override fun passRightSuccess() {
+        setText1("右过闸成功")
+    }
     var disposedCopyfIle: Disposable? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,60 +64,60 @@ class SluiceGatesActivity : AppCompatActivity() {
     }
     private fun initView() {
         DriverManagers.Builder().setContext(this)
-            .setFingerPrints(DriverManagers.FINGERPRINTS_TYPE_FPC1011)
-            .setScanGun(DriverManagers.SACNGUN_TYPE_ZD7100)
-            .setCardReader(DriverManagers.CARD_READER_TYPE_T10)
+//            .setFingerPrints(DriverManagers.FINGERPRINTS_TYPE_FPC1011)
+//            .setScanGun(DriverManagers.SACNGUN_TYPE_ZD7100)
+//            .setCardReader(DriverManagers.CARD_READER_TYPE_T10)
             .setGateMachine(DriverManagers.GATEMACHINE_TYPE_TJZN)
 //            .setmDriver_GateMachineTest(DriverManagers.GATEMACHINE_TYPE_TJZN)
             .build()
         tvn_open2.setOnClickListener {
             //打开1
             var devreturn = DevReturn()
-            testAction {
-                println( "执行线程名称${Thread.currentThread().name}")
+//            testAction {
+//                println( "执行线程名称${Thread.currentThread().name}")
                 DriverManagers.instance.driver_GateMachine.openGateLeftOnce(devreturn)
-                devreturn
-            }.subscribe {
-                println( "结果线程名称${Thread.currentThread().name}")
-                setText1("打开门$devreturn  mHandle$mHhandle")
-            }
+//                devreturn
+//            }.subscribe {
+//                println( "结果线程名称${Thread.currentThread().name}")
+//                setText1("打开门$devreturn  mHandle$mHhandle")
+//            }
         }
         tvn_open2_aways.setOnClickListener {
             //打开1
             var devreturn = DevReturn()
-            testAction {
-                println( "执行线程名称${Thread.currentThread().name}")
+//            testAction {
+//                println( "执行线程名称${Thread.currentThread().name}")
                 DriverManagers.instance.driver_GateMachine.openGateLeftAways(devreturn)
-                devreturn
-            }.subscribe {
-                println( "结果线程名称${Thread.currentThread().name}")
-                setText1("打开门$devreturn  mHandle$mHhandle")
-            }
+//                devreturn
+//            }.subscribe {
+//                println( "结果线程名称${Thread.currentThread().name}")
+//                setText1("打开门$devreturn  mHandle$mHhandle")
+//            }
         }
         tvn_open2_right.setOnClickListener {
             //打开1
             var devreturn = DevReturn()
-            testAction {
-                println( "执行线程名称${Thread.currentThread().name}")
+//            testAction {
+//                println( "执行线程名称${Thread.currentThread().name}")
                 DriverManagers.instance.driver_GateMachine.openGateRightOnce(devreturn)
-                devreturn
-            }.subscribe {
-                println( "结果线程名称${Thread.currentThread().name}")
-                setText1("打开门$devreturn  mHandle$mHhandle")
-            }
+//                devreturn
+//            }.subscribe {
+//                println( "结果线程名称${Thread.currentThread().name}")
+//                setText1("打开门$devreturn  mHandle$mHhandle")
+//            }
         }
 
         tvn_open2_right_aways.setOnClickListener {
             //打开1
             var devreturn = DevReturn()
-            testAction {
-                println( "执行线程名称${Thread.currentThread().name}")
+//            testAction {
+//                println( "执行线程名称${Thread.currentThread().name}")
                 DriverManagers.instance.driver_GateMachine.openGateRightAways(devreturn)
-                devreturn
-            }.subscribe {
-                println( "结果线程名称${Thread.currentThread().name}")
-                setText1("打开门$devreturn  mHandle$mHhandle")
-            }
+//                devreturn
+//            }.subscribe {
+//                println( "结果线程名称${Thread.currentThread().name}")
+//                setText1("打开门$devreturn  mHandle$mHhandle")
+//            }
         }
 
 
@@ -97,12 +131,12 @@ class SluiceGatesActivity : AppCompatActivity() {
 //            DriverManagers.instance.driver_GateMachine.closeGate(mHhandle, devreturn)
 //            setText1("关闭门$devreturn")
 
-            testAction {
+//            testAction {
                 DriverManagers.instance.driver_GateMachine.closeGate( devreturn)
-                devreturn
-            }.subscribe {
-                setText1("关闭门$devreturn")
-            }
+//                devreturn
+//            }.subscribe {
+//                setText1("关闭门$devreturn")
+//            }
 
 
         }

@@ -15,6 +15,12 @@ public class Driver_GateM820Impl extends IDriver_GateMachine {
     private GetPassByNumThread mGetPassByNumThread = null;
     volatile private PassTimeOutBean mPassTimeOutBean = new PassTimeOutBean();//打开闸门指令时间
 
+@Deprecated
+    @Override
+    public int setMode(int p_hDevHandle, int mode, DevReturn devReturn) {
+        return 0;
+
+    }
 
     @Override
     public int setDriverLogDir(String logPath) {

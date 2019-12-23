@@ -1,8 +1,8 @@
 package com.grgbanking.huitong.driver_libs.gate_machine;
 
 import android.content.Context;
-import com.grgbanking.huitong.driver_libs.interfaces.IDriver_GateMachine_TJZN;
-import com.grgbanking.huitong.driver_libs.interfaces.IGateMachineActionCallBack;
+import com.grgbanking.huitong.driver_libs.interfaces.IDriver_GateMachine;
+ import com.grgbanking.huitong.driver_libs.interfaces.IGateMachineActionCallBack;
 
 
 /**
@@ -11,7 +11,7 @@ import com.grgbanking.huitong.driver_libs.interfaces.IGateMachineActionCallBack;
  * Email: 904430803@qq.com
  * Description:  铁军机芯控制接口实现类
  */
-public class Driver_GateTJZN01Impl extends IDriver_GateMachine_TJZN {
+public class Driver_GateTJZN01Impl extends IDriver_GateMachine {
     private int mHandle = -1;
     private GetPassByNumThread mGetPassByNumThread = null;
     volatile private PassTimeOutBean mPassTimeOutBean = new PassTimeOutBean();//打开闸门指令时间
