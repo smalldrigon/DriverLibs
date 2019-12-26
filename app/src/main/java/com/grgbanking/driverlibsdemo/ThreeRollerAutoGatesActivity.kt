@@ -8,6 +8,7 @@ import com.grgbanking.huitong.driver_libs.DriverManagers
 import com.grgbanking.huitong.driver_libs.gate_machine.DevReturn
 import com.grgbanking.huitong.driver_libs.gate_machine.Driver_GateTJZN01Impl
 import com.grgbanking.huitong.driver_libs.gate_machine.TJZNGateDev_Passage_Num
+import com.grgbanking.huitong.driver_libs.interfaces.IDriver_GateMachine
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_GateMachine_TJZN
 import com.grgbanking.huitong.driver_libs.interfaces.IGateMachineActionCallBack
 import io.reactivex.Observable
@@ -86,7 +87,7 @@ fun setText1(str:String){
 
 
         DriverManagers.instance.driver_GateMachine.iGateMachineActionCallBack = this
-        (DriverManagers.instance.driver_GateMachine as IDriver_GateMachine_TJZN).timeout = 5
+        (DriverManagers.instance.driver_GateMachine as IDriver_GateMachine).timeout = 5
         tvn_open2.setOnClickListener {
             //打开1
              var devreturn = DevReturn()
