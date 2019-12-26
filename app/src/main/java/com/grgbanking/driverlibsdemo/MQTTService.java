@@ -10,6 +10,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Binder;
 import android.os.Build;
+import android.os.Handler;
 import android.os.IBinder;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.NotificationCompat;
@@ -31,7 +32,8 @@ public class MQTTService extends Service {
     private static MqttAndroidClient client;
     private MqttConnectOptions conOpt;
 
-    private String host = "tcp://10.252.116.12:1883";
+//    private String host = "tcp://10.252.116.12:1883";
+    private String host = "tcp://10.252.101.2:1883";
     private String userName = "admin";
     private String passWord = "password";
     private static String myTopic = "ForTest";      //要订阅的主题
@@ -94,7 +96,7 @@ public class MQTTService extends Service {
             try {
                 conOpt.setWill(topic, message.getBytes(), qos.intValue(), retained.booleanValue());
             } catch (Exception e) {
-                Log.i(TAG, "Exception Occured", e);
+                Log.e(TAG, "Exception Occured", e);
                 doConnect = false;
                 iMqttActionListener.onFailure(null, e);
             }
@@ -135,11 +137,13 @@ public class MQTTService extends Service {
 
         @Override
         public void onSuccess(IMqttToken arg0) {
-            Log.i(TAG, "连接成功 ");
+            Log.e(TAG, "连接成功 ");
+
             try {
                 // 订阅myTopic话题
                 client.subscribe(myTopic,1);
             } catch (MqttException e) {
+                Log.e(TAG, "订阅主题失败 ");
                 e.printStackTrace();
             }
         }
@@ -147,10 +151,19 @@ public class MQTTService extends Service {
         @Override
         public void onFailure(IMqttToken arg0, Throwable arg1) {
             arg1.printStackTrace();
+            Log.e(TAG, "连接失败 ");
             // 连接失败，重连
+            doReconnect();
+
         }
     };
 
+
+    private void doReconnect(){
+        (new  Handler()).postDelayed(() -> {doClientConnection();
+            Log.e(TAG, "重新连接 ");
+        },5000L);
+    }
     // MQTT监听并且接受消息
     private MqttCallback mqttCallback = new MqttCallback() {
 
@@ -162,8 +175,8 @@ public class MQTTService extends Service {
                 IGetMessageCallBack.setMessage(str1);
             }
             String str2 = topic + ";qos:" + message.getQos() + ";retained:" + message.isRetained();
-            Log.i(TAG, "messageArrived:" + str1);
-            Log.i(TAG, str2);
+            Log.e(TAG, "messageArrived:" + str1);
+            Log.e(TAG, str2);
         }
 
         @Override
@@ -174,6 +187,8 @@ public class MQTTService extends Service {
         @Override
         public void connectionLost(Throwable arg0) {
             // 失去连接，重连
+            Log.e(TAG, "失去连接 ");
+            doReconnect();
         }
     };
 
@@ -184,10 +199,10 @@ public class MQTTService extends Service {
         NetworkInfo info = connectivityManager.getActiveNetworkInfo();
         if (info != null && info.isAvailable()) {
             String name = info.getTypeName();
-            Log.i(TAG, "MQTT当前网络名称：" + name);
+            Log.e(TAG, "MQTT当前网络名称：" + name);
             return true;
         } else {
-            Log.i(TAG, "MQTT 没有可用网络");
+            Log.e(TAG, "MQTT 没有可用网络");
             return false;
         }
     }

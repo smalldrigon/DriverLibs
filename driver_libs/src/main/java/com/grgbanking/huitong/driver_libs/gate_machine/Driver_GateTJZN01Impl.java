@@ -252,7 +252,7 @@ public class Driver_GateTJZN01Impl extends IDriver_GateMachine {
                 if (mPassTimeOutBean.isLeftopened()) {
                     System.err.println("开门Leftopened");
                     int res = openGate(mHandle, 1, mDevreturn);
-                    mPassTimeOutBean.setLeftopened(res != 0);
+                    mPassTimeOutBean.setLeftopened(false);
                     mPassTimeOutBean.setLeftopenSuccess(res == 0);
                     mCallBack.openLeft(res == 0);
                 }
@@ -260,7 +260,7 @@ public class Driver_GateTJZN01Impl extends IDriver_GateMachine {
                     System.err.println("开门Rightopened");
 
                     int res = openGate(mHandle, 2, mDevreturn);
-                    mPassTimeOutBean.setRightopened(res != 0);
+                    mPassTimeOutBean.setRightopened(false);
                     mPassTimeOutBean.setRightopenSuccess(res == 0);
                     mCallBack.openLeft(res == 0);
                 }

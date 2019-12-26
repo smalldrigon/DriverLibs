@@ -124,7 +124,7 @@ class SluiceGatesActivity : AppCompatActivity() , IGateMachineActionCallBack {
 
         tvn_close2.setOnClickListener {
             //关闭1
-
+        //test dev
 
 
             var devreturn = DevReturn()
