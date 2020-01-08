@@ -38,6 +38,7 @@
         <activity android:name=".SocketTestActivity"/>
         <activity android:name=".ComplexDemoActivity"/>
         <activity android:name=".MQTTTestActivity"/>
+        <activity android:name=".FingerTestActivity"/>
         <!-- Mqtt服务 -->
         <service android:name="org.eclipse.paho.android.service.MqttService" />
         <service android:name=".MQTTService" />

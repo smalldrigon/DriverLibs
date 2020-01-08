@@ -33,7 +33,8 @@ public class MQTTService extends Service {
     private MqttConnectOptions conOpt;
 
 //    private String host = "tcp://10.252.116.12:1883";
-    private String host = "tcp://10.252.101.2:1883";
+//    private String host = "tcp://10.252.101.2:1883";
+    private String host = "tcp://137.116.142.77:1883";
     private String userName = "admin";
     private String passWord = "password";
     private static String myTopic = "ForTest";      //要订阅的主题

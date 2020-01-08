@@ -174,6 +174,11 @@ var inputStr:StringBuilder = StringBuilder()
             startActivity(Intent(this@MainActivity,ThreeRollerAutoGatesActivity::class.java))
 //            iv_result.setImageBitmap(BitmapUtil.createEmptyBitmap(400,400))
         }
+        btn_fingertest.setOnClickListener {
+
+            startActivity(Intent(this@MainActivity,FingerTestActivity::class.java))
+//            iv_result.setImageBitmap(BitmapUtil.createEmptyBitmap(400,400))
+        }
     }
     var list = arrayListOf<String>("1233")
     override fun onDestroy() {
