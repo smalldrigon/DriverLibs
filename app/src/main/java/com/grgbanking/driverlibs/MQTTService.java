@@ -1,4 +1,4 @@
-package com.grgbanking.driverlibsdemo;
+package com.grgbanking.driverlibs;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -9,10 +9,8 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Binder;
-import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import com.grgbanking.baselibrary.util.SystemUtils;

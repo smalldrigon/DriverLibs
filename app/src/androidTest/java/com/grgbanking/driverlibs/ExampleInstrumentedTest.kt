@@ -1,4 +1,4 @@
-package com.grgbanking.driverlibsdemo
+package com.grgbanking.driverlibs
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

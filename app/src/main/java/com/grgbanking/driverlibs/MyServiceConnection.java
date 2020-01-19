@@ -1,4 +1,4 @@
-package com.grgbanking.driverlibsdemo;
+package com.grgbanking.driverlibs;
 
 import android.content.ComponentName;
 import android.content.ServiceConnection;

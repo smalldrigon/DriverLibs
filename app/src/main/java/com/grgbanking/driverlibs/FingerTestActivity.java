@@ -1,20 +1,14 @@
-package com.grgbanking.driverlibsdemo;
+package com.grgbanking.driverlibs;
 
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;;
 import android.widget.ImageView;
-import android.widget.TextView;
 import com.grgbanking.huitong.driver_libs.util.Driver_Contants;
 import com.grgbanking.huitong.driver_libs.util.InstallSilent;
 import com.xdisklib.FpDev;

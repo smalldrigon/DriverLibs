@@ -1,4 +1,4 @@
-package com.grgbanking.driverlibsdemo.util;
+package com.grgbanking.driverlibs.util;
 
 import android.content.Context;
 import android.os.Handler;

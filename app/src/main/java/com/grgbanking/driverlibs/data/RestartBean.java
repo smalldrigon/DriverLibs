@@ -1,4 +1,4 @@
-package com.grgbanking.driverlibsdemo.data;
+package com.grgbanking.driverlibs.data;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -7,13 +7,13 @@ import org.json.JSONObject;
  * Created by xuhao on 2017/5/22.
  */
 
-public class HandShakeBean extends DefaultSendBean {
+public class RestartBean extends DefaultSendBean {
 
-    public HandShakeBean() {
+    public RestartBean() {
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("cmd", 54);
-            jsonObject.put("handshake", "Hello the OkSocket");
+            jsonObject.put("cmd", 911);
+            jsonObject.put("port", 8080);
             content = jsonObject.toString();
         } catch (JSONException e) {
             e.printStackTrace();

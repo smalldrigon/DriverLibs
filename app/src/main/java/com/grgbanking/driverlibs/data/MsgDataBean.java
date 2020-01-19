@@ -1,8 +1,7 @@
-package com.grgbanking.driverlibsdemo.data;
+package com.grgbanking.driverlibs.data;
 
 
-import com.xuhao.didi.core.iocore.interfaces.IPulseSendable;
-
+import com.xuhao.didi.core.iocore.interfaces.ISendable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -10,22 +9,28 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.Charset;
 
-public class PulseBean implements IPulseSendable {
-    private String str = "";
+/**
+ * Created by Tony on 2017/10/24.
+ */
 
-    public PulseBean() {
+public class MsgDataBean implements ISendable {
+    private String content = "";
+
+    public MsgDataBean(String content) {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("cmd", 14);
-            str = jsonObject.toString();
+            jsonObject.put("data", content);
+            content = jsonObject.toString();
         } catch (JSONException e) {
             e.printStackTrace();
         }
-    }
+        this.content = content.toString();
+     }
 
     @Override
     public byte[] parse() {
-        byte[] body = str.getBytes(Charset.defaultCharset());
+        byte[] body = content.getBytes(Charset.defaultCharset());
         ByteBuffer bb = ByteBuffer.allocate(4 + body.length);
         bb.order(ByteOrder.BIG_ENDIAN);
         bb.putInt(body.length);

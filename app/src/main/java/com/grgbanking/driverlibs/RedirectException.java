@@ -1,4 +1,4 @@
-package com.grgbanking.driverlibsdemo;
+package com.grgbanking.driverlibs;
 
 
 import com.xuhao.didi.socket.client.sdk.client.ConnectionInfo;

@@ -1,4 +1,4 @@
-package com.grgbanking.driverlibsdemo;
+package com.grgbanking.driverlibs;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,9 +15,9 @@ import android.widget.EditText;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.grgbanking.driverlibsdemo.data.DefaultSendBean;
-import com.grgbanking.driverlibsdemo.data.HandShakeBean;
-import com.grgbanking.driverlibsdemo.data.PulseBean;
+import com.grgbanking.driverlibs.data.DefaultSendBean;
+import com.grgbanking.driverlibs.data.HandShakeBean;
+import com.grgbanking.driverlibs.data.PulseBean;
 import com.xuhao.didi.core.iocore.interfaces.IPulseSendable;
 import com.xuhao.didi.core.iocore.interfaces.ISendable;
 import com.xuhao.didi.core.pojo.OriginalData;

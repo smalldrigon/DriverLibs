@@ -1,4 +1,4 @@
-package com.grgbanking.driverlibsdemo
+package com.grgbanking.driverlibs
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -6,17 +6,14 @@ import com.example.hardwaredemo.Contants
 
 import com.grgbanking.huitong.driver_libs.DriverManagers
 import com.grgbanking.huitong.driver_libs.gate_machine.DevReturn
-import com.grgbanking.huitong.driver_libs.gate_machine.Driver_GateTJZN01Impl
 import com.grgbanking.huitong.driver_libs.gate_machine.TJZNGateDev_Passage_Num
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_GateMachine
-import com.grgbanking.huitong.driver_libs.interfaces.IDriver_GateMachine_TJZN
 import com.grgbanking.huitong.driver_libs.interfaces.IGateMachineActionCallBack
 import io.reactivex.Observable
  import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.layout_threerollerautogates_activity.*
-import kotlinx.android.synthetic.main.layout_threerollergates_activity.*
 import kotlinx.android.synthetic.main.layout_threerollergates_activity.tv_result2
 import kotlinx.android.synthetic.main.layout_threerollergates_activity.tvn_close2
 import kotlinx.android.synthetic.main.layout_threerollergates_activity.tvn_init2

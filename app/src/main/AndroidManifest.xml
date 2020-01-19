@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools" package="com.grgbanking.driverlibsdemo">
+          xmlns:tools="http://schemas.android.com/tools" package="com.grgbanking.driverlibs">
      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -17,31 +17,31 @@
 
     <!--<uses-permission android:name="android.permission.ACCESSS_SUPERUSER"/>-->
     <application
-            android:name=".MyAppLication"
+            android:name="com.grgbanking.driverlibs.MyAppLication"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme" tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".WelcomeActivity">
+        <activity android:name="com.grgbanking.driverlibs.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"  />
-         <activity android:name=".ThreeRollerAutoGatesActivity"/>
-         <activity android:name=".SluiceGatesAoYiActivity"/>
-        <activity android:name=".SluiceGatesActivity"/>
-        <activity android:name=".SocketTestActivity"/>
-        <activity android:name=".ComplexDemoActivity"/>
-        <activity android:name=".MQTTTestActivity"/>
-        <activity android:name=".FingerTestActivity"/>
+        <activity android:name="com.grgbanking.driverlibs.MainActivity"  />
+         <activity android:name="com.grgbanking.driverlibs.ThreeRollerAutoGatesActivity"/>
+         <activity android:name="com.grgbanking.driverlibs.SluiceGatesAoYiActivity"/>
+        <activity android:name="com.grgbanking.driverlibs.SluiceGatesActivity"/>
+        <activity android:name="com.grgbanking.driverlibs.SocketTestActivity"/>
+        <activity android:name="com.grgbanking.driverlibs.ComplexDemoActivity"/>
+        <activity android:name="com.grgbanking.driverlibs.MQTTTestActivity"/>
+        <activity android:name="com.grgbanking.driverlibs.FingerTestActivity"/>
         <!-- Mqtt服务 -->
         <service android:name="org.eclipse.paho.android.service.MqttService" />
-        <service android:name=".MQTTService" />
+        <service android:name="com.grgbanking.driverlibs.MQTTService" />
      </application>
 
 </manifest>

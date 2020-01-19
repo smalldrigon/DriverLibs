@@ -1,4 +1,4 @@
-package com.grgbanking.driverlibsdemo
+package com.grgbanking.driverlibs
 
 import android.content.Intent
 import android.graphics.Bitmap
@@ -8,7 +8,7 @@ import android.support.annotation.RequiresApi
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.KeyEvent
-import com.grgbanking.driverlibsdemo.util.BitmapUtil
+import com.grgbanking.driverlibs.util.BitmapUtil
 
 import com.grgbanking.huitong.driver_libs.card_reader.Driver_DeCardReaderImpl
 import com.grgbanking.huitong.driver_libs.fingerprints.Driver_FingerRecongnitionImpl
