@@ -1,0 +1,221 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="horizontal"
+              tools:context=".MainActivity" >
+
+    <ScrollView
+            android:layout_alignParentTop="true"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content" >
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+            <Button
+                    android:id="@+id/btnOpen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="20dp"
+                    android:paddingTop="20dp"
+                    android:text="open"
+                    android:textSize="36sp" />
+
+            <Button
+                    android:id="@+id/btnClose"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:paddingTop="20dp"
+                    android:text="close"
+                    android:textSize="36sp" />
+
+            <Button
+                    android:id="@+id/btnSerial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:paddingTop="20dp"
+                    android:text="序列号"
+                    android:textSize="36sp" />
+
+            <Button
+                    android:id="@+id/btnGetImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:paddingTop="20dp"
+                    android:text="获取图像"
+                    android:textSize="36sp" />
+
+            <Button
+                    android:id="@+id/btnGetFeature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:text="获取特征"
+                    android:textSize="36sp"/>
+
+            <Button
+                    android:id="@+id/btnMatch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:text="匹配特征"
+                    android:textSize="36sp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical" >
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="7"
+                android:orientation="horizontal" >
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+                <ImageView
+                        android:id="@+id/ivID"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/ic_launcher"
+                />
+            </LinearLayout>
+
+            <EditText
+                    android:id="@+id/edtFeature"
+                    android:padding="20dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="5"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:textSize="28sp"
+                    android:gravity="top"
+                    android:background="@android:drawable/edit_text"
+                    android:inputType="textMultiLine" >
+            </EditText>
+        </LinearLayout>
+
+        <EditText
+                android:id="@+id/edtOut"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:ems="10"
+                android:textSize="28sp"
+                android:gravity="top"
+                android:background="@android:drawable/edit_text"
+                android:inputType="textMultiLine" >
+        </EditText>
+
+    </LinearLayout>
+
+    <!--
+    <ScrollView
+    android:layout_alignParentTop="true"
+    android:layout_width="0dp"
+    android:layout_weight="6"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+       <ImageView
+           android:id="@+id/ivID"
+           android:layout_gravity="center_horizontal"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/ic_launcher"
+          />
+
+       <Button
+           android:id="@+id/btnRdEE"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+           android:paddingBottom="20dp"
+           android:paddingTop="20dp"
+           android:text="I2C读"
+           android:textSize="36sp" />
+
+       <Button
+           android:id="@+id/btnWrEE"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="10dp"
+           android:paddingBottom="20dp"
+           android:paddingTop="20dp"
+           android:text="I2C写"
+           android:textSize="30sp" />
+
+       <Button
+           android:id="@+id/btnScan"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="10dp"
+           android:paddingBottom="20dp"
+           android:paddingTop="20dp"
+           android:text="扫码"
+           android:textSize="30sp" />
+
+       <Button
+           android:id="@+id/btnOpenUsb"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+           android:paddingBottom="20dp"
+           android:paddingTop="20dp"
+           android:text="Open USB"
+           android:textSize="30sp" />
+
+       <Button
+           android:id="@+id/btnUsbWr"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="10dp"
+           android:paddingBottom="20dp"
+           android:paddingTop="20dp"
+           android:text="USB Write"
+           android:textSize="30sp" />
+
+       <Button
+           android:id="@+id/btnUsbRd"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="10dp"
+           android:paddingBottom="20dp"
+           android:paddingTop="20dp"
+           android:text="USB Read"
+           android:textSize="30sp" />
+
+    </LinearLayout>
+    </ScrollView>
+	-->
+</LinearLayout>

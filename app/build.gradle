@@ -1,17 +1,16 @@
-import org.w3c.dom.DOMImplementation
-
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+
 android {
 
     compileSdkVersion rootProject.ext.android.androidCompileSdkVersion
     buildToolsVersion rootProject.ext.android.androidBuildToolsVersion
     defaultConfig {
-        applicationId "com.grgbanking.driverlibsdemo"
+        applicationId "com.grgbanking.driverlibs"
         minSdkVersion rootProject.ext.android.androidMinSdkVersion
         targetSdkVersion rootProject.ext.android.androidTargetSdkVersion
         versionCode 1

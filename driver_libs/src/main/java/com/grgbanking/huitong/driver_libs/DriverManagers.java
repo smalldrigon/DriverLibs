@@ -1,13 +1,12 @@
 package com.grgbanking.huitong.driver_libs;
 
 import android.content.Context;
+import android.os.Build;
 import com.grgbanking.huitong.driver_libs.card_reader.Driver_DeCardReaderImpl;
+import com.grgbanking.huitong.driver_libs.database.DatabaseInstance;
 import com.grgbanking.huitong.driver_libs.fingerprints.Driver_FingerRecongnitionImpl;
 import com.grgbanking.huitong.driver_libs.gate_machine.GateMachineFactory;
-import com.grgbanking.huitong.driver_libs.interfaces.IDriver_CardReader;
-import com.grgbanking.huitong.driver_libs.interfaces.IDriver_FingerPrints;
-import com.grgbanking.huitong.driver_libs.interfaces.IDriver_GateMachine;
-import com.grgbanking.huitong.driver_libs.interfaces.IDriver_ScanGun;
+import com.grgbanking.huitong.driver_libs.interfaces.*;
 import com.grgbanking.huitong.driver_libs.scan_qr_code.Driver_ScanQrCodeImpl;
 
 /**
@@ -28,6 +27,16 @@ public class DriverManagers {
     private IDriver_CardReader Driver_CardReader = null;
     private IDriver_FingerPrints Driver_FingerPrints = null;
     private IDriver_GateMachine Driver_GateMachine = null;
+    private IDatabase Database = null;
+
+    public IDatabase getDatabase() {
+        return Database;
+    }
+
+    public void setDatabase(IDatabase database) {
+        Database = database;
+    }
+
     public static DriverManagers instance = null;
 
     public String getmMachineType() {
@@ -71,6 +80,7 @@ public class DriverManagers {
         private IDriver_ScanGun mIDriver_ScanGun = null;
         private Context mContext = null;
         private IDriver_GateMachine mDriver_GateMachine = null;
+        private IDatabase mIDatabase = null;
         private    String mMachineType = null;
         public Builder() {
 
@@ -135,6 +145,12 @@ public class DriverManagers {
             return this;
         }
 
+
+        public Builder setIDatabase(IDatabase mIDatabase) {
+            this.mIDatabase =   mIDatabase;
+            return this;
+        }
+
         public Builder setGateMachine(String machineType) {
             switch (machineType) {
                 case GATEMACHINE_TYPE_M810:
@@ -162,6 +178,7 @@ public class DriverManagers {
             managers.Driver_FingerPrints = mIDriver_FingerPrints;
             managers.Driver_ScanGun = mIDriver_ScanGun;
             managers.Driver_GateMachine = mDriver_GateMachine;
+            managers.Database = mIDatabase;
             managers.setmMachineType(mMachineType);
             instance = managers;
             return managers;

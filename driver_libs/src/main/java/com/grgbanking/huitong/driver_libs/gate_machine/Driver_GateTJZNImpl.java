@@ -1,9 +1,17 @@
 package com.grgbanking.huitong.driver_libs.gate_machine;
 
 import android.content.Context;
+import com.grgbanking.huitong.driver_libs.bean.LeftPass;
+import com.grgbanking.huitong.driver_libs.bean.LeftUnPass;
+import com.grgbanking.huitong.driver_libs.bean.RightPass;
+import com.grgbanking.huitong.driver_libs.bean.RightUnPass;
+import com.grgbanking.huitong.driver_libs.database.DatabaseInstance;
+import com.grgbanking.huitong.driver_libs.database.EntyType;
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_GateMachine;
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_GateMachine_TJZN;
 import com.grgbanking.huitong.driver_libs.interfaces.IGateMachineActionCallBack;
+
+import java.util.Date;
 
 /**
  * Author: gongxiaobiao
@@ -255,6 +263,7 @@ public class Driver_GateTJZNImpl extends IDriver_GateMachine {
                     mPassTimeOutBean.setLeftopened(res != 0);
                     mPassTimeOutBean.setLeftopenSuccess(res == 0);
                     mCallBack.openLeft(res == 0);
+
                 }
                 if (mPassTimeOutBean.isRightopened()) {
                     System.err.println("开门Rightopened");
@@ -262,7 +271,7 @@ public class Driver_GateTJZNImpl extends IDriver_GateMachine {
                     int res = openGate(mHandle, 2, mDevreturn);
                     mPassTimeOutBean.setRightopened(res != 0);
                     mPassTimeOutBean.setRightopenSuccess(res == 0);
-                    mCallBack.openLeft(res == 0);
+                    mCallBack.openRight(res == 0);
                 }
                 //=====================开门=======================
 
@@ -296,12 +305,16 @@ public class Driver_GateTJZNImpl extends IDriver_GateMachine {
                     mPassTimeOutBean.setLeftopenSuccess(false);
                     closeGate(1,mDevreturn);
                     System.err.println("过闸成功");
+                    DatabaseInstance.mDatabaseInstance.insert(EntyType.LEFTPASS,new LeftPass(null,null,new Date().toString()));
+
                     System.err.println("passageNum:"+passageNum.toString());
                 }
                 if (passageNum.passeNumR - lastTimepassageNum.passeNumR >= 1) {
                     mCallBack.passRightSuccess();
                     mPassTimeOutBean.setRightopenSuccess(false);
                     closeGate(0,mDevreturn);
+                    DatabaseInstance.mDatabaseInstance.insert(EntyType.RIGHTPASS,new RightPass(null,null,new Date().toString()));
+
                     System.err.println("过闸成功");
                     System.err.println("passageNum:"+passageNum.toString());
                 }
@@ -310,6 +323,8 @@ public class Driver_GateTJZNImpl extends IDriver_GateMachine {
                     mPassTimeOutBean.setLeftopenSuccess(false);
                     System.err.println("人数判断超时回调");
                     System.err.println("passageNum:"+passageNum.toString());
+                    DatabaseInstance.mDatabaseInstance.insert(EntyType.LEFTUNPASS,new LeftUnPass(null,null,new Date().toString()));
+
 
                 }
                 if (passageNum.timeoutNumR - lastTimepassageNum.timeoutNumR >= 1) {
@@ -317,6 +332,8 @@ public class Driver_GateTJZNImpl extends IDriver_GateMachine {
                     mPassTimeOutBean.setRightopenSuccess(false);
                     System.err.println("人数判断超时回调");
                     System.err.println("passageNum:"+passageNum.toString());
+                    DatabaseInstance.mDatabaseInstance.insert(EntyType.RIGHTUNPASS,new RightUnPass(null,null,new Date().toString()));
+
                 }
 //                System.err.println("passageNum:"+passageNum.toString());
                 lastTimepassageNum = passageNum;
