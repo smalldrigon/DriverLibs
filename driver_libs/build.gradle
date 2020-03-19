@@ -1,4 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion rootProject.ext.android.androidCompileSdkVersion
@@ -45,4 +48,12 @@ dependencies {
     api files('libs/dc_mate_201908091132.jar')
     api files('libs/jna-min.jar')
     api files('libs/jna-platform.jar')
+    implementation rootProject.ext.greenDaoLibs
+ }
+repositories {
+    mavenCentral()
+}
+//配置greendao数据库的版本
+greendao{
+    schemaVersion 1
 }

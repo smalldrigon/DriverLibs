@@ -3,6 +3,8 @@ package com.grgbanking.driverlibs
 import org.junit.Test
 
 import org.junit.Assert.*
+import java.text.SimpleDateFormat
+import java.util.*
 import java.util.concurrent.locks.Lock
 
 /**
@@ -32,4 +34,20 @@ class ExampleUnitTest {
         //我是从分支合并过来的
         //在合并到主线
             }
+
+    @Test
+    fun today(){
+        val format = SimpleDateFormat("yyyy-MM-dd")
+        val format1 = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        var date = format.parse("2020-03-18 16:43:00")
+        var date1 = format.format(Date())
+        println(date)
+        println(date1)
+
+        println(Date().after(date))
+        println(format1.parse("2020-03-18 16:43:00") )
+        println(Date())
+
+    }
+
 }

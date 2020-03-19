@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        android:orientation="vertical"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <Button
+            android:text="添加"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" tools:layout_editor_absoluteY="4dp"
+            tools:layout_editor_absoluteX="5dp" android:id="@+id/btn_add"/>
+    <Button
+            android:text="查询当天"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" tools:layout_editor_absoluteY="59dp"
+            tools:layout_editor_absoluteX="16dp" android:id="@+id/btn_querrytoday"/>
+    <Button
+            android:text="查询所有"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" tools:layout_editor_absoluteY="122dp"
+            tools:layout_editor_absoluteX="15dp" android:id="@+id/btn_querrytotal"/>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:id="@+id/tv_result"
+
+    />
+</LinearLayout>

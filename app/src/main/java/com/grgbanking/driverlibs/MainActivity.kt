@@ -9,8 +9,10 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.KeyEvent
 import com.grgbanking.driverlibs.util.BitmapUtil
+import com.grgbanking.huitong.driver_libs.DriverManagers
 
 import com.grgbanking.huitong.driver_libs.card_reader.Driver_DeCardReaderImpl
+import com.grgbanking.huitong.driver_libs.database.DatabaseInstance
 import com.grgbanking.huitong.driver_libs.fingerprints.Driver_FingerRecongnitionImpl
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_CardReader
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_FingerPrints
@@ -156,14 +158,11 @@ var inputStr:StringBuilder = StringBuilder()
         }
         btn_sockettest.setOnClickListener {
 
-            startActivity(Intent(this@MainActivity,SocketTestActivity::class.java))
-//            iv_result.setImageBitmap(BitmapUtil.createEmptyBitmap(400,400))
-        }
-        btn_sockettestconplex.setOnClickListener {
+            startActivity(Intent(this@MainActivity,GreenDaoTestActivity::class.java))
 
-            startActivity(Intent(this@MainActivity,ComplexDemoActivity::class.java))
 //            iv_result.setImageBitmap(BitmapUtil.createEmptyBitmap(400,400))
         }
+
         btn_mqtt.setOnClickListener {
 
             startActivity(Intent(this@MainActivity,MQTTTestActivity::class.java))
@@ -183,7 +182,7 @@ var inputStr:StringBuilder = StringBuilder()
     var list = arrayListOf<String>("1233")
     override fun onDestroy() {
         super.onDestroy()
-
+        DriverManagers.Builder().setIDatabase(DatabaseInstance.getInstance(this,"")).build()
 
     }
 

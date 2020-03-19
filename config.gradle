@@ -1,4 +1,5 @@
 //Android version 申明 第三方依赖版本级管理
+
 ext {
 
 
@@ -44,6 +45,7 @@ ext {
             autosizeVersion         : '1.1.2',
             leakcanaryVersion       : "1.6.2",
             loggerVersion           : "2.2.0",
+            greenDaoVersion           : "3.2.2",
 
 
     ]
@@ -88,6 +90,8 @@ annotations: "com.android.support:support-annotations:$dependVersion.androidSupp
             refreshhead  : "com.scwang.smartrefresh:SmartRefreshHeader:$dependVersion.refreshhead"
     ]
 
+    greenDao ="org.greenrobot:greendao:$dependVersion.greenDaoVersion"
+
     other = [
             autosize      : "me.jessyan:autosize:$dependVersion.autosizeVersion",//屏幕适配 框架
             glide         : "com.github.bumptech.glide:glide:$dependVersion.glideSdkVersion",//android glide图片加载框架
@@ -129,6 +133,10 @@ annotations: "com.android.support:support-annotations:$dependVersion.androidSupp
 
     otherLibs = other.values()
     refreshLibs = smartrefresh.values()
+
+    greenDaoLibs=[greenDao]
+
+
 //    gaodemapLibs = map.values()
     // APT
     glideCompiler = [glideCompiler]
