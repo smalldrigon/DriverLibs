@@ -1,5 +1,7 @@
 package com.grgbanking.baselibrary.util
 
+import android.Manifest
+import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
@@ -11,13 +13,19 @@ import android.support.annotation.RequiresApi
 import android.support.v4.app.ActivityCompat
 import android.telephony.TelephonyManager
 import android.text.TextUtils
+import com.decard.driver.utils.e
 import java.io.BufferedReader
 import java.io.File
 import java.io.FileReader
 import java.io.IOException
+import java.lang.reflect.Method
 import java.net.NetworkInterface
 import java.text.SimpleDateFormat
 import java.util.*
+import android.Manifest.permission
+import android.Manifest.permission.READ_PHONE_STATE
+
+
 
 
 /**
@@ -98,7 +106,7 @@ object SystemUtils {
         return System.currentTimeMillis().toString() + ""
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
+    @SuppressLint("NewApi")
     fun getDeviceId(context: Context): String {
 
 //    这个DEVICE_ID可以同通过下面的方法获取：
@@ -115,6 +123,59 @@ object SystemUtils {
             return "00000000"
         }
 
+
+    }
+
+    /**
+     * 获取手机IMEI号
+     */
+    fun getIMEI(context: Context): String? {
+        var imei: String? = "00000000000"
+        val telephonyManager = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+        if (ActivityCompat.checkSelfPermission(
+                context,
+                Manifest.permission.READ_PHONE_STATE
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+
+            imei = telephonyManager.deviceId
+            if (imei == null || "000000000000000" == imei) {
+                imei = getMacAddress()
+            }
+            return imei
+        }
+
+        return imei
+    }
+
+
+    @SuppressLint("MissingPermission")
+    fun getDeviceId1(context: Context): String {
+
+        val manager = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+        try {
+            val method = manager.javaClass.getMethod("getImei", Int::class.javaPrimitiveType!!)
+            val imei1 = method.invoke(manager, 0) as String
+            val imei2 = method.invoke(manager, 1) as String
+            if (TextUtils.isEmpty(imei2)) {
+                return imei1
+            }
+            if (!TextUtils.isEmpty(imei1)) {
+                //因为手机卡插在不同位置，获取到的imei1和imei2值会交换，所以取它们的最小值,保证拿到的imei都是同一个
+                var imei = ""
+                if (imei1.compareTo(imei2) <= 0) {
+                    imei = imei1
+                } else {
+                    imei = imei2
+                }
+                return imei
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return "-1"
+        }
+
+        return ""
 
     }
 

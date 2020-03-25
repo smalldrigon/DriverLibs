@@ -34,11 +34,11 @@ class ExampleUnitTest {
     }
 
         //我是从分支合并过来的
-<<<<<<< HEAD:app/src/test/java/com/grgbanking/driverlibsdemo/ExampleUnitTest.kt
+//<<<<<<< HEAD:app/src/test/java/com/grgbanking/driverlibsdemo/ExampleUnitTest.kt
 //            }
 
 //你dev更新一下
-=======
+//=======
         //在合并到主线
             }
 
@@ -57,5 +57,5 @@ class ExampleUnitTest {
 
     }
 
->>>>>>> dev:app/src/test/java/com/grgbanking/driverlibs/ExampleUnitTest.kt
-}
+//>>>>>>> dev:app/src/test/java/com/grgbanking/driverlibs/ExampleUnitTest.kt
+//}

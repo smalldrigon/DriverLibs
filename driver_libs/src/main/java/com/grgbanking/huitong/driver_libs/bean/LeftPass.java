@@ -1,7 +1,12 @@
 package com.grgbanking.huitong.driver_libs.bean;
 
+import android.content.Context;
+import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
+
+import java.lang.reflect.Method;
 import java.util.Date;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Unique;
@@ -46,6 +51,8 @@ public class LeftPass {
     }
     public void setTimeStamp(String timeStamp) {
         this.timeStamp = timeStamp;
+
+
     }
   
 

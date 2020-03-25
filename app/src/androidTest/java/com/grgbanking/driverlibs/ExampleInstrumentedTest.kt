@@ -2,6 +2,7 @@ package com.grgbanking.driverlibs
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
+import com.grgbanking.baselibrary.util.SystemUtils
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -19,6 +20,9 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("com.grgbanking.driverlibsdemo", appContext.packageName)
+        println("---------")
+        println(SystemUtils.getDeviceId(appContext))
+        println(SystemUtils.getDeviceId1(appContext))
+//        assertEquals("com.grgbanking.driverlibsdemo", appContext.packageName)
     }
 }

@@ -1,13 +1,16 @@
 package com.grgbanking.driverlibs
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.net.wifi.WifiManager
 import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.KeyEvent
+import com.grgbanking.baselibrary.util.SystemUtils
 import com.grgbanking.driverlibs.util.BitmapUtil
 import com.grgbanking.huitong.driver_libs.DriverManagers
 
@@ -31,6 +34,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main1)
         initData()
+        println("----------")
+        println(SystemUtils.getDeviceId(this))
+//        println(SystemUtils.getDeviceId1(this))
+        println(SystemUtils.getIMEI(this))
+        openWifi()
+    }
+
+    fun openWifi(){
+      val managers =  this.applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
+
+                    managers.setWifiEnabled(true)
+
     }
 
     fun setText(str: String) {
