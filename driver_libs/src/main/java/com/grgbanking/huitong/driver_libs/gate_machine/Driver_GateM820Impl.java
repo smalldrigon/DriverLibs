@@ -1,6 +1,7 @@
 package com.grgbanking.huitong.driver_libs.gate_machine;
 
 import android.content.Context;
+
 import com.grgbanking.huitong.driver_libs.bean.LeftPass;
 import com.grgbanking.huitong.driver_libs.bean.LeftUnPass;
 import com.grgbanking.huitong.driver_libs.bean.RightPass;
@@ -12,6 +13,8 @@ import com.grgbanking.huitong.driver_libs.interfaces.IGateMachineActionCallBack;
 
 import java.util.Date;
 
+import javax.xml.parsers.FactoryConfigurationError;
+
 /**
  * Author: gongxiaobiao
  * Date: on 2019/9/10 15:52
@@ -21,9 +24,9 @@ import java.util.Date;
 public class Driver_GateM820Impl extends IDriver_GateMachine {
     private int mHandle = -1;
     private GetPassByNumThread mGetPassByNumThread = null;
-    volatile private PassTimeOutBean mPassTimeOutBean = new PassTimeOutBean();//打开闸门指令时间
+    volatile private PassTimeOutBean_M820 mPassTimeOutBean = new PassTimeOutBean_M820();//打开闸门指令时间
 
-@Deprecated
+    @Deprecated
     @Override
     public int setMode(int p_hDevHandle, int mode, DevReturn devReturn) {
         return 0;
@@ -106,9 +109,40 @@ public class Driver_GateM820Impl extends IDriver_GateMachine {
 //        int ret = openGate(mHandle, 1, devReturn);
         mPassTimeOutBean.setLeftTimeOut(System.currentTimeMillis());
         mPassTimeOutBean.setLeftopened(true);
+        mPassTimeOutBean.setOpenLeftTimes(1);
 //        filldevReturn(devReturn, mydevReturn1);
 //        getIGateMachineActionCallBack().openLeft(ret == 0);
         return 0;
+    }
+
+    /**
+     * @param @times 开门次数
+     * @return
+     * @method
+     * @description 描述一下方法的作用
+     * @date: 2020/4/3 13:33
+     * @author: gongxiaobiao
+     */
+    public void openGateLeft(DevReturn devReturn, int times) {
+        MyDevReturn[] mydevReturn1 = creatMyDevReturnArray();
+//        int ret = IGateDev_M810.mInstance.iOpenGate(mHandle, 1, 0, mydevReturn1);
+//        int ret = openGate(mHandle, 1, devReturn);
+        mPassTimeOutBean.setLeftTimeOut(System.currentTimeMillis());
+        mPassTimeOutBean.setLeftopened(true);
+        mPassTimeOutBean.setOpenLeftTimes(times <= 0 ? 1 : times);
+//        filldevReturn(devReturn, mydevReturn1);
+//        getIGateMachineActionCallBack().openLeft(ret == 0);
+    }
+
+    public void openGateRight(DevReturn devReturn, int times) {
+        MyDevReturn[] mydevReturn1 = creatMyDevReturnArray();
+//        int ret = IGateDev_M810.mInstance.iOpenGate(mHandle, 1, 0, mydevReturn1);
+//        int ret = openGate(mHandle, 1, devReturn);
+        mPassTimeOutBean.setRightTimeOut(System.currentTimeMillis());
+        mPassTimeOutBean.setRightopened(true);
+        mPassTimeOutBean.setOpenRightTimes(times <= 0 ? 1 : times);
+//        filldevReturn(devReturn, mydevReturn1);
+//        getIGateMachineActionCallBack().openLeft(ret == 0);
     }
 
 
@@ -139,6 +173,7 @@ public class Driver_GateM820Impl extends IDriver_GateMachine {
 //        filldevReturn(devReturn, mydevReturn1);
         mPassTimeOutBean.setRightTimeOut(System.currentTimeMillis());
         mPassTimeOutBean.setRightopened(true);
+        mPassTimeOutBean.setOpenRightTimes(1);
 //        getIGateMachineActionCallBack().openRight(ret == 0);
 
         return 0;
@@ -255,14 +290,14 @@ public class Driver_GateM820Impl extends IDriver_GateMachine {
                     e.printStackTrace();
                 }
                 //=====================开门回调=======================
-                if (mPassTimeOutBean.isLeftopened()) {
+                if (mPassTimeOutBean.isLeftopened() && mPassTimeOutBean.getOpenLeftTimes() >= 1) {
                     System.err.println("开门Leftopened");
                     int res = openGate(mHandle, 1, mDevreturn);
                     mPassTimeOutBean.setLeftopened(false);
                     mPassTimeOutBean.setLeftopenSuccess(res == 0);
                     mCallBack.openLeft(res == 0);
                 }
-                if (mPassTimeOutBean.isRightopened()) {
+                if (mPassTimeOutBean.isRightopened() && mPassTimeOutBean.getOpenRightTimes() >= 1) {
                     System.err.println("开门Rightopened");
                     int res = openGate(mHandle, 2, mDevreturn);
                     mPassTimeOutBean.setRightopened(false);
@@ -293,36 +328,68 @@ public class Driver_GateM820Impl extends IDriver_GateMachine {
                 if (passageNum.passeNumL - lastTimepassageNum.passeNumL >= 1) {
                     mCallBack.passLeftSuccess();
                     mPassTimeOutBean.setLeftopenSuccess(false);
-                    closeGate(1,mDevreturn);
+                    int res = mPassTimeOutBean.getOpenLeftTimes();
+                    int res1 = --res;
+                    if (res1 <= 0) {
+                        mCallBack.passLeftFinish();
+                    }
+                    mPassTimeOutBean.setLeftopened(res1 > 0);
+
+                    mPassTimeOutBean.setOpenLeftTimes(res1);
+                    closeGate(1, mDevreturn);
                     System.err.println("左过闸成功");
-                    System.err.println("passageNum:"+passageNum.toString());
-                    DatabaseInstance.mDatabaseInstance.insert(EntyType.LEFTPASS,new LeftPass(null,null,new Date().toString()));
+                    System.err.println("passageNum:" + passageNum.toString());
+
+                    DatabaseInstance.mDatabaseInstance.insert(EntyType.LEFTPASS, new LeftPass(null, null, new Date().toString()));
 
                 }
                 if (passageNum.passeNumR - lastTimepassageNum.passeNumR >= 1) {
                     mCallBack.passRightSuccess();
                     mPassTimeOutBean.setRightopenSuccess(false);
-                    closeGate(0,mDevreturn);
+                    int res = mPassTimeOutBean.getOpenRightTimes();
+                    int res1 = --res;
+                    if (res1 <= 0) {
+                        mCallBack.passRightFinish();
+                    }
+
+                    mPassTimeOutBean.setRightopened(res1 > 0);
+                    mPassTimeOutBean.setOpenRightTimes(res1);
+
+                    closeGate(0, mDevreturn);
                     System.err.println("右过闸成功");
-                    System.err.println("passageNum:"+passageNum.toString());
-                    DatabaseInstance.mDatabaseInstance.insert(EntyType.RIGHTPASS,new RightPass(null,null,new Date().toString()));
+                    System.err.println("passageNum:" + passageNum.toString());
+                    DatabaseInstance.mDatabaseInstance.insert(EntyType.RIGHTPASS, new RightPass(null, null, new Date().toString()));
 
                 }
                 if (passageNum.timeoutNumL - lastTimepassageNum.timeoutNumL >= 1) {
                     mCallBack.passLeftTimeout();
                     mPassTimeOutBean.setLeftopenSuccess(false);
-                    System.err.println("左人数判断超时回调");
-                    System.err.println("passageNum:"+passageNum.toString());
-                    DatabaseInstance.mDatabaseInstance.insert(EntyType.LEFTUNPASS,new LeftUnPass(null,null,new Date().toString()));
+                    int res = mPassTimeOutBean.getOpenLeftTimes();
+                    int res1 = --res;
+                    if (res1 <= 0) {
+                        mCallBack.passLeftFinish();
+                    }
+                    mPassTimeOutBean.setLeftopened(res1 > 0);
+                    mPassTimeOutBean.setOpenLeftTimes(res1);
+                    System.err.println("左人数判断超时回调"+"res:"+res +" res1:"+res1);
+                    System.err.println("passageNum:" + passageNum.toString());
+                    DatabaseInstance.mDatabaseInstance.insert(EntyType.LEFTUNPASS, new LeftUnPass(null, null, new Date().toString()));
 
 
                 }
                 if (passageNum.timeoutNumR - lastTimepassageNum.timeoutNumR >= 1) {
                     mCallBack.passRightTimeout();
                     mPassTimeOutBean.setRightopenSuccess(false);
+                    int res = mPassTimeOutBean.getOpenRightTimes();
+                    int res1 = --res;
+                    if (res1 <= 0) {
+                        mCallBack.passRightFinish();
+                    }
+                    mPassTimeOutBean.setRightopened(res1 > 0);
+                    mPassTimeOutBean.setOpenRightTimes(res1);
                     System.err.println("右人数判断超时回调");
-                    System.err.println("passageNum:"+passageNum.toString());
-                    DatabaseInstance.mDatabaseInstance.insert(EntyType.RIGHTUNPASS,new RightUnPass(null,null,new Date().toString()));
+                    System.err.println("passageNum:" + passageNum.toString());
+                    DatabaseInstance.mDatabaseInstance.insert(EntyType.RIGHTUNPASS, new RightUnPass(null, null, new Date().toString()));
 
                 }
 //                System.err.println("passageNum:"+passageNum.toString());

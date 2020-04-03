@@ -43,6 +43,14 @@ class ThreeRollerAutoGatesActivity : AppCompatActivity(),IGateMachineActionCallB
         setText1("又关门$res")
     }
 
+    override fun passLeftFinish() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun passRightFinish() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun passLeftTimeout() {
         setText1("左通过超时")
     }

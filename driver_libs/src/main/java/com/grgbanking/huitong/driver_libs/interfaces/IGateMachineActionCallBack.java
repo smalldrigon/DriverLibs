@@ -33,4 +33,8 @@ public interface IGateMachineActionCallBack {
    // 获取通过人数对象
 //    public TJZNGateDev_Passage_Num getPassgerNum();
 
+    //通过结束回调，最后一次开门通过或者超时后调用
+    public void passLeftFinish();
+    public void passRightFinish();
+
 }

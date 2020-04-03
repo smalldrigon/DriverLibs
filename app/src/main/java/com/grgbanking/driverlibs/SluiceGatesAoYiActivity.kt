@@ -9,6 +9,7 @@ import com.grgbanking.huitong.driver_libs.DriverManagers
 import com.grgbanking.huitong.driver_libs.database.DatabaseInstance
 import com.grgbanking.huitong.driver_libs.database.EntyType
 import com.grgbanking.huitong.driver_libs.gate_machine.DevReturn
+import com.grgbanking.huitong.driver_libs.gate_machine.Driver_GateM820Impl
 import com.grgbanking.huitong.driver_libs.gate_machine.TJZNGateDev_Passage_Num
 import com.grgbanking.huitong.driver_libs.interfaces.IGateMachineActionCallBack
 import com.grgbanking.huitong.driver_libs.util.LogUtil
@@ -44,6 +45,15 @@ class SluiceGatesAoYiActivity : AppCompatActivity(), IGateMachineActionCallBack 
 
     override fun closeRight(res: Boolean) {
         setText1("又关门$res")
+    }
+
+    override fun passLeftFinish() {
+        Log.i("gong","passLeftFinish")
+    }
+
+    override fun passRightFinish() {
+        Log.i("gong","passRightFinish")
+
     }
 
     override fun passLeftTimeout() {
@@ -87,6 +97,7 @@ class SluiceGatesAoYiActivity : AppCompatActivity(), IGateMachineActionCallBack 
     }
 
     private fun initView() {
+        var i = 1
         DriverManagers.Builder().setContext(this)
 //            .setFingerPrints(DriverManagers.FINGERPRINTS_TYPE_FPC1011)
             .setScanGun(DriverManagers.SACNGUN_TYPE_ZD7100)
@@ -100,7 +111,8 @@ class SluiceGatesAoYiActivity : AppCompatActivity(), IGateMachineActionCallBack 
             var devreturn = DevReturn()
 //            testAction {
 //                println( "执行线程名称${Thread.currentThread().name}")
-            DriverManagers.instance.driver_GateMachine.openGateLeftOnce(devreturn)
+           Log.i("gong", "i====$i")
+            ( DriverManagers.instance.driver_GateMachine as Driver_GateM820Impl).openGateLeft(devreturn,i++)
             DriverManagers.instance.driver_GateMachine.timeout = 5
 //                devreturn
 //            }.subscribe {
@@ -113,7 +125,9 @@ class SluiceGatesAoYiActivity : AppCompatActivity(), IGateMachineActionCallBack 
             var devreturn = DevReturn()
 //            testAction {
 //                println( "执行线程名称${Thread.currentThread().name}")
-            DriverManagers.instance.driver_GateMachine.openGateLeftAways(devreturn)
+            Log.i("gong", "i====$i")
+
+            ( DriverManagers.instance.driver_GateMachine as Driver_GateM820Impl).openGateRightAways(devreturn)
 //                devreturn
 //            }.subscribe {
 //                println( "结果线程名称${Thread.currentThread().name}")
@@ -125,7 +139,7 @@ class SluiceGatesAoYiActivity : AppCompatActivity(), IGateMachineActionCallBack 
             var devreturn = DevReturn()
 //            testAction {
 //                println( "执行线程名称${Thread.currentThread().name}")
-            DriverManagers.instance.driver_GateMachine.openGateRightOnce(devreturn)
+            ( DriverManagers.instance.driver_GateMachine as Driver_GateM820Impl).openGateRight(devreturn,i++)
 //                devreturn
 //            }.subscribe {
 //                println( "结果线程名称${Thread.currentThread().name}")
