@@ -268,6 +268,11 @@ public class Driver_GateM820Impl extends IDriver_GateMachine {
         private MyDevReturn[] mydevReturn = (MyDevReturn[]) new MyDevReturn().toArray(8);
         private TJZNGateDev_Passage_Num.ByReference lastTimepassageNum = new TJZNGateDev_Passage_Num.ByReference();
 
+        //延迟连续开门
+//        private void delayContinuousOpen(PassTimeOutBean bean){
+//            if (bean.getLeftTimeOut())
+//        }
+
         public GetPassByNumThread(IGateMachineActionCallBack callBack, IGateDev_M820 gatemachine, int handle) {
             this.mCallBack = callBack;
             this.mGatemachine = gatemachine;
@@ -285,7 +290,7 @@ public class Driver_GateM820Impl extends IDriver_GateMachine {
             while (true) {
 
                 try {
-                    sleep(200);
+                    sleep(600);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

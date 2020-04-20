@@ -36,8 +36,11 @@ android {
         exclude 'META-INF/LGPL2.1'
 
     }
-}
 
+}
+//ndk{
+//    abiFilters 'armeabi-v7a'
+//}
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
