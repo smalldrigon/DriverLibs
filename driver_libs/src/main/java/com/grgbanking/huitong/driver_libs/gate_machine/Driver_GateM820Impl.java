@@ -190,6 +190,7 @@ public class Driver_GateM820Impl extends IDriver_GateMachine {
     @Deprecated
     @Override
     public int closeGate(DevReturn devReturn) {
+
         MyDevReturn[] mydevReturn1 = creatMyDevReturnArray();
         int ret = IGateDev_M820.mInstance.iCloseGate(mHandle, mydevReturn1);
         filldevReturn(devReturn, mydevReturn1);
@@ -202,14 +203,14 @@ public class Driver_GateM820Impl extends IDriver_GateMachine {
 //        int ret = IGateDev_M820.mInstance.iCloseGate(mHandle, mydevReturn1);
 //        filldevReturn(devReturn, mydevReturn1);
 //
-//        if (dir == 1) {
-//            mPassTimeOutBean.setLeftopened(false);
+        if (dir == 1) {
+            mPassTimeOutBean.setOpenLeftTimes(0);
 //            getIGateMachineActionCallBack().closeLeft(ret == 0);
 //
-//        } else {
-//            mPassTimeOutBean.setRightopened(false);
+        } else {
+            mPassTimeOutBean.setOpenRightTimes(0);
 //            getIGateMachineActionCallBack().closeRight(ret == 0);
-//        }
+        }
         return 0;
     }
 
@@ -341,7 +342,7 @@ public class Driver_GateM820Impl extends IDriver_GateMachine {
                     mPassTimeOutBean.setLeftopened(res1 > 0);
 
                     mPassTimeOutBean.setOpenLeftTimes(res1);
-                    closeGate(1, mDevreturn);
+//                    closeGate(1, mDevreturn);
                     System.err.println("左过闸成功");
                     System.err.println("passageNum:" + passageNum.toString());
 
@@ -360,7 +361,7 @@ public class Driver_GateM820Impl extends IDriver_GateMachine {
                     mPassTimeOutBean.setRightopened(res1 > 0);
                     mPassTimeOutBean.setOpenRightTimes(res1);
 
-                    closeGate(0, mDevreturn);
+//                    closeGate(0, mDevreturn);
                     System.err.println("右过闸成功");
                     System.err.println("passageNum:" + passageNum.toString());
                     DatabaseInstance.mDatabaseInstance.insert(EntyType.RIGHTPASS, new RightPass(null, null, new Date().toString()));

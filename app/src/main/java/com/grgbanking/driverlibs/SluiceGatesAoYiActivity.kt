@@ -10,6 +10,7 @@ import com.grgbanking.huitong.driver_libs.database.DatabaseInstance
 import com.grgbanking.huitong.driver_libs.database.EntyType
 import com.grgbanking.huitong.driver_libs.gate_machine.DevReturn
 import com.grgbanking.huitong.driver_libs.gate_machine.Driver_GateM820Impl
+import com.grgbanking.huitong.driver_libs.gate_machine.MyDevReturn
 import com.grgbanking.huitong.driver_libs.gate_machine.TJZNGateDev_Passage_Num
 import com.grgbanking.huitong.driver_libs.interfaces.IGateMachineActionCallBack
 import com.grgbanking.huitong.driver_libs.util.LogUtil
@@ -62,6 +63,8 @@ class SluiceGatesAoYiActivity : AppCompatActivity(), IGateMachineActionCallBack 
 
     override fun passRightTimeout() {
         setText1("右通过超时")
+        ( DriverManagers.instance.driver_GateMachine as Driver_GateM820Impl).closeGate(0,DevReturn())
+
     }
 
     override fun passLeftSuccess() {
@@ -171,7 +174,7 @@ class SluiceGatesAoYiActivity : AppCompatActivity(), IGateMachineActionCallBack 
 //            setText1("关闭门$devreturn")
 
 //            testAction {
-            DriverManagers.instance.driver_GateMachine.closeGate(devreturn)
+            DriverManagers.instance.driver_GateMachine.closeGate(2,devreturn)
 //                devreturn
 //            }.subscribe {
 //                setText1("关闭门$devreturn")

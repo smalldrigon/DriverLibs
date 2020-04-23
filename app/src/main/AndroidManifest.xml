@@ -37,10 +37,10 @@
          <activity android:name="com.grgbanking.driverlibs.SluiceGatesAoYiActivity"/>
         <activity android:name="com.grgbanking.driverlibs.SluiceGatesActivity"/>
         <activity android:name="com.grgbanking.driverlibs.SocketTestActivity"/>
-        <activity android:name="com.grgbanking.driverlibs.ComplexDemoActivity"/>
         <activity android:name="com.grgbanking.driverlibs.MQTTTestActivity"/>
         <activity android:name="com.grgbanking.driverlibs.FingerTestActivity"/>
         <activity android:name="com.grgbanking.driverlibs.GreenDaoTestActivity"/>
+        <activity android:name="com.grgbanking.driverlibs.ReadTxtFileActivity"/>
         <!-- Mqtt服务 -->
         <service android:name="org.eclipse.paho.android.service.MqttService" />
         <service android:name="com.grgbanking.driverlibs.MQTTService" />

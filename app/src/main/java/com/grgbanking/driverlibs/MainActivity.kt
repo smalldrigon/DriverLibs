@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.net.wifi.WifiManager
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.support.annotation.RequiresApi
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -60,7 +61,9 @@ class MainActivity : AppCompatActivity() {
     fun initData() {
 
         mIDriver_CardReader = Driver_DeCardReaderImpl(this)
-//        mIDriver_CardReader?.open(this)
+        Handler().postDelayed({
+            mIDriver_CardReader?.open(applicationContext)
+        },1000L)
         mIDriver_FingerPrints = Driver_FingerRecongnitionImpl()
         mIDriver_FingerPrints?.open(this)
         mIDriver_ScanGun = Driver_ScanQrCodeImpl()
@@ -131,7 +134,10 @@ var inputStr:StringBuilder = StringBuilder()
             mIDriver_CardReader?.open(this)
             mIDriver_CardReader?.readIdCard(false, 2000L) {
 
-                if (it != null) setText("读取身份证：${it.name}")
+                if (it != null) {
+                    println(it.name)
+                    setText("读取身份证：${it.name}")
+                }
             }
         }
         btn_readfinger.setOnClickListener {
@@ -191,6 +197,11 @@ var inputStr:StringBuilder = StringBuilder()
         btn_fingertest.setOnClickListener {
 
             startActivity(Intent(this@MainActivity,FingerTestActivity::class.java))
+//            iv_result.setImageBitmap(BitmapUtil.createEmptyBitmap(400,400))
+        }
+        btn_readfile.setOnClickListener {
+
+            startActivity(Intent(this@MainActivity,ReadTxtFileActivity::class.java))
 //            iv_result.setImageBitmap(BitmapUtil.createEmptyBitmap(400,400))
         }
     }
