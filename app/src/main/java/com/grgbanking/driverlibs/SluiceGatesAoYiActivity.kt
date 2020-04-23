@@ -49,11 +49,11 @@ class SluiceGatesAoYiActivity : AppCompatActivity(), IGateMachineActionCallBack 
     }
 
     override fun passLeftFinish() {
-        Log.i("gong","passLeftFinish")
+        Log.i("gong", "passLeftFinish")
     }
 
     override fun passRightFinish() {
-        Log.i("gong","passRightFinish")
+        Log.i("gong", "passRightFinish")
 
     }
 
@@ -63,7 +63,10 @@ class SluiceGatesAoYiActivity : AppCompatActivity(), IGateMachineActionCallBack 
 
     override fun passRightTimeout() {
         setText1("右通过超时")
-        ( DriverManagers.instance.driver_GateMachine as Driver_GateM820Impl).closeGate(0,DevReturn())
+        (DriverManagers.instance.driver_GateMachine as Driver_GateM820Impl).closeGate(
+            0,
+            DevReturn()
+        )
 
     }
 
@@ -87,13 +90,13 @@ class SluiceGatesAoYiActivity : AppCompatActivity(), IGateMachineActionCallBack 
 
     fun setText1(str: String) {
         runOnUiThread {
-            Log.i("gong",str)
+            Log.i("gong", str)
             tv_result1.text = "结果:$str"
-         val left =    DatabaseInstance.mDatabaseInstance.countTotal(EntyType.LEFTPASS)
-         val right =    DatabaseInstance.mDatabaseInstance.countTotal(EntyType.RIGHTPASS)
-         val rightunpass =    DatabaseInstance.mDatabaseInstance.countTotal(EntyType.RIGHTUNPASS)
-         val leftunpass =    DatabaseInstance.mDatabaseInstance.countTotal(EntyType.LEFTUNPASS)
-            tv_result2.text="左过闸成功$left-右过闸成功$right--左过闸超时$leftunpass--右过闸超时$rightunpass"
+            val left = DatabaseInstance.mDatabaseInstance.countTotal(EntyType.LEFTPASS)
+            val right = DatabaseInstance.mDatabaseInstance.countTotal(EntyType.RIGHTPASS)
+            val rightunpass = DatabaseInstance.mDatabaseInstance.countTotal(EntyType.RIGHTUNPASS)
+            val leftunpass = DatabaseInstance.mDatabaseInstance.countTotal(EntyType.LEFTUNPASS)
+            tv_result2.text = "左过闸成功$left-右过闸成功$right--左过闸超时$leftunpass--右过闸超时$rightunpass"
         }
 
 
@@ -114,9 +117,11 @@ class SluiceGatesAoYiActivity : AppCompatActivity(), IGateMachineActionCallBack 
             var devreturn = DevReturn()
 //            testAction {
 //                println( "执行线程名称${Thread.currentThread().name}")
-           Log.i("gong", "i====$i")
-            ( DriverManagers.instance.driver_GateMachine as Driver_GateM820Impl).openGateLeft(devreturn,i++)
-            DriverManagers.instance.driver_GateMachine.timeout = 5
+            Log.i("gong", "i====$i")
+            (DriverManagers.instance.driver_GateMachine as Driver_GateM820Impl).openGateLeft(
+                devreturn,
+                i++
+            )
 //                devreturn
 //            }.subscribe {
 //                println( "结果线程名称${Thread.currentThread().name}")
@@ -130,7 +135,9 @@ class SluiceGatesAoYiActivity : AppCompatActivity(), IGateMachineActionCallBack 
 //                println( "执行线程名称${Thread.currentThread().name}")
             Log.i("gong", "i====$i")
 
-            ( DriverManagers.instance.driver_GateMachine as Driver_GateM820Impl).openGateRightAways(devreturn)
+            (DriverManagers.instance.driver_GateMachine as Driver_GateM820Impl).openGateRightAways(
+                devreturn
+            )
 //                devreturn
 //            }.subscribe {
 //                println( "结果线程名称${Thread.currentThread().name}")
@@ -142,7 +149,10 @@ class SluiceGatesAoYiActivity : AppCompatActivity(), IGateMachineActionCallBack 
             var devreturn = DevReturn()
 //            testAction {
 //                println( "执行线程名称${Thread.currentThread().name}")
-            ( DriverManagers.instance.driver_GateMachine as Driver_GateM820Impl).openGateRight(devreturn,i++)
+            (DriverManagers.instance.driver_GateMachine as Driver_GateM820Impl).openGateRight(
+                devreturn,
+                i++
+            )
 //                devreturn
 //            }.subscribe {
 //                println( "结果线程名称${Thread.currentThread().name}")
@@ -174,7 +184,7 @@ class SluiceGatesAoYiActivity : AppCompatActivity(), IGateMachineActionCallBack 
 //            setText1("关闭门$devreturn")
 
 //            testAction {
-            DriverManagers.instance.driver_GateMachine.closeGate(2,devreturn)
+            DriverManagers.instance.driver_GateMachine.closeGate(2, devreturn)
 //                devreturn
 //            }.subscribe {
 //                setText1("关闭门$devreturn")
@@ -220,8 +230,12 @@ class SluiceGatesAoYiActivity : AppCompatActivity(), IGateMachineActionCallBack 
             testActionAny {
                 DriverManagers.instance.driver_GateMachine.iGateMachineActionCallBack = this
                 mHhandle = DriverManagers.instance.driver_GateMachine.openLogicDevice(
-                    DriverManagers.GATEMACHINE_TYPE_M820, Contants.CONFIG_FILE_PATH, Contants.CONFIG_FILE_PATH
+                    DriverManagers.GATEMACHINE_TYPE_M820,
+                    Contants.CONFIG_FILE_PATH,
+                    Contants.CONFIG_FILE_PATH
                 )
+                DriverManagers.instance.driver_GateMachine!!.setTimeout(mHhandle,16)
+
                 devreturn
             }.subscribe {
                 setText1("初始化$devreturn")
@@ -232,7 +246,8 @@ class SluiceGatesAoYiActivity : AppCompatActivity(), IGateMachineActionCallBack 
     }
 
     fun testAction(action: () -> DevReturn): Observable<DevReturn> {
-        return Observable.create<DevReturn> { it.onNext(action()) }.observeOn(AndroidSchedulers.mainThread())
+        return Observable.create<DevReturn> { it.onNext(action()) }
+            .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
     }
 
@@ -243,7 +258,8 @@ class SluiceGatesAoYiActivity : AppCompatActivity(), IGateMachineActionCallBack 
 //            .subscribeOn(AndroidSchedulers.mainThread())
 //    }
     fun testActionAny(action: () -> Any): Observable<Any> {
-        return Observable.create<Any> { it.onNext(action()) }.observeOn(AndroidSchedulers.mainThread())
+        return Observable.create<Any> { it.onNext(action()) }
+            .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
     }
 

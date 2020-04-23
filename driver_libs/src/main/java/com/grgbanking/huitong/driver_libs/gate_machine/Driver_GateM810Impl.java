@@ -199,6 +199,14 @@ public class Driver_GateM810Impl extends IDriver_GateMachine {
         return ret;
     }
 
+    @Override
+    public void setTimeout(int p_hDevHandle, int seconds) {
+            timeout = seconds;
+    }
+volatile long timeout = 0L;
+    private long getTimeout(){
+        return timeout;
+    }
 
     @Override
     public int open(Context context) {

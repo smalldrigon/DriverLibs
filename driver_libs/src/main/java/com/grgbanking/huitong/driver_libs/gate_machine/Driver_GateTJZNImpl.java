@@ -29,7 +29,14 @@ public class Driver_GateTJZNImpl extends IDriver_GateMachine {
 
         return 0;
     }
-
+    @Override
+    public void setTimeout(int p_hDevHandle, int seconds) {
+        timeout = seconds;
+    }
+    volatile long timeout = 0L;
+    private long getTimeout(){
+        return timeout;
+    }
 
     @Override
     public int setDriverLogDir(String logPath) {

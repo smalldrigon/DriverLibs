@@ -99,4 +99,13 @@ public interface IGateDev_M820 extends Library {
 
 
     int   iSetEmergencyMode(int p_hDevHandle,int mode , MyDevReturn[] p_psStatus);
+    /**
+     * @method
+     * @description 设置超时时间（闸机如果长时间没有超时，会按照这个时间回调超时方法）
+     * @date: 2020/4/23 15:29
+     * @author: gongxiaobiao
+     * @param
+     * @return
+     */
+    int iSetTimeout(int p_hDevHandle,int timeout , MyDevReturn[] p_psStatus);
 }

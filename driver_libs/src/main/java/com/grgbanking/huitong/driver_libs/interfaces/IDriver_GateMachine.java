@@ -185,14 +185,8 @@ public abstract class IDriver_GateMachine implements IDriverBaseInterface {
      * @param seconds 单位秒
      * @return
      */
-    public void setTimeout(int seconds) {
-        this.timoutSecond = seconds;
-    }
+    public abstract void  setTimeout(int p_hDevHandle,int seconds);
 
-    public int getTimeout() {
-        return this.timoutSecond;
-    }
 
-    private int timoutSecond = 6;
 
 }

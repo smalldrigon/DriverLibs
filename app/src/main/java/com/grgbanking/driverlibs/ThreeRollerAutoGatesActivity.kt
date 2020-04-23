@@ -92,7 +92,7 @@ fun setText1(str:String){
 
 
         DriverManagers.instance.driver_GateMachine.iGateMachineActionCallBack = this
-        (DriverManagers.instance.driver_GateMachine as IDriver_GateMachine).timeout = 5
+        (DriverManagers.instance.driver_GateMachine as IDriver_GateMachine).setTimeout(mHhandle,5)
         tvn_open2.setOnClickListener {
             //打开1
              var devreturn = DevReturn()

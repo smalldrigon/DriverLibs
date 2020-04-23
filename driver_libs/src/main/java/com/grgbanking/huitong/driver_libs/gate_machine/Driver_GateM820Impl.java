@@ -101,7 +101,20 @@ public class Driver_GateM820Impl extends IDriver_GateMachine {
         return 0;
     }
 
+    /**
+     * @method
+     * @description 设置超时时间，单位秒
+     * @date: 2020/4/23 15:37
+     * @author: gongxiaobiao
+     * @param
+     * @return
+     */
+        @Override
+    public void setTimeout(int p_hDevHandle, int timeout){
+        MyDevReturn[] mydevReturn = creatMyDevReturnArray();
+        IGateDev_M820.mInstance.iSetTimeout(p_hDevHandle,timeout*1000, mydevReturn);
 
+    }
     @Override
     public int openGateLeftOnce(DevReturn devReturn) {
         MyDevReturn[] mydevReturn1 = creatMyDevReturnArray();
@@ -233,6 +246,7 @@ public class Driver_GateM820Impl extends IDriver_GateMachine {
 
         return ret;
     }
+
 
 
     @Override
