@@ -10,16 +10,17 @@ import com.grgbanking.huitong.driver_libs.database.DatabaseInstance;
 import com.grgbanking.huitong.driver_libs.database.EntyType;
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_GateMachine;
 import com.grgbanking.huitong.driver_libs.interfaces.IGateMachineActionCallBack;
+import com.grgbanking.huitong.driver_libs.util.SystemUtil;
 
 import java.util.Date;
 
-import javax.xml.parsers.FactoryConfigurationError;
 
 /**
  * Author: gongxiaobiao
  * Date: on 2019/9/10 15:52
  * Email: 904430803@qq.com
- * Description:  奥义机芯会自动关门，不需要手动调用方法，超时时间目前也是在机芯上设置默认五秒
+ * Description:  奥义机芯会自动关门，不需要手动调用方法，超时时间目前也是在机芯上设置默认五秒，
+ * native层逻辑超时时间可自定义设置（即开门成功后一直未反馈过闸超时，此时会使用这个超时设置的时间）
  */
 public class Driver_GateM820Impl extends IDriver_GateMachine {
     private int mHandle = -1;
@@ -102,19 +103,20 @@ public class Driver_GateM820Impl extends IDriver_GateMachine {
     }
 
     /**
+     * @param
+     * @return
      * @method
      * @description 设置超时时间，单位秒
      * @date: 2020/4/23 15:37
      * @author: gongxiaobiao
-     * @param
-     * @return
      */
-        @Override
-    public void setTimeout(int p_hDevHandle, int timeout){
+    @Override
+    public void setTimeout(int p_hDevHandle, int timeout) {
         MyDevReturn[] mydevReturn = creatMyDevReturnArray();
-        IGateDev_M820.mInstance.iSetTimeout(p_hDevHandle,timeout*1000, mydevReturn);
+        IGateDev_M820.mInstance.iSetTimeout(p_hDevHandle, timeout * 1000, mydevReturn);
 
     }
+
     @Override
     public int openGateLeftOnce(DevReturn devReturn) {
         MyDevReturn[] mydevReturn1 = creatMyDevReturnArray();
@@ -166,7 +168,6 @@ public class Driver_GateM820Impl extends IDriver_GateMachine {
 //        int ret = IGateDev_M810.mInstance.iOpenGate(mHandle, 1, 0, mydevReturn1);
         int ret = openGate(mHandle, 1, devReturn);
         filldevReturn(devReturn, mydevReturn1);
-
         return ret;
     }
 
@@ -175,7 +176,6 @@ public class Driver_GateM820Impl extends IDriver_GateMachine {
         MyDevReturn[] mydevReturn1 = creatMyDevReturnArray();
         int ret = openGate(mHandle, 2, devReturn);
         filldevReturn(devReturn, mydevReturn1);
-
         return ret;
     }
 
@@ -248,7 +248,6 @@ public class Driver_GateM820Impl extends IDriver_GateMachine {
     }
 
 
-
     @Override
     public int open(Context context) {
         return 0;
@@ -282,11 +281,6 @@ public class Driver_GateM820Impl extends IDriver_GateMachine {
         private DevReturn mDevreturn = new DevReturn();
         private MyDevReturn[] mydevReturn = (MyDevReturn[]) new MyDevReturn().toArray(8);
         private TJZNGateDev_Passage_Num.ByReference lastTimepassageNum = new TJZNGateDev_Passage_Num.ByReference();
-
-        //延迟连续开门
-//        private void delayContinuousOpen(PassTimeOutBean bean){
-//            if (bean.getLeftTimeOut())
-//        }
 
         public GetPassByNumThread(IGateMachineActionCallBack callBack, IGateDev_M820 gatemachine, int handle) {
             this.mCallBack = callBack;
@@ -360,7 +354,7 @@ public class Driver_GateM820Impl extends IDriver_GateMachine {
                     System.err.println("左过闸成功");
                     System.err.println("passageNum:" + passageNum.toString());
 
-                    DatabaseInstance.mDatabaseInstance.insert(EntyType.LEFTPASS, new LeftPass(null, null, new Date().toString()));
+                    DatabaseInstance.mDatabaseInstance.insert(EntyType.LEFTPASS, new LeftPass(null, null, SystemUtil.getYMD()));
 
                 }
                 if (passageNum.passeNumR - lastTimepassageNum.passeNumR >= 1) {
@@ -378,7 +372,7 @@ public class Driver_GateM820Impl extends IDriver_GateMachine {
 //                    closeGate(0, mDevreturn);
                     System.err.println("右过闸成功");
                     System.err.println("passageNum:" + passageNum.toString());
-                    DatabaseInstance.mDatabaseInstance.insert(EntyType.RIGHTPASS, new RightPass(null, null, new Date().toString()));
+                    DatabaseInstance.mDatabaseInstance.insert(EntyType.RIGHTPASS, new RightPass(null, null, SystemUtil.getYMD()));
 
                 }
                 if (passageNum.timeoutNumL - lastTimepassageNum.timeoutNumL >= 1) {
@@ -391,9 +385,9 @@ public class Driver_GateM820Impl extends IDriver_GateMachine {
                     }
                     mPassTimeOutBean.setLeftopened(res1 > 0);
                     mPassTimeOutBean.setOpenLeftTimes(res1);
-                    System.err.println("左人数判断超时回调"+"res:"+res +" res1:"+res1);
+                    System.err.println("左人数判断超时回调" + "res:" + res + " res1:" + res1);
                     System.err.println("passageNum:" + passageNum.toString());
-                    DatabaseInstance.mDatabaseInstance.insert(EntyType.LEFTUNPASS, new LeftUnPass(null, null, new Date().toString()));
+                    DatabaseInstance.mDatabaseInstance.insert(EntyType.LEFTUNPASS, new LeftUnPass(null, null, SystemUtil.getYMD()));
 
 
                 }
@@ -409,7 +403,7 @@ public class Driver_GateM820Impl extends IDriver_GateMachine {
                     mPassTimeOutBean.setOpenRightTimes(res1);
                     System.err.println("右人数判断超时回调");
                     System.err.println("passageNum:" + passageNum.toString());
-                    DatabaseInstance.mDatabaseInstance.insert(EntyType.RIGHTUNPASS, new RightUnPass(null, null, new Date().toString()));
+                    DatabaseInstance.mDatabaseInstance.insert(EntyType.RIGHTUNPASS, new RightUnPass(null, null, SystemUtil.getYMD()));
 
                 }
 //                System.err.println("passageNum:"+passageNum.toString());

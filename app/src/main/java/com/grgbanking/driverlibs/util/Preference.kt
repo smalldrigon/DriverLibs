@@ -1,4 +1,4 @@
-package com.grgbanking.baselibrary.util
+package com.grgbanking.driverlibs.util
 
 import android.annotation.SuppressLint
 import android.content.Context

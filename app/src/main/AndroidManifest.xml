@@ -12,6 +12,8 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+<!--    <uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW"/>-->
 
     <permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
     <!--<permission android:name="android.permission.ACCESSS_SUPERUSER"/>-->
@@ -41,6 +43,9 @@
         <activity android:name="com.grgbanking.driverlibs.FingerTestActivity"/>
         <activity android:name="com.grgbanking.driverlibs.GreenDaoTestActivity"/>
         <activity android:name="com.grgbanking.driverlibs.ReadTxtFileActivity"/>
+        <activity android:name="com.grgbanking.driverlibs.TwoScreenTestActivity"/>
+        <activity android:name="com.grgbanking.driverlibs.NativeActivirt"/>
+        <activity android:name="com.grgbanking.driverlibs.WebviewTestActivity"/>
         <!-- Mqtt服务 -->
         <service android:name="org.eclipse.paho.android.service.MqttService" />
         <service android:name="com.grgbanking.driverlibs.MQTTService" />

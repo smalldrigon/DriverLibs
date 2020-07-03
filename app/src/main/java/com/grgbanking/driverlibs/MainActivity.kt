@@ -1,11 +1,13 @@
 package com.grgbanking.driverlibs
 
+import android.app.NativeActivity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.wifi.WifiManager
 import android.os.Build
 import android.os.Bundle
+import android.os.Environment
 import android.os.Handler
 import android.support.annotation.RequiresApi
 import android.support.v7.app.AppCompatActivity
@@ -22,9 +24,12 @@ import com.grgbanking.huitong.driver_libs.interfaces.IDriver_CardReader
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_FingerPrints
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_ScanGun
 import com.grgbanking.huitong.driver_libs.scan_qr_code.Driver_ScanQrCodeImpl
+import com.grgbanking.huitong.driver_libs.util.FileUtil
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_main1.*
+import java.io.File
 import java.lang.StringBuilder
+ import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
     var disposedCopyfIle: Disposable? = null
@@ -60,11 +65,11 @@ class MainActivity : AppCompatActivity() {
 
     fun initData() {
 
-        mIDriver_CardReader = Driver_DeCardReaderImpl(this)
+//        mIDriver_CardReader = Driver_DeCardReaderImpl(this)
         Handler().postDelayed({
             mIDriver_CardReader?.open(applicationContext)
         },1000L)
-        mIDriver_FingerPrints = Driver_FingerRecongnitionImpl()
+//        mIDriver_FingerPrints = Driver_FingerRecongnitionImpl()
         mIDriver_FingerPrints?.open(this)
         mIDriver_ScanGun = Driver_ScanQrCodeImpl()
 
@@ -202,6 +207,29 @@ var inputStr:StringBuilder = StringBuilder()
         btn_readfile.setOnClickListener {
 
             startActivity(Intent(this@MainActivity,ReadTxtFileActivity::class.java))
+//            iv_result.setImageBitmap(BitmapUtil.createEmptyBitmap(400,400))
+        }
+        btn_twoscreentest.setOnClickListener {
+
+            startActivity(Intent(this@MainActivity,TwoScreenTestActivity::class.java))
+//            iv_result.setImageBitmap(BitmapUtil.createEmptyBitmap(400,400))
+        }
+        btn_openwebview.setOnClickListener {
+            val str =   FileUtil.readFile(File(
+                "${Environment.getExternalStorageDirectory()}${File.separator}source.txt"
+            ))
+            var arrayList  = arrayListOf<String>()
+            var res = str!!.split(",").toList().map {
+                    arrayList.add(it)
+            }
+            var intent = Intent(this,WebviewTestActivity::class.java)
+            intent.putStringArrayListExtra("data", arrayList)
+            startActivity(intent)
+
+        }
+        btn_jnitest.setOnClickListener {
+
+            startActivity(Intent(this@MainActivity,NativeActivirt::class.java))
 //            iv_result.setImageBitmap(BitmapUtil.createEmptyBitmap(400,400))
         }
     }

@@ -9,9 +9,11 @@ package com.grgbanking.driverlibs;
 class nativeUtil {
     static  {
 
-            System.loadLibrary("hello_jni_world");
+            System.loadLibrary("JniFace");
 
     }
 
-      public native void jniIntArratToString(int[] intParams);
+
+      public native void test(int[] intParams);
+      public native int getnumber();
 }

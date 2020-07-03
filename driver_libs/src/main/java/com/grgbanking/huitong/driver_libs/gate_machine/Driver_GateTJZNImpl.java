@@ -10,6 +10,7 @@ import com.grgbanking.huitong.driver_libs.database.EntyType;
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_GateMachine;
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_GateMachine_TJZN;
 import com.grgbanking.huitong.driver_libs.interfaces.IGateMachineActionCallBack;
+import com.grgbanking.huitong.driver_libs.util.SystemUtil;
 
 import java.util.Date;
 
@@ -312,7 +313,7 @@ public class Driver_GateTJZNImpl extends IDriver_GateMachine {
                     mPassTimeOutBean.setLeftopenSuccess(false);
                     closeGate(1,mDevreturn);
                     System.err.println("过闸成功");
-                    DatabaseInstance.mDatabaseInstance.insert(EntyType.LEFTPASS,new LeftPass(null,null,new Date().toString()));
+                    DatabaseInstance.mDatabaseInstance.insert(EntyType.LEFTPASS,new LeftPass(null,null, SystemUtil.getYMD()));
 
                     System.err.println("passageNum:"+passageNum.toString());
                 }
@@ -320,7 +321,7 @@ public class Driver_GateTJZNImpl extends IDriver_GateMachine {
                     mCallBack.passRightSuccess();
                     mPassTimeOutBean.setRightopenSuccess(false);
                     closeGate(0,mDevreturn);
-                    DatabaseInstance.mDatabaseInstance.insert(EntyType.RIGHTPASS,new RightPass(null,null,new Date().toString()));
+                    DatabaseInstance.mDatabaseInstance.insert(EntyType.RIGHTPASS,new RightPass(null,null,SystemUtil.getYMD()));
 
                     System.err.println("过闸成功");
                     System.err.println("passageNum:"+passageNum.toString());
@@ -330,7 +331,7 @@ public class Driver_GateTJZNImpl extends IDriver_GateMachine {
                     mPassTimeOutBean.setLeftopenSuccess(false);
                     System.err.println("人数判断超时回调");
                     System.err.println("passageNum:"+passageNum.toString());
-                    DatabaseInstance.mDatabaseInstance.insert(EntyType.LEFTUNPASS,new LeftUnPass(null,null,new Date().toString()));
+                    DatabaseInstance.mDatabaseInstance.insert(EntyType.LEFTUNPASS,new LeftUnPass(null,null,SystemUtil.getYMD()));
 
 
                 }
@@ -339,7 +340,7 @@ public class Driver_GateTJZNImpl extends IDriver_GateMachine {
                     mPassTimeOutBean.setRightopenSuccess(false);
                     System.err.println("人数判断超时回调");
                     System.err.println("passageNum:"+passageNum.toString());
-                    DatabaseInstance.mDatabaseInstance.insert(EntyType.RIGHTUNPASS,new RightUnPass(null,null,new Date().toString()));
+                    DatabaseInstance.mDatabaseInstance.insert(EntyType.RIGHTUNPASS,new RightUnPass(null,null,SystemUtil.getYMD()));
 
                 }
 //                System.err.println("passageNum:"+passageNum.toString());

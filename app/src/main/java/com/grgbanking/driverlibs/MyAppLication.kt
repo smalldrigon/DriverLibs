@@ -1,7 +1,8 @@
 package com.grgbanking.driverlibs
 
 import android.os.Environment
- import com.gdmcmc.simplecharge.base.BaseApplication
+import android.support.multidex.MultiDex
+import com.gdmcmc.simplecharge.base.BaseApplication
    import com.grgbanking.baselibrary.util.DamonDiskLogAdapter
 import com.grgbanking.baselibrary.util.LogUtil
 import com.grgbanking.driverlibs.util.CrashHandler
@@ -20,6 +21,7 @@ class MyAppLication : BaseApplication() {
     var mMainApplication: MyAppLication? = null
     override fun onCreate() {
         super.onCreate()
+        MultiDex.install(this)
 //        if (LeakCanary.isInAnalyzerProcess(this)) {
         // This process is dedicated to LeakCanary for heap analysis.
 //             You should not init your app in this process.

@@ -9,6 +9,7 @@ import com.grgbanking.huitong.driver_libs.database.DatabaseInstance;
 import com.grgbanking.huitong.driver_libs.database.EntyType;
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_GateMachine;
 import com.grgbanking.huitong.driver_libs.interfaces.IGateMachineActionCallBack;
+import com.grgbanking.huitong.driver_libs.util.SystemUtil;
 
 import java.util.Date;
 
@@ -312,7 +313,7 @@ volatile long timeout = 0L;
                     closeGate(1,mDevreturn);
                     System.err.println("过闸成功");
                     System.err.println("passageNum:"+passageNum.toString());
-                    DatabaseInstance.mDatabaseInstance.insert(EntyType.LEFTPASS,new LeftPass(null,null,new Date().toString()));
+                    DatabaseInstance.mDatabaseInstance.insert(EntyType.LEFTPASS,new LeftPass(null,null, SystemUtil.getYMD()));
 
                 }
                 if (passageNum.passeNumR - lastTimepassageNum.passeNumR >= 1) {
@@ -321,7 +322,7 @@ volatile long timeout = 0L;
                     closeGate(0,mDevreturn);
                     System.err.println("过闸成功");
                     System.err.println("passageNum:"+passageNum.toString());
-                    DatabaseInstance.mDatabaseInstance.insert(EntyType.RIGHTPASS,new RightPass(null,null,new Date().toString()));
+                    DatabaseInstance.mDatabaseInstance.insert(EntyType.RIGHTPASS,new RightPass(null,null,SystemUtil.getYMD()));
 
                 }
                 if (passageNum.timeoutNumL - lastTimepassageNum.timeoutNumL >= 1) {
@@ -329,7 +330,7 @@ volatile long timeout = 0L;
                     mPassTimeOutBean.setLeftopenSuccess(false);
                     System.err.println("人数判断超时回调");
                     System.err.println("passageNum:"+passageNum.toString());
-                    DatabaseInstance.mDatabaseInstance.insert(EntyType.LEFTUNPASS,new LeftUnPass(null,null,new Date().toString()));
+                    DatabaseInstance.mDatabaseInstance.insert(EntyType.LEFTUNPASS,new LeftUnPass(null,null,SystemUtil.getYMD()));
 
 
                 }
@@ -338,7 +339,7 @@ volatile long timeout = 0L;
                     mPassTimeOutBean.setRightopenSuccess(false);
                     System.err.println("人数判断超时回调");
                     System.err.println("passageNum:"+passageNum.toString());
-                    DatabaseInstance.mDatabaseInstance.insert(EntyType.RIGHTUNPASS,new RightUnPass(null,null,new Date().toString()));
+                    DatabaseInstance.mDatabaseInstance.insert(EntyType.RIGHTUNPASS,new RightUnPass(null,null,SystemUtil.getYMD()));
 
                 }
 //                System.err.println("passageNum:"+passageNum.toString());

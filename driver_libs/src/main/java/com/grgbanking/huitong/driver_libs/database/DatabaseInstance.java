@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.grgbanking.huitong.driver_libs.bean.*;
 import com.grgbanking.huitong.driver_libs.interfaces.IDatabase;
+import com.grgbanking.huitong.driver_libs.util.SystemUtil;
+
 import org.greenrobot.greendao.AbstractDao;
 
 import java.text.ParseException;
@@ -244,8 +246,8 @@ public class DatabaseInstance implements IDatabase {
     @Override
     public long countToday(EntyType type) {
         long result = 0;
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        String today = format.format(new Date());
+
+        String today = SystemUtil.getYMD();
 
         switch (type) {
             case LEFTPASS:
@@ -253,7 +255,8 @@ public class DatabaseInstance implements IDatabase {
                 System.out.println(today);
                 result = dao.
                         queryBuilder().
-                        where(LeftPassDao.Properties.TimeStamp.like("%" + today + "%")).
+                        where(LeftPassDao.Properties.TimeStamp.like("%" + today + "%"))
+                       .
                         list().
                         size();
                 break;

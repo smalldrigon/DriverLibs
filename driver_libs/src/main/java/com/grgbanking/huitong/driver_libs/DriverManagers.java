@@ -75,6 +75,7 @@ public class DriverManagers {
     }
 
     public static class Builder {
+
         private IDriver_CardReader mIDriver_CardReader = null;
         private IDriver_FingerPrints mIDriver_FingerPrints = null;
         private IDriver_ScanGun mIDriver_ScanGun = null;
@@ -83,7 +84,6 @@ public class DriverManagers {
         private IDatabase mIDatabase = null;
         private    String mMachineType = null;
         public Builder() {
-
         }
 
         public Builder setContext(Context context) {

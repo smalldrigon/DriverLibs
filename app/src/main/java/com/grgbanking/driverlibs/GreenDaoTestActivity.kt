@@ -2,10 +2,12 @@ package com.grgbanking.driverlibs
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.grgbanking.baselibrary.util.SystemUtils
 import com.grgbanking.huitong.driver_libs.bean.LeftPass
 import com.grgbanking.huitong.driver_libs.bean.LeftPassDao
 import com.grgbanking.huitong.driver_libs.database.DatabaseInstance
 import com.grgbanking.huitong.driver_libs.database.EntyType
+import com.grgbanking.huitong.driver_libs.util.SystemUtil
 import kotlinx.android.synthetic.main.layout_greendaotest_activity.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -34,7 +36,7 @@ class GreenDaoTestActivity : AppCompatActivity() {
                 times--
             } else {
                 times--
-                mInstance!!.insert(EntyType.LEFTPASS, LeftPass("$times", null, Date().toString()))
+                mInstance!!.insert(EntyType.LEFTPASS, LeftPass("$times", null, SystemUtil.getYMD()))
             }
 
         }

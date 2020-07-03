@@ -41,15 +41,12 @@ public class TJZNGateDev_Passage_Num extends Structure{
 
     protected List getFieldOrder()
     {
-        return Arrays.asList(new String[]{
-                "passeNumL",
+        return Arrays.asList("passeNumL",
                 "unPassNumL",
                 "timeoutNumL",
                 "passeNumR",
                 "unPassNumR",
-                "timeoutNumR",
-
-        });
+                "timeoutNumR");
     }
 
 }
