@@ -191,6 +191,7 @@ var inputStr:StringBuilder = StringBuilder()
 
         btn_mqtt.setOnClickListener {
 
+
             startActivity(Intent(this@MainActivity,MQTTTestActivity::class.java))
 //            iv_result.setImageBitmap(BitmapUtil.createEmptyBitmap(400,400))
         }
