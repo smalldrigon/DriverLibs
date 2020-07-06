@@ -1,0 +1,9 @@
+# ninja log v5
+1	916	611149634	CMakeFiles/JniFace.dir/com_grgbanking_driverlibs_nativeUtil.cpp.o	6922564b711dab70
+918	1865	611149634	D:/huitong/work/DriverLibsDemo/app/build/intermediates/cmake/debug/obj/x86_64/libJniFace.so	6a71be7665e2c9ca
+0	236	0	clean	da6882ba3c09f1ba
+17	925	611838006	CMakeFiles/JniFace.dir/com_grgbanking_driverlibs_nativeUtil.cpp.o	6922564b711dab70
+925	2022	611838007	D:/huitong/work/DriverLibsDemo/app/build/intermediates/cmake/debug/obj/x86_64/libJniFace.so	6a71be7665e2c9ca
+0	248	0	clean	da6882ba3c09f1ba
+4	1007	611838614	CMakeFiles/JniFace.dir/com_grgbanking_driverlibs_nativeUtil.cpp.o	6922564b711dab70
+1008	2034	611838615	D:/huitong/work/DriverLibsDemo/app/build/intermediates/cmake/debug/obj/x86_64/libJniFace.so	6a71be7665e2c9ca

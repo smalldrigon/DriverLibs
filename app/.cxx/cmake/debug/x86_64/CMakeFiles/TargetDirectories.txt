@@ -1,0 +1,3 @@
+D:/huitong/work/DriverLibsDemo/app/.cxx/cmake/debug/x86_64/CMakeFiles/JniFace.dir
+D:/huitong/work/DriverLibsDemo/app/.cxx/cmake/debug/x86_64/CMakeFiles/edit_cache.dir
+D:/huitong/work/DriverLibsDemo/app/.cxx/cmake/debug/x86_64/CMakeFiles/rebuild_cache.dir
