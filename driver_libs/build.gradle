@@ -2,7 +2,9 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'com.github.dcendents.android-maven'
 
+group='com.github.smalldrigon'
 android {
     compileSdkVersion rootProject.ext.android.androidCompileSdkVersion
     buildToolsVersion rootProject.ext.android.androidBuildToolsVersion
