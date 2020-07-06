@@ -1,0 +1,18 @@
+{
+  "buildFiles": [
+    "D:\\Android\\Sdk\\ndk\\21.0.6113669\\build\\cmake\\android.toolchain.cmake",
+    "D:\\Android\\Sdk\\ndk\\21.0.6113669\\build\\cmake\\platforms.cmake",
+    "D:\\huitong\\work\\DriverLibsDemo\\app\\src\\main\\java\\jni\\CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "D:\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\cmake.exe --build \"D:\\huitong\\work\\DriverLibsDemo\\app\\.externalNativeBuild\\cmake\\release\\x86\" --target clean"
+  ],
+  "libraries": {
+    "JniFace-Release-x86": {
+      "artifactName": "JniFace",
+      "buildCommand": "D:\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\cmake.exe --build \"D:\\huitong\\work\\DriverLibsDemo\\app\\.externalNativeBuild\\cmake\\release\\x86\" --target JniFace",
+      "abi": "x86",
+      "output": "D:\\huitong\\work\\DriverLibsDemo\\app\\build\\intermediates\\cmake\\release\\obj\\x86\\libJniFace.so"
+    }
+  }
+}

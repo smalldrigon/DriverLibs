@@ -1,0 +1,8 @@
+Executable : D:\Android\Sdk\cmake\3.10.2.4988404\bin\cmake.exe
+arguments : 
+--build
+D:\huitong\work\DriverLibsDemo\app\.externalNativeBuild\cmake\debug\x86_64
+--target
+JniFace
+jvmArgs : 
+

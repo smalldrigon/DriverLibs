@@ -18,21 +18,21 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        externalNativeBuild {
-            cmake {
-                cppFlags ""
-            }
-        }
+//        externalNativeBuild {
+//            cmake {
+//                cppFlags ""
+//            }
+//        }
         multiDexEnabled true
     }
 
-    externalNativeBuild {
-        cmake {
-
-            path "src/main/java/jni/CMakeLists.txt"
-            version "3.10.2"
-        }
-    }
+//    externalNativeBuild {
+//        cmake {
+//
+//            path "src/main/java/jni/CMakeLists.txt"
+//            version "3.10.2"
+//        }
+//    }
 
 
     buildTypes {
