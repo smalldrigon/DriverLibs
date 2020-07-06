@@ -1,7 +1,7 @@
 [
   {
     "level": "INFO",
-    "message": "Start JSON generation. Platform version: 17 min SDK version: x86_64",
+    "message": "Start JSON generation. Platform version: 21 min SDK version: x86_64",
     "file": "D:\\huitong\\work\\DriverLibsDemo\\app\\src\\main\\java\\jni\\CMakeLists.txt",
     "tag": "release|x86_64"
   },

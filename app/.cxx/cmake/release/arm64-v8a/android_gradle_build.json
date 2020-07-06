@@ -1,12 +1,11 @@
 {
   "stringTable": {
     "0": "D:/huitong/work/DriverLibsDemo/app/.cxx/cmake/release/arm64-v8a",
-    "1": "--target=aarch64-none-linux-android21 --gcc-toolchain=D:/Android/Sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Android/Sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/windows-x86_64/sysroot -DJniFace_EXPORTS -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -O2 -DNDEBUG -fPIC"
+    "1": "--target=aarch64-none-linux-android --gcc-toolchain=D:/Android/Sdk/ndk/android-ndk-r16b/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64 --sysroot=D:/Android/Sdk/ndk/android-ndk-r16b/sysroot -DJniFace_EXPORTS -isystem D:/Android/Sdk/ndk/android-ndk-r16b/sources/cxx-stl/gnu-libstdc++/4.9/include -isystem D:/Android/Sdk/ndk/android-ndk-r16b/sources/cxx-stl/gnu-libstdc++/4.9/libs/arm64-v8a/include -isystem D:/Android/Sdk/ndk/android-ndk-r16b/sources/cxx-stl/gnu-libstdc++/4.9/include/backward -isystem D:/Android/Sdk/ndk/android-ndk-r16b/sysroot/usr/include/aarch64-linux-android -D__ANDROID_API__=21 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -O2 -DNDEBUG -fPIC"
   },
   "buildFiles": [
-    "D:\\Android\\Sdk\\ndk\\21.0.6113669\\build\\cmake\\android.toolchain.cmake",
-    "D:\\Android\\Sdk\\ndk\\21.0.6113669\\build\\cmake\\platforms.cmake",
-    "D:\\huitong\\work\\DriverLibsDemo\\app\\src\\main\\java\\jni\\CMakeLists.txt"
+    "D:\\huitong\\work\\DriverLibsDemo\\app\\src\\main\\java\\jni\\CMakeLists.txt",
+    "D:\\Android\\Sdk\\ndk\\android-ndk-r16b\\build\\cmake\\android.toolchain.cmake"
   ],
   "cleanCommands": [
     "D:\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"D:\\huitong\\work\\DriverLibsDemo\\app\\.cxx\\cmake\\release\\arm64-v8a\" clean"
@@ -16,7 +15,7 @@
     "JniFace-Release-arm64-v8a": {
       "buildCommand": "D:\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"D:\\huitong\\work\\DriverLibsDemo\\app\\.cxx\\cmake\\release\\arm64-v8a\" JniFace",
       "buildType": "release",
-      "toolchain": "206170414",
+      "toolchain": "463319260",
       "abi": "arm64-v8a",
       "artifactName": "JniFace",
       "files": [
@@ -31,8 +30,8 @@
     }
   },
   "toolchains": {
-    "206170414": {
-      "cppCompilerExecutable": "D:\\Android\\Sdk\\ndk\\21.0.6113669\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
+    "463319260": {
+      "cppCompilerExecutable": "D:\\Android\\Sdk\\ndk\\android-ndk-r16b\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
     }
   },
   "cFileExtensions": [],
