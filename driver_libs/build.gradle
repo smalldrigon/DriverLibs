@@ -6,6 +6,9 @@ apply plugin: 'org.greenrobot.greendao'
 android {
     compileSdkVersion rootProject.ext.android.androidCompileSdkVersion
     buildToolsVersion rootProject.ext.android.androidBuildToolsVersion
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
+
     defaultConfig {
         minSdkVersion rootProject.ext.android.androidMinSdkVersion
         targetSdkVersion rootProject.ext.android.androidTargetSdkVersion
