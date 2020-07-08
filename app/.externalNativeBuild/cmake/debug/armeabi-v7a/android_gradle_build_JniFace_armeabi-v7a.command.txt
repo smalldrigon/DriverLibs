@@ -1,8 +1,0 @@
-Executable : D:\Android\Sdk\cmake\3.10.2.4988404\bin\cmake.exe
-arguments : 
---build
-D:\huitong\work\DriverLibsDemo\app\.externalNativeBuild\cmake\debug\armeabi-v7a
---target
-JniFace
-jvmArgs : 
-

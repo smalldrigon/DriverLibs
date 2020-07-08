@@ -1,7 +1,0 @@
-[
-{
-  "directory": "D:/huitong/work/DriverLibsDemo/app/.cxx/cmake/debug/x86",
-  "command": "D:\\Android\\Sdk\\ndk\\android-ndk-r16b\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=i686-none-linux-android --gcc-toolchain=D:/Android/Sdk/ndk/android-ndk-r16b/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=D:/Android/Sdk/ndk/android-ndk-r16b/sysroot  -DJniFace_EXPORTS -isystem D:/Android/Sdk/ndk/android-ndk-r16b/sources/cxx-stl/gnu-libstdc++/4.9/include -isystem D:/Android/Sdk/ndk/android-ndk-r16b/sources/cxx-stl/gnu-libstdc++/4.9/libs/x86/include -isystem D:/Android/Sdk/ndk/android-ndk-r16b/sources/cxx-stl/gnu-libstdc++/4.9/include/backward  -isystem D:/Android/Sdk/ndk/android-ndk-r16b/sysroot/usr/include/i686-linux-android -D__ANDROID_API__=17 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security   -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles\\JniFace.dir\\com_grgbanking_driverlibs_nativeUtil.cpp.o -c D:\\huitong\\work\\DriverLibsDemo\\app\\src\\main\\java\\jni\\com_grgbanking_driverlibs_nativeUtil.cpp",
-  "file": "D:\\huitong\\work\\DriverLibsDemo\\app\\src\\main\\java\\jni\\com_grgbanking_driverlibs_nativeUtil.cpp"
-}
-]
