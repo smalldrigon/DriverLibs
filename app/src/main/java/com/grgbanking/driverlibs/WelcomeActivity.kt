@@ -55,6 +55,7 @@ class WelcomeActivity : AppCompatActivity() {
 
                 override fun onFailed(error: String?) {
                     println("复制失败$error")
+
                     LogUtil.i(Contants.LOGTAG,"复制初始化文件失败$error")
                     throw FileNotFoundException("复制初始化文件失败")
                 }
