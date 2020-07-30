@@ -1,13 +1,12 @@
 package com.grgbanking.huitong.driver_libs;
 
 import android.content.Context;
-import android.os.Build;
+
 import com.grgbanking.huitong.driver_libs.card_reader.Driver_DeCardReaderImpl;
-import com.grgbanking.huitong.driver_libs.database.DatabaseInstance;
 import com.grgbanking.huitong.driver_libs.fingerprints.Driver_FingerRecongnitionImpl;
 import com.grgbanking.huitong.driver_libs.gate_machine.GateMachineFactory;
 import com.grgbanking.huitong.driver_libs.interfaces.*;
-import com.grgbanking.huitong.driver_libs.scan_qr_code.Driver_ScanQrCodeImpl;
+import com.grgbanking.huitong.driver_libs.scan_qr_code.Driver_ScanQrCodeImpl_usb;
 
 /**
  * Author: gongxiaobiao
@@ -118,10 +117,27 @@ public class DriverManagers {
          * @date: 2019/9/5 11:54
          * @author: gongxiaobiao
          */
+        @Deprecated
         public Builder setScanGun(String scanGunType) {
             switch (scanGunType) {
                 case SACNGUN_TYPE_ZD7100:
-                    mIDriver_ScanGun = new Driver_ScanQrCodeImpl();
+                    mIDriver_ScanGun = new Driver_ScanQrCodeImpl_usb();
+                    break;
+            }
+            return this;
+        }
+        /**
+         * @param connectType  //连接方式 usb 还是串口
+         * @return
+         * @method
+         * @description 设置扫码枪类型
+         * @date: 2019/9/5 11:54
+         * @author: gongxiaobiao
+         */
+        public Builder setScanGun(String scanGunType,String connectType) {
+            switch (scanGunType) {
+                case SACNGUN_TYPE_ZD7100:
+                    mIDriver_ScanGun = new Driver_ScanQrCodeImpl_usb();
                     break;
             }
             return this;

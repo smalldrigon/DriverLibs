@@ -1,0 +1,7 @@
+[
+{
+  "directory": "D:/huitong/work/DriverLibsDemo/SerialPortLibrary/.cxx/cmake/release/x86_64",
+  "command": "D:\\Android\\Sdk\\ndk\\android-ndk-r16b\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe --target=x86_64-none-linux-android --gcc-toolchain=D:/Android/Sdk/ndk/android-ndk-r16b/toolchains/x86_64-4.9/prebuilt/windows-x86_64 --sysroot=D:/Android/Sdk/ndk/android-ndk-r16b/sysroot -DSerialPort_EXPORTS  -isystem D:/Android/Sdk/ndk/android-ndk-r16b/sysroot/usr/include/x86_64-linux-android -D__ANDROID_API__=21 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security  -O2 -DNDEBUG  -fPIC   -o CMakeFiles\\SerialPort.dir\\SerialPort.c.o   -c D:\\huitong\\work\\DriverLibsDemo\\SerialPortLibrary\\src\\main\\cpp\\SerialPort.c",
+  "file": "D:\\huitong\\work\\DriverLibsDemo\\SerialPortLibrary\\src\\main\\cpp\\SerialPort.c"
+}
+]

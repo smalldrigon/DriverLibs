@@ -75,8 +75,8 @@ object LogUtil {
         xml("",name,args)
     }
     fun getLineAndMethod(): String {
-        var s = Throwable().getStackTrace()[3];
-        var str = s.getFileName() + "--" + s.getMethodName() + "第" + s.getLineNumber() + "行"
-        return "$str"
+//        var s = Throwable().getStackTrace()[3];
+//        var str = s.getFileName() + "--" + s.getMethodName() + "第" + s.getLineNumber() + "行"
+        return ""
     }
 }

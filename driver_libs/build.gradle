@@ -82,6 +82,7 @@ dependencies {
     api files('libs/dc_mate_201908091132.jar')
     api files('libs/jna-min.jar')
     api files('libs/jna-platform.jar')
+   api project(':SerialPortLibrary')
     implementation rootProject.ext.greenDaoLibs
  }
 repositories {

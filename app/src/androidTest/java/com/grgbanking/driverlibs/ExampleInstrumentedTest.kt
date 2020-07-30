@@ -3,6 +3,7 @@ package com.grgbanking.driverlibs
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
 import com.grgbanking.baselibrary.util.SystemUtils
+import com.grgbanking.huitong.driver_libs.util.InstallSilent
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -23,6 +24,7 @@ class ExampleInstrumentedTest {
         println("---------")
         println(SystemUtils.getDeviceId(appContext))
         println(SystemUtils.getDeviceId1(appContext))
+        InstallSilent.execRootCommand(listOf("cd /dev","ls -l"),false,false)
 //        assertEquals("com.grgbanking.driverlibsdemo", appContext.packageName)
     }
 }

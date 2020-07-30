@@ -1,54 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools" package="com.grgbanking.driverlibs">
-     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+        xmlns:tools="http://schemas.android.com/tools"
+        package="com.grgbanking.driverlibs">
+    <uses-feature
+            android:name="android.hardware.usb.host"
+            android:required="true" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-<!--    <uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW"/>-->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- <uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW"/> -->
+    <permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 
-    <permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
-    <!--<permission android:name="android.permission.ACCESSS_SUPERUSER"/>-->
-
-    <!--<uses-permission android:name="android.permission.ACCESSS_SUPERUSER"/>-->
     <application
-            android:name="com.grgbanking.driverlibs.MyAppLication"
+            android:name=".MyAppLication"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme" tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.grgbanking.driverlibs.WelcomeActivity">
+            android:theme="@style/AppTheme"
+            tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".MeterialDesignActivity"
+                android:label="MeterialDesign"
+                />
+        <activity android:name=".ServiceTestActivity" />
+        <activity android:name=".WelcomeActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.grgbanking.driverlibs.MainActivity"  />
-         <activity android:name="com.grgbanking.driverlibs.ThreeRollerAutoGatesActivity"/>
-         <activity android:name="com.grgbanking.driverlibs.SluiceGatesAoYiActivity"/>
-        <activity android:name="com.grgbanking.driverlibs.SluiceGatesActivity"/>
-        <activity android:name="com.grgbanking.driverlibs.SocketTestActivity"/>
-        <activity android:name="com.grgbanking.driverlibs.MQTTTestActivity"/>
-        <activity android:name="com.grgbanking.driverlibs.FingerTestActivity"/>
-        <activity android:name="com.grgbanking.driverlibs.GreenDaoTestActivity"/>
-        <activity android:name="com.grgbanking.driverlibs.ReadTxtFileActivity"/>
-        <activity android:name="com.grgbanking.driverlibs.TwoScreenTestActivity"/>
-        <activity android:name="com.grgbanking.driverlibs.NativeActivirt"/>
-        <activity android:name="com.grgbanking.driverlibs.WebviewTestActivity"/>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".ThreeRollerAutoGatesActivity" />
+        <activity android:name=".SluiceGatesAoYiActivity" />
+        <activity android:name=".SluiceGatesActivity" />
+        <activity android:name=".SocketTestActivity" />
+        <activity android:name=".MQTTTestActivity" />
+        <activity android:name=".FingerTestActivity" />
+        <activity android:name=".GreenDaoTestActivity" />
+        <activity android:name=".ReadTxtFileActivity" />
+        <activity android:name=".TwoScreenTestActivity" />
+        <activity android:name=".NativeActivirt" />
+        <activity android:name=".WebviewTestActivity" /> <!-- <receiver android:name=".MyBroadCast" -->
+        <!-- android:enabled="true" -->
+        <!-- android:exported="true" -->
+        <!-- > -->
+        <!-- <intent-filter android:priority="100"> -->
+        <!-- <action android:name="com.grgbanking.driverlibs"/> -->
+        <!-- </intent-filter> -->
+        <!-- </receiver> -->
         <!-- Mqtt服务 -->
         <service android:name="org.eclipse.paho.android.service.MqttService" />
-        <service android:name="com.grgbanking.driverlibs.MQTTService" />
-     </application>
+        <service android:name=".MQTTService" />
+    </application>
 
 </manifest>

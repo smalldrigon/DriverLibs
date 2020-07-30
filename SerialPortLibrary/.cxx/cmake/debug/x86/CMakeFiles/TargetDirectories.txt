@@ -1,0 +1,3 @@
+D:/huitong/work/DriverLibsDemo/SerialPortLibrary/.cxx/cmake/debug/x86/CMakeFiles/SerialPort.dir
+D:/huitong/work/DriverLibsDemo/SerialPortLibrary/.cxx/cmake/debug/x86/CMakeFiles/edit_cache.dir
+D:/huitong/work/DriverLibsDemo/SerialPortLibrary/.cxx/cmake/debug/x86/CMakeFiles/rebuild_cache.dir

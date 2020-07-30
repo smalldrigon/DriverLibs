@@ -1,0 +1,9 @@
+Detecting CXX [-std=c++98] compiler features failed to compile with the following output:
+Change Dir: D:/huitong/work/DriverLibsDemo/SerialPortLibrary/.cxx/cmake/release/armeabi-v7a/CMakeFiles/CMakeTmp
+
+Run Build Command:"D:\Android\Sdk\cmake\3.10.2.4988404\bin\ninja.exe" "cmTC_10ab8"
+ninja: error: loading 'build.ninja': 系统找不到指定的文件。
+
+
+
+

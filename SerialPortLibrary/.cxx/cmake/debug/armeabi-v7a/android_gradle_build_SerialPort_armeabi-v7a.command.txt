@@ -1,0 +1,7 @@
+Executable : D:\Android\Sdk\cmake\3.10.2.4988404\bin\ninja.exe
+arguments : 
+-C
+D:\huitong\work\DriverLibsDemo\SerialPortLibrary\.cxx\cmake\debug\armeabi-v7a
+SerialPort
+jvmArgs : 
+

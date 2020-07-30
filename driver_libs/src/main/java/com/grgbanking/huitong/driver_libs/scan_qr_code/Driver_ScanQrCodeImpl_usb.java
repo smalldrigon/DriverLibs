@@ -25,14 +25,18 @@ import com.grgbanking.huitong.driver_libs.interfaces.IDriver_ScanGun;
  * }
  * 之后设置回调接口
  */
-public class Driver_ScanQrCodeImpl implements IDriver_ScanGun {
-    private static volatile Driver_ScanQrCodeImpl mInstance = null;
+public class Driver_ScanQrCodeImpl_usb implements IDriver_ScanGun {
+    private static volatile Driver_ScanQrCodeImpl_usb mInstance = null;
 
     private int productId_ZD3120 = 41985;//卓德3120扫码枪产品id
     private int vendorId_ZD3120 = 1317;//卓德3120扫码枪供应商id
 
     private int productId_ZD7100N = 9921;//卓德7100N扫码枪产品id
     private int vendorId_ZD7100N = 11734;//卓德7100N扫码枪供应商id
+
+    private int productId_weiguangQt420 = 42156;//微光Qt420扫码枪产品id
+    private int vendorId_weiguangQt420 = 1317;//微光Qt420扫码枪供应商id
+
 
     private int productId_IDCARD = 9;//usbid读卡器产品id
     private int vendorId_IDCARD = 2303;//usbid读卡器供应商id
@@ -51,12 +55,12 @@ public class Driver_ScanQrCodeImpl implements IDriver_ScanGun {
     private Handler mHandler;
     private Runnable mScanningFishedRunnable;
     private OnScanSuccessListener mOnScanSuccessListener;
-    private static int INPUT_TYPE = -1;//输入类型，用于回调类型判断 0 卓德3120扫码枪  1卓德7100N扫码枪 2定义为IC卡读卡器  -1未定义输类型
+    private static int INPUT_TYPE = -1;//输入类型，用于回调类型判断 0 卓德3120扫码枪  1卓德7100N扫码枪 2定义为IC卡读卡器 3微光qt420系列 -1未定义输类型
 
     private boolean isPaseScan = false;// 暂停扫码，目前只是暂停回调
 
 
-    public Driver_ScanQrCodeImpl() {
+    public Driver_ScanQrCodeImpl_usb() {
         mStringBufferResult = new StringBuffer();
         mHandler = new Handler();
         mScanningFishedRunnable = new Runnable() {
@@ -69,11 +73,11 @@ public class Driver_ScanQrCodeImpl implements IDriver_ScanGun {
 
 
     @Deprecated
-    public static Driver_ScanQrCodeImpl getInstance() {
+    public static Driver_ScanQrCodeImpl_usb getInstance() {
         if (null == mInstance) {
-            synchronized (Driver_ScanQrCodeImpl.class) {
+            synchronized (Driver_ScanQrCodeImpl_usb.class) {
                 if (null == mInstance) {
-                    mInstance = new Driver_ScanQrCodeImpl();
+                    mInstance = new Driver_ScanQrCodeImpl_usb();
                 }
             }
         }
@@ -91,6 +95,7 @@ public class Driver_ScanQrCodeImpl implements IDriver_ScanGun {
                 if (INPUT_TYPE == 1) mOnScanSuccessListener.onScanSuccess(INPUT_RQCODE, barcode);
                 if (INPUT_TYPE == 0) mOnScanSuccessListener.onScanSuccess(INPUT_RQCODE, barcode);
                 if (INPUT_TYPE == 2) mOnScanSuccessListener.onScanSuccess(INPUT_ICCARD, barcode);
+                if (INPUT_TYPE == 3) mOnScanSuccessListener.onScanSuccess(INPUT_RQCODE, barcode);
                 if (INPUT_TYPE == -1) mOnScanSuccessListener.onScanSuccess(UNDEFINE_INPUT_TYPE, barcode);
             }
             mStringBufferResult.setLength(0);
@@ -218,7 +223,8 @@ public class Driver_ScanQrCodeImpl implements IDriver_ScanGun {
         }
         //Virtual是我所使用机器的内置软键盘的名字
         //在这判断是因为项目中避免和软键盘冲突（扫码枪和软键盘都属于按键事件）
-
+        Log.i("gong",event.getDevice().getVendorId()+"getVendorId");
+        Log.i("gong",event.getDevice().getProductId()+"getProductId");
 
         if (event.getDevice().getVendorId() == vendorId_ZD7100N && event.getDevice().getProductId() == productId_ZD7100N) {
             INPUT_TYPE = 1;//usb 扫码枪输入类型
@@ -226,7 +232,9 @@ public class Driver_ScanQrCodeImpl implements IDriver_ScanGun {
         } else if (event.getDevice().getVendorId() == vendorId_ZD3120 && event.getDevice().getProductId() == productId_ZD3120) {
             INPUT_TYPE = 0;//usb 扫码枪输入类型
 
-        } else if (event.getDevice().getVendorId() == vendorId_IDCARD && event.getDevice().getProductId() == productId_IDCARD) {
+        } else if (event.getDevice().getVendorId() == vendorId_weiguangQt420 && event.getDevice().getProductId() == productId_weiguangQt420) {
+            INPUT_TYPE = 3;//usb ic卡读卡器输入类型
+        }else if (event.getDevice().getVendorId() == vendorId_IDCARD && event.getDevice().getProductId() == productId_IDCARD) {
             INPUT_TYPE = 2;//usb ic卡读卡器输入类型
         } else {
             INPUT_TYPE = -1;//未定义输入类型
@@ -266,6 +274,11 @@ public class Driver_ScanQrCodeImpl implements IDriver_ScanGun {
     public void restartReadQrCode() {
         this.isPaseScan = false;
 
+    }
+
+    @Override
+    public int getStatu() {
+        return 0;
     }
 
     @Override

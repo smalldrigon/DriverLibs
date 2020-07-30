@@ -30,7 +30,7 @@
 
 
     </LinearLayout>
-    <LinearLayout android:layout_width="match_parent"
+    <LinearLayout android:layout_width="wrap_content"
                   android:orientation="vertical"
                   android:layout_height="wrap_content">
 
@@ -90,7 +90,20 @@
                 android:layout_height="wrap_content"/>
     </LinearLayout>
 
+    <LinearLayout android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+        <Button android:layout_width="wrap_content"
+                android:id="@+id/btn_MeterialDesign"
+                android:text="MeterialDesign"
+                android:layout_height="wrap_content"/>
+        <Button android:layout_width="wrap_content"
+                android:id="@+id/btn_execcommand"
+                android:text="执行命令"
+                android:layout_height="wrap_content"/>
 
+
+    </LinearLayout>
     <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
                android:id="@+id/iv_result"
     />

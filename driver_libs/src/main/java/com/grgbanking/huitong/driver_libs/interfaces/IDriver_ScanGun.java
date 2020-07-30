@@ -15,6 +15,6 @@ public interface IDriver_ScanGun extends IDriverBaseInterface {
 
       void pauseReadQrCode();//暂停读卡
       void  restartReadQrCode();//重新开始读卡
-
+      int getStatu();//获取设备状态
 
 }

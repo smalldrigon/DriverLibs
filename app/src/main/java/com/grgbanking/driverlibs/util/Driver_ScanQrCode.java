@@ -7,7 +7,7 @@ import android.util.Log;
 import android.view.InputDevice;
 import android.view.KeyEvent;
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_ScanGun;
-import com.grgbanking.huitong.driver_libs.scan_qr_code.Driver_ScanQrCodeImpl;
+import com.grgbanking.huitong.driver_libs.scan_qr_code.Driver_ScanQrCodeImpl_usb;
 import com.grgbanking.huitong.driver_libs.scan_qr_code.OnScanSuccessListener;
 
 /**
@@ -27,7 +27,7 @@ import com.grgbanking.huitong.driver_libs.scan_qr_code.OnScanSuccessListener;
  *
  */
 public class Driver_ScanQrCode implements IDriver_ScanGun {
-    private static volatile Driver_ScanQrCodeImpl mInstance = null;
+    private static volatile Driver_ScanQrCodeImpl_usb mInstance = null;
     public static int INPUT_RQCODE  =1;// 扫码枪回调类型为1
     public static int INPUT_ICCARD =2;// usb 读卡器回调类型为2
     private final static long MESSAGE_DELAY = 50;             //延迟500ms，判断扫码是否完成。
@@ -57,11 +57,11 @@ public class Driver_ScanQrCode implements IDriver_ScanGun {
 
 
     @Deprecated
-    public static Driver_ScanQrCodeImpl getInstance() {
+    public static Driver_ScanQrCodeImpl_usb getInstance() {
         if (null == mInstance) {
-            synchronized (Driver_ScanQrCodeImpl.class) {
+            synchronized (Driver_ScanQrCodeImpl_usb.class) {
                 if (null == mInstance) {
-                    mInstance = new Driver_ScanQrCodeImpl();
+                    mInstance = new Driver_ScanQrCodeImpl_usb();
                 }
             }
         }
@@ -243,6 +243,11 @@ public class Driver_ScanQrCode implements IDriver_ScanGun {
     public void restartReadQrCode() {
         this.isPaseScan = false;
 
+    }
+
+    @Override
+    public int getStatu() {
+        return 0;
     }
 
     @Override

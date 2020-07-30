@@ -1,1 +1,1 @@
-include ':app', ':driver_libs'
+include ':app', ':driver_libs', ':SerialPortLibrary'
