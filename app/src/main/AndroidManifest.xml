@@ -5,6 +5,8 @@
     <uses-feature
             android:name="android.hardware.usb.host"
             android:required="true" />
+
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -49,6 +51,7 @@
         <activity android:name=".GreenDaoTestActivity" />
         <activity android:name=".ReadTxtFileActivity" />
         <activity android:name=".TwoScreenTestActivity" />
+        <activity android:name=".SerialportQrActivity" />
         <activity android:name=".NativeActivirt" />
         <activity android:name=".WebviewTestActivity" /> <!-- <receiver android:name=".MyBroadCast" -->
         <!-- android:enabled="true" -->

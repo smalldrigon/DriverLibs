@@ -17,5 +17,5 @@ Check for working CXX compiler: D:/Android/Sdk/ndk/android-ndk-r16b/toolchains/l
 Detecting CXX compiler ABI info
 Detecting CXX compiler ABI info - done
 Detecting CXX compile features
-Detecting CXX compile features - failed
+Detecting CXX compile features - done
 Configuring done

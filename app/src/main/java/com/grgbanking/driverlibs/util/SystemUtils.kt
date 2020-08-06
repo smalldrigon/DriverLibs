@@ -24,8 +24,11 @@ import java.text.SimpleDateFormat
 import java.util.*
 import android.Manifest.permission
 import android.Manifest.permission.READ_PHONE_STATE
-
-
+import android.app.Activity
+import android.app.ActivityManager
+import android.content.Context.ACTIVITY_SERVICE
+import android.content.Intent
+import android.os.Handler
 
 
 /**
@@ -36,6 +39,32 @@ import android.Manifest.permission.READ_PHONE_STATE
  */
 
 object SystemUtils {
+
+    fun reStartApp(context: Activity) {
+        //重启应用
+        var launchIntent =
+            context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
+        if (launchIntent != null) {
+//            UIUtils.showToastSafe("应用正在重启中请稍后...");
+
+            Handler().postDelayed({
+                launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                launchIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                context.startActivity(launchIntent);
+                //添加activity切换动画效果
+                context.overridePendingTransition(0, 0);
+                var am = context.getSystemService(ACTIVITY_SERVICE) as ActivityManager
+                am.killBackgroundProcesses(context.packageName);
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(0);
+                context.finish();
+
+            }
+                , 400L)
+        }
+
+    }
+
 
     /**
      * @method

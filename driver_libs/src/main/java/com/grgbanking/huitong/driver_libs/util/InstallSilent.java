@@ -10,13 +10,13 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 public class InstallSilent {
-	
+
 	public static final String COMMAND_SU = "su";
 	public static final String COMMAND_SH = "sh";
 	public static final String COMMAND_LINE_END = "\n";
 	public static final String COMMAND_EXIT= "exit\n";
 	public static final String COMMAND_RCCSU = "rccsu";
-	
+
 	//Fixed：可以将返回值更加细化
 	//执行批量命令，如果没有root权限，则调用su获取，如果已经存在rccsu，则isRoot为true
 	//isWaiting:是否等待命令执行完成，不等待则为false
@@ -25,7 +25,7 @@ public class InstallSilent {
 		if(commands == null || commands.size() == 0){
 			return true;
 		}
-		
+
 		Process process = null;
 		DataOutputStream os = null;
 
@@ -39,12 +39,12 @@ public class InstallSilent {
 				if (command == null) {
 					continue;
 				}
-				
+
 				os.writeBytes(command);
 				os.writeBytes(COMMAND_LINE_END);
 				os.flush();
 			}
-			
+
 			os.writeBytes(COMMAND_EXIT);
 			os.flush();
 
@@ -74,7 +74,7 @@ public class InstallSilent {
 //					process.getInputStream(), "STDOUT");
 			// kick off stdout
 //			outStream.start();
-			
+
 			//若无需等待进程返回，则使用exitValue
 			if (isWaiting) {
 				result = process.waitFor();
@@ -85,12 +85,12 @@ public class InstallSilent {
 			System.out.println("ExitValue: " + result);
 
 			if (result !=0) {
-				
+
 				return false;
 			}
 
-			
-			
+
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -106,12 +106,12 @@ public class InstallSilent {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally{
-			
+
 			try {
 				if (os != null) {
 					os.close();
 				}
-				
+
 				if (process != null) {
 					process.destroy();
 				}
@@ -119,9 +119,9 @@ public class InstallSilent {
 				// TODO: handle exception
 				return false;
 			}
-						
+
 		}
-		
+
 		return true;
 	}
 

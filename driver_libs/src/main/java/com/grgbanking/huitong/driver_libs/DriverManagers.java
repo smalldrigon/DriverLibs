@@ -6,6 +6,7 @@ import com.grgbanking.huitong.driver_libs.card_reader.Driver_DeCardReaderImpl;
 import com.grgbanking.huitong.driver_libs.fingerprints.Driver_FingerRecongnitionImpl;
 import com.grgbanking.huitong.driver_libs.gate_machine.GateMachineFactory;
 import com.grgbanking.huitong.driver_libs.interfaces.*;
+import com.grgbanking.huitong.driver_libs.scan_qr_code.Driver_ScanQrCodeImpl_serialport;
 import com.grgbanking.huitong.driver_libs.scan_qr_code.Driver_ScanQrCodeImpl_usb;
 
 /**
@@ -134,9 +135,13 @@ public class DriverManagers {
          * @date: 2019/9/5 11:54
          * @author: gongxiaobiao
          */
-        public Builder setScanGun(String scanGunType,String connectType) {
-            switch (scanGunType) {
-                case SACNGUN_TYPE_ZD7100:
+        public Builder setScanGun(IConnectType connectType) {
+
+            switch (connectType) {
+                case SERIABLE_PORT:
+                    mIDriver_ScanGun = new Driver_ScanQrCodeImpl_serialport();
+                    break;
+                case USB:
                     mIDriver_ScanGun = new Driver_ScanQrCodeImpl_usb();
                     break;
             }
