@@ -3,10 +3,10 @@ package com.grgbanking.driverlibs
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.grgbanking.huitong.driver_libs.DriverManagers
+import com.grgbanking.huitong.driver_libs.interfaces.CustomOnSerialPortDataListener
 import com.grgbanking.huitong.driver_libs.interfaces.IConnectType
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_ScanGun
 import com.grgbanking.huitong.driver_libs.scan_qr_code.Driver_ScanQrCodeImpl_serialport
-import com.kongqw.serialportlibrary.listener.CustomOnSerialPortDataListener
 import kotlinx.android.synthetic.main.layout_serialport_activity.*
 
 class SerialportQrActivity :AppCompatActivity(){
@@ -25,7 +25,7 @@ class SerialportQrActivity :AppCompatActivity(){
             btn_open.setOnClickListener {
                         mIDriver_ScanGun = DriverManagers.instance.driver_ScanGun
                 (mIDriver_ScanGun as Driver_ScanQrCodeImpl_serialport).startScan(map,
-                    object :CustomOnSerialPortDataListener{
+                    object : CustomOnSerialPortDataListener {
                         override fun onDataReceived(bytes: ByteArray?) {
                             bytes?.let { it1 -> String(it1) }?.let { it2 -> setres("第一串口$it2") }
                         }

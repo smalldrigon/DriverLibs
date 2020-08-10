@@ -8,7 +8,7 @@ ext {
             androidBuildToolsVersion: "29.0.1",
             androidCompileSdkVersion: 28,
             compileSdkVersion       : 28,
-            androidMinSdkVersion    : 19,
+            androidMinSdkVersion    : 17,
             androidTargetSdkVersion : 28
     ]
     dependVersion = [
