@@ -5,10 +5,9 @@ import android.os.Handler;
 import android.view.InputDevice;
 import android.view.KeyEvent;
 
-
+import com.grgbanking.huitong.driver_libs.interfaces.CustomOnSerialPortDataListener;
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_ScanGun;
 import com.kongqw.serialportlibrary.SerialPortManager;
-import com.kongqw.serialportlibrary.listener.CustomOnSerialPortDataListener;
 import com.kongqw.serialportlibrary.listener.OnOpenSerialPortListener;
 import com.kongqw.serialportlibrary.listener.OnSerialPortDataListener;
 
