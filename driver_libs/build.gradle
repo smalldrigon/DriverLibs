@@ -82,8 +82,9 @@ dependencies {
     api files('libs/dc_mate_201908091132.jar')
     api files('libs/jna-min.jar')
     api files('libs/jna-platform.jar')
-    api project(path:':SerialPortLibrary')
+//    api project(path:':SerialPortLibrary')
     implementation rootProject.ext.greenDaoLibs
+    implementation 'com.gitee.gxbiao:AndroidSerialPort:1.0.1'
  }
 repositories {
     mavenCentral()
