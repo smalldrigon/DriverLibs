@@ -72,7 +72,7 @@ android {
 
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.jar','aar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
@@ -82,7 +82,7 @@ dependencies {
     api files('libs/dc_mate_201908091132.jar')
     api files('libs/jna-min.jar')
     api files('libs/jna-platform.jar')
-    api project(':SerialPortLibrary')
+    api project(path:':SerialPortLibrary')
     implementation rootProject.ext.greenDaoLibs
  }
 repositories {
