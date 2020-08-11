@@ -84,7 +84,7 @@ dependencies {
     api files('libs/jna-platform.jar')
 //    api project(path:':SerialPortLibrary')
     implementation rootProject.ext.greenDaoLibs
-    api 'com.gitee.gxbiao:AndroidSerialPort:1.0.3'
+    api 'com.gitee.gxbiao:AndroidSerialPort:1.1.4'
  }
 repositories {
     mavenCentral()

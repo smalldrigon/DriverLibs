@@ -10,7 +10,7 @@ import com.grgbanking.huitong.driver_libs.scan_qr_code.Driver_ScanQrCodeImpl_ser
 import kotlinx.android.synthetic.main.layout_serialport_activity.*
 
 class SerialportQrActivity :AppCompatActivity(){
-    var mIDriver_ScanGun :IDriver_ScanGun ?= null
+    private var midriverScangun :IDriver_ScanGun ?= null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_serialport_activity)
@@ -23,8 +23,8 @@ class SerialportQrActivity :AppCompatActivity(){
                 "dev/ttyS1" to "115200"
             )
             btn_open.setOnClickListener {
-                        mIDriver_ScanGun = DriverManagers.instance.driver_ScanGun
-                (mIDriver_ScanGun as Driver_ScanQrCodeImpl_serialport).startScan(map,
+                        midriverScangun = DriverManagers.instance.driver_ScanGun
+                (midriverScangun as Driver_ScanQrCodeImpl_serialport).startScan(map,
                     object : CustomOnSerialPortDataListener {
                         override fun onDataReceived(bytes: ByteArray?) {
                             bytes?.let { it1 -> String(it1) }?.let { it2 -> setres("第一串口$it2") }
@@ -47,10 +47,10 @@ class SerialportQrActivity :AppCompatActivity(){
                     )
             }
             btn_pause.setOnClickListener {
-                mIDriver_ScanGun?.pauseReadQrCode()
+                midriverScangun?.pauseReadQrCode()
             }
             btn_restart.setOnClickListener {
-                mIDriver_ScanGun?.restartReadQrCode()
+                midriverScangun?.restartReadQrCode()
             }
 
         }
