@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
 
     fun initData() {
 
-//        mIDriver_CardReader = Driver_DeCardReaderImpl(this)
+        mIDriver_CardReader = Driver_DeCardReaderImpl(this)
         Handler().postDelayed({
             mIDriver_CardReader?.open(applicationContext)
         },1000L)

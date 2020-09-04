@@ -79,7 +79,7 @@ dependencies {
     api files('libs/device.jar')
     api files('libs/fpdev.jar')
     api files('libs/reader.jar')
-    api files('libs/dc_mate_201908091132.jar')
+    api files('libs/dc_mate_202008251158.jar')
     api files('libs/jna-min.jar')
     api files('libs/jna-platform.jar')
     implementation rootProject.ext.greenDaoLibs
