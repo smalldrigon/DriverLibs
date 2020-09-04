@@ -1,6 +1,5 @@
 package com.grgbanking.driverlibs
 
-import android.app.NativeActivity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -13,24 +12,21 @@ import android.support.annotation.RequiresApi
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.KeyEvent
+import com.decard.NDKMethod.BasicOper
 import com.grgbanking.baselibrary.util.SystemUtils
 import com.grgbanking.driverlibs.util.BitmapUtil
 import com.grgbanking.huitong.driver_libs.DriverManagers
-
 import com.grgbanking.huitong.driver_libs.card_reader.Driver_DeCardReaderImpl
 import com.grgbanking.huitong.driver_libs.database.DatabaseInstance
-import com.grgbanking.huitong.driver_libs.fingerprints.Driver_FingerRecongnitionImpl
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_CardReader
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_FingerPrints
 import com.grgbanking.huitong.driver_libs.interfaces.IDriver_ScanGun
- import com.grgbanking.huitong.driver_libs.scan_qr_code.Driver_ScanQrCodeImpl_usb
+import com.grgbanking.huitong.driver_libs.scan_qr_code.Driver_ScanQrCodeImpl_usb
 import com.grgbanking.huitong.driver_libs.util.FileUtil
 import com.grgbanking.huitong.driver_libs.util.InstallSilent
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_main1.*
 import java.io.File
-import java.lang.StringBuilder
- import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
     var disposedCopyfIle: Disposable? = null
@@ -65,10 +61,17 @@ class MainActivity : AppCompatActivity() {
 
 
     fun initData() {
+//        BasicOper.dc_AUSB_ReqPermission(this)
 
-//        mIDriver_CardReader = Driver_DeCardReaderImpl(this)
+//        BasicOper.dc_open("AUSB", this, "", 0);
         Handler().postDelayed({
-            mIDriver_CardReader?.open(applicationContext)
+            try {
+                mIDriver_CardReader = Driver_DeCardReaderImpl(this)
+            mIDriver_CardReader?.open(this)
+            }catch (e:Exception){
+                Log.i("gong", "抛出异常")
+                e.printStackTrace()
+            }
         },1000L)
 //        mIDriver_FingerPrints = Driver_FingerRecongnitionImpl()
         mIDriver_FingerPrints?.open(this)
@@ -137,7 +140,8 @@ var inputStr:StringBuilder = StringBuilder()
     fun initView() {
 
         btn_readIdCard.setOnClickListener {
-            mIDriver_CardReader?.open(this)
+//            mIDriver_CardReader?.open(this)
+//            return@setOnClickListener
             mIDriver_CardReader?.readIdCard(false, 2000L) {
 
                 if (it != null) {

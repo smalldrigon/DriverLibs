@@ -70,22 +70,21 @@ android {
 }
 
 
-
 dependencies {
-    implementation fileTree(include: ['*.jar','aar'], dir: 'libs')
+    implementation fileTree(include: ['*.jar', 'aar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     api files('libs/device.jar')
     api files('libs/fpdev.jar')
     api files('libs/reader.jar')
-    api files('libs/dc_mate_201908091132.jar')
-    api files('libs/jna-min.jar')
+     api files('libs/jna-min.jar')
     api files('libs/jna-platform.jar')
-//    api project(path:':SerialPortLibrary')
+    //    api project(path:':SerialPortLibrary')
     implementation rootProject.ext.greenDaoLibs
     api 'com.gitee.gxbiao:AndroidSerialPort:1.1.4'
- }
+    api files('libs/dc_mate_202008251158.jar')
+}
 repositories {
     mavenCentral()
 }

@@ -4,8 +4,10 @@ import android.app.Presentation;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.grgbanking.driverlibs.R;
 
@@ -30,6 +32,7 @@ public class CustomerDisplay extends Presentation {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.layout_customer_display);
         tv = findViewById(R.id.tv);
+        tv.setOnClickListener(v -> Toast.makeText(mContext,"asda",Toast.LENGTH_LONG).show());
     }
 
     /**
